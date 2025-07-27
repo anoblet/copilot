@@ -4,16 +4,32 @@
       "type": "http",
       "url": "https://mcp.context7.com/mcp"
     },
-    "memory": {
+    "user-memory": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
       "env": {
-        "MEMORY_FILE_PATH": "${workspaceFolder}/memory.jsonl"
+        "MEMORY_FILE_PATH": "${workspaceFolder}/memory/user.jsonl"
+      }
+    },
+    "project-memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "env": {
+        "MEMORY_FILE_PATH": "${workspaceFolder}/memory/project.jsonl"
       }
     },
     "sequential-thinking": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
     }
   }
 }
