@@ -1,11 +1,14 @@
 {
-  "chat.agent.maxRequests": 1000,
+  "chat.agent.maxRequests": 10000,
   "chat.instructionsFilesLocations": {
     ".copilot/instructions": true
   },
   "chat.modeFilesLocations": {
-    "awesome-copilot/chatmodes": true,
-    "chatmodes": true
+    ".copilot/awesome-copilot/chatmodes": true,
+    ".copilot/chatmodes": true
   },
-  "chat.tools.autoApprove": true
+  "chat.tools.autoApprove": true,
+  "githubPullRequests.ignoredPullRequestBranches": [
+    "develop"
+  ]
 }
