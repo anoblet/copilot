@@ -16,7 +16,7 @@ All user interactions must be logged to maintain historical context and enable e
 
 ### Storage Location
 
-- **File**: `memory/prompts.jsonl` (project-specific)
+- **File**: `memory/prompt.jsonl` (project-specific)
 - **Format**: JSON Lines format with one JSON object per line
 - **Persistence**: Indefinite storage - prompts are never deleted
 
@@ -49,7 +49,7 @@ All user interactions must be logged to maintain historical context and enable e
 - Include complete prompt text (no truncation)
 - Add relevant context (branch, modified files, session info)
 - Use ISO 8601 timestamp format
-- Append to existing `memory/prompts.jsonl` file
+- Append to existing `memory/prompt.jsonl` file
 
 ### 3. Commit Integration
 
@@ -69,11 +69,11 @@ All user interactions must be logged to maintain historical context and enable e
 ### File Operations
 
 ```bash
-# Create prompts.jsonl if it doesn't exist
-touch memory/prompts.jsonl
+# Create prompt.jsonl if it doesn't exist
+touch memory/prompt.jsonl
 
 # Append new prompt (example)
-echo '{"timestamp":"2025-08-10T15:30:45.123Z","prompt":"Create new feature","context":{"branch":"main"},"metadata":{"user":"andrew","project":"astronautical-apogee","type":"user_request"}}' >> memory/prompts.jsonl
+echo '{"timestamp":"2025-08-10T15:30:45.123Z","prompt":"Create new feature","context":{"branch":"main"},"metadata":{"user":"andrew","project":"astronautical-apogee","type":"user_request"}}' >> memory/prompt.jsonl
 ```
 
 ### Context Extraction
@@ -121,7 +121,7 @@ echo '{"timestamp":"2025-08-10T15:30:45.123Z","prompt":"Create new feature","con
 ### File Management
 
 - Monitor file size and consider rotation at project milestones
-- Maintain single `prompts.jsonl` file per project
+- Maintain single `prompt.jsonl` file per project
 - Use append-only operations to preserve chronological order
 
 ### Backup Integration
@@ -133,7 +133,7 @@ echo '{"timestamp":"2025-08-10T15:30:45.123Z","prompt":"Create new feature","con
 
 ### Complete Coverage
 
-- Every user prompt is recorded in `memory/prompts.jsonl`
+- Every user prompt is recorded in `memory/prompt.jsonl`
 - No gaps in prompt history or missing interactions
 - Consistent recording across all conversation sessions
 
