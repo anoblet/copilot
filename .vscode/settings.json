@@ -8,5 +8,7 @@
     ".copilot/chatmodes": true
   },
   "chat.tools.autoApprove": true,
-  "githubPullRequests.ignoredPullRequestBranches": ["develop"]
+  "githubPullRequests.ignoredPullRequestBranches": [
+    "develop"
+  ]
 }
