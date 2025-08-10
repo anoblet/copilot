@@ -1,0 +1,1 @@
+- File a PR for the changes to the `.copilot` submodule. If there are no conflicts, version tag the package, and merge the PR.
