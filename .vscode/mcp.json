@@ -5,8 +5,14 @@
       "url": "https://mcp.context7.com/mcp"
     },
     "github": {
-      "type": "http",
-      "url": "https://api.githubcopilot.com/mcp/x/pull_requests",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_TOOLSETS": "pull_requests,actions"
+      }
     },
     "playwright": {
       "command": "npx",
