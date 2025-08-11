@@ -5,13 +5,10 @@
       "url": "https://mcp.context7.com/mcp"
     },
     "github": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-github"
-      ],
-      "env": {
-        "GITHUB_TOOLSETS": "pull_requests,actions"
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "X-MCP-Toolsets": "actions,pull_requests"
       }
     },
     "playwright": {
