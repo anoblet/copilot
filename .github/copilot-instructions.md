@@ -1,9 +1,6 @@
 # Copilot Instructions
 
-## Tools
-
-#file:../instructions/memory.instructions.md
-#file:../instructions/sequential-thinking.instructions.md
+#file:../instructions/index.instructions.md
 
 **_ NEVER UNDER ANY CIRCUMSTANCE UPDATE THE MAIN BRANCH(unless you are inside of the `.copilot`, or `.copilot/genaisrc` submodule) _**
 
