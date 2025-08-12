@@ -123,6 +123,58 @@ Failure to check all three memory systems first will result in:
 - **Project Structure**: Architecture, organization, and design decisions for the current project
 - **Project Preference**: Project-specific preferences that may override user defaults
 
+## Workflow Timing Protocol
+
+### ⚠️ CRITICAL: MEMORY UPDATES BEFORE COMMITS ⚠️
+
+**ALL MEMORY SYSTEM UPDATES MUST BE COMPLETED BEFORE ANY GIT COMMITS OR REPOSITORY CHANGES.**
+
+This ensures:
+- Complete context is preserved before code/file changes
+- Repository state remains clean after task completion
+- No loss of workflow context due to incomplete memory updates
+- Proper documentation of decisions and changes before implementation
+
+### Memory Update Sequence
+
+1. **ANALYZE**: Complete all analysis and planning using existing memory context
+2. **UPDATE MEMORY**: Record all new observations, decisions, and context in appropriate memory systems
+3. **IMPLEMENT**: Only then proceed with code changes, commits, and repository operations
+4. **VALIDATE**: Ensure repository is left in clean state with all memory properly updated
+
+## Project Synchronization Strategy
+
+### Leaf-to-Trunk Merge Pattern
+
+When working with multiple repositories, submodules, or interconnected projects, always follow the **leaf-to-trunk strategy**:
+
+1. **Identify Dependencies**: Map the dependency tree (leaf = no dependencies, trunk = dependent on others)
+2. **Leaf First**: Start with repositories that have no dependencies (e.g., submodules)
+3. **Propagate Upward**: Move changes up through the dependency chain
+4. **Trunk Last**: End with the main/consuming repository
+
+### Example Workflow Order
+
+For astronautical-apogee project structure:
+1. **genaisrc** (leaf submodule) → changes first
+2. **.copilot** (middle submodule) → inherits and adds changes
+3. **astronautical-apogee** (trunk) → receives final propagated changes
+
+This prevents:
+- Cyclical dependencies
+- Merge conflicts
+- Inconsistent state across repositories
+- Manual synchronization errors
+
+### Clean Repository State Protocol
+
+After completing any task:
+- All changes committed with proper commit messages
+- All branches cleaned up (local and remote)
+- Working directory clean (no unstaged changes)
+- Memory systems fully updated and synchronized
+- Documentation reflects current state
+
 ## Best Practices
 
 - Always check user memory first to understand personal context and preferences
@@ -132,3 +184,6 @@ Failure to check all three memory systems first will result in:
 - Maintain clear separation between personal, project-specific, and conversation information
 - Project-specific preferences can override user defaults when explicitly specified
 - Conversation context should capture the full interaction flow and user clarifications
+- **ALWAYS** update memory systems before making any commits or repository changes
+- Follow leaf-to-trunk strategy for multi-repository synchronization
+- Leave repositories in clean, documented state after task completion
