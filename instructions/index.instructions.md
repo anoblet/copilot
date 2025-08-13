@@ -17,6 +17,8 @@ Example:
 
 - ALWAYS use tha maximum amount of reasoning possible. Do not worry how long it will take to complete the task. Only worry about how clear, and efficient your solution is
 
+- Make sure the branch you are on is specific to the task. If you don't believe you are, switch to develop and create a new branch
+
 ## Tools
 
 #file:./tools.instructions.md
