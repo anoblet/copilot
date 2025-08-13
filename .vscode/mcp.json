@@ -8,7 +8,7 @@
       "type": "http",
       "url": "https://api.githubcopilot.com/mcp/",
       "headers": {
-        "X-MCP-Toolsets": "actions,pull_requests,repos,issues,context,users,orgs"
+        "X-MCP-Toolsets": "pull_requests,repos,issues,context,users,orgs"
       }
     },
     "playwright": {
