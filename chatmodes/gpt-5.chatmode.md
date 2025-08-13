@@ -12,7 +12,7 @@ tools:
     'edit',
     'create',
   ]
-model: GPT-5
+model: GPT-5 (Preview)
 ---
 
 # GPT-5 Task Completion Agent
