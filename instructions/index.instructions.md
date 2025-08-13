@@ -19,6 +19,18 @@ Example:
 
 - Make sure the branch you are on is specific to the task. If you don't believe you are, switch to develop and create a new branch
 
+- Always follow this strategy when you are finished with your task:
+
+1. Commit
+2. PR
+3. Merge
+4. Deploy
+5. Sync
+
+- When referring to `sync`, use instructions from the sync prompt file ``prompts/sync.prompt.md`, or `copilot/prompts/sync.prompt.md`
+
+- Always return to the `develop` branch after you are finished. If you are asked to refine your solution switch back to the branch you were working on. As always return to the `develop` branch after you are finished.
+
 ## Tools
 
 #file:./tools.instructions.md
