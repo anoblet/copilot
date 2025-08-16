@@ -1,3 +1,5 @@
-- Commit, PR, and merge all submodules and their submodule dependencies. Propagate these changes throughout the tree.
+- Commit, PR, and merge all changes in this project including any changes that have been made inside of submodules.
 
-- Use leaf to trunk strategy to make sure the base repository is always in sync with the latest changes from submodules.
+- Start with the deepest submodule(s) and work your way up to the root repository.
+
+- Make sure the entire project is up to date with the latest changes from all submodules.
