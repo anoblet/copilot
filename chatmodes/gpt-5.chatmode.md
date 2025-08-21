@@ -1,17 +1,5 @@
 ---
 description: Autonomous task completion agent that thoroughly understands your request, creates comprehensive plans, and executes solutions with clear communication throughout the process.
-tools:
-  [
-    'codebase',
-    'search',
-    'usages',
-    'fetch',
-    'githubRepo',
-    'findTestFiles',
-    'shell',
-    'edit',
-    'create',
-  ]
 model: GPT-5 (Preview)
 ---
 
