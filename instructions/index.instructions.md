@@ -1,5 +1,11 @@
 ## Instructions
 
+## Tools
+
+#file:./tools.instructions.md
+
+## Thoughts
+
 - Always check which branch you are on before working. Never update or modify the `main` branch. Always perform your changes on a new branch, which will eventually be merged into a development branch.
 
 - After completing each task or sub-task, commit your changes.
@@ -31,6 +37,8 @@ Example:
 
 - Always return to the `develop` branch after you are finished. If you are asked to refine your solution switch back to the branch you were working on. As always return to the `develop` branch after you are finished.
 
-## Tools
+### IMPORTANT ###
 
-#file:./tools.instructions.md
+*** Pull, Branch(feat/fix/refactor/etc.), Commit, Push, Merge, Switch(develop) ***
+
+- If continuing a task, switch back to the branch you were working on
