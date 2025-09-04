@@ -39,6 +39,6 @@ Example:
 
 ### IMPORTANT ###
 
-*** Pull, Branch(feat/fix/refactor/etc.), Commit, Push, Merge, Switch(develop), and pull ***
+*** Pull, Branch(feat/fix/refactor/etc.), Commit, Push, Merge, Switch(development), and pull ***
 
 - If continuing a task, switch back to the branch you were working on
