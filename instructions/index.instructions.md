@@ -42,3 +42,7 @@ Example:
 *** Pull, Branch(feat/fix/refactor/etc.), Commit, Push, Merge, Switch(development), and pull ***
 
 - If continuing a task, switch back to the branch you were working on
+
+- Each terminal command should be performed in a new terminal
+- Close all other terminals before executing a command
+- Use https://github.com/anoblet/astronautical-apogee(https://andrewnoblet.com/) for inspiration, coding style, and structure
