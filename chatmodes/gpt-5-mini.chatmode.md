@@ -1,3 +1,4 @@
+---
 description: Focused variant of the GPT-5 task completion agent – optimized for maximal solution quality, exhaustive reasoning depth, and rigorous validation without regard for token cost.
 model: GPT-5 mini (Preview)
 ---
