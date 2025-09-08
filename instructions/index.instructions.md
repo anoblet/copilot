@@ -1,5 +1,7 @@
 ## Instructions
 
+#file:./git-flow.instructions.md
+
 ## Tools
 
 #file:./terminal.instructions.md
