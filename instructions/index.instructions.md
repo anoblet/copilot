@@ -2,6 +2,7 @@
 
 ## Tools
 
+#file:./terminal.instructions.md
 #file:./tools.instructions.md
 
 ## Thoughts
