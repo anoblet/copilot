@@ -1,4 +1,4 @@
 #file:./memory.instructions.md
-#file:./prompt.instructions.md
 #file:./sequential-thinking.instructions.md
+#file:./serena.instructions.md
 #file:./testing.instructions.md
