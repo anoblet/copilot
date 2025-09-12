@@ -1,6 +1,7 @@
 ## Instructions
 
 #file:./git-flow.instructions.md
+#file:./inspiration.instructions.md
 
 ## Tools
 
