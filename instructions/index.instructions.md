@@ -7,6 +7,7 @@
 
 #file:./terminal.instructions.md
 #file:./tools.instructions.md
+#file:./chroma.instruction.md
 
 ## Thoughts
 
