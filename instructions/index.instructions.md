@@ -3,7 +3,6 @@
 #file:./git-flow.instructions.md
 #file:./inspiration.instructions.md
 #file:./principles.instructions.md
-#file:./time.instructions.md
 
 ## Tools
 
