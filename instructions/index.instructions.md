@@ -3,12 +3,13 @@
 #file:./git-flow.instructions.md
 #file:./inspiration.instructions.md
 #file:./principles.instructions.md
+#file:./prompt.instructions.md
 
 ## Tools
 
 #file:./terminal.instructions.md
 #file:./tools.instructions.md
-#file:./chroma.instruction.md
+#file:./chroma.instructions.md
 
 ## Thoughts
 
