@@ -3,5 +3,8 @@
   "chat.modeFilesLocations": {
     "copilot/awesome-copilot/chatmodes": true,
     "copilot/chatmodes": true
+  },
+  "chat.promptFilesLocations": {
+    "copilot/prompts": true
   }
 }
