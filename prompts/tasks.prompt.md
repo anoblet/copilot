@@ -1,4 +1,4 @@
-Analyze `PROMPT.md`. Generate a nested checklist of tasks to be done based on the prompt.
+Analyze `PROMPT.md`. Generate a nested checklist of tasks to be done based on the prompt. Place the checklist in `TASKS.md`.
 
 Before you start, record the current time in `TIME.md`.
 
