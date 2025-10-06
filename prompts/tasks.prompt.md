@@ -12,4 +12,4 @@ Spend time understanding the prompt, reviewing the software documentation, resea
 
 Continue to review and refine the checklist until you are confident it covers all necessary steps to complete the task.
 
-Do not stop until you have spent at least 15 minutes.
+Do not stop until you have spent at least 5 minutes reviewing and refining the checklist.
