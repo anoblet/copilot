@@ -1,0 +1,1 @@
+Record each and every prompt with the Chroma tool. Use the dedicated collection 'prompts'.

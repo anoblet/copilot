@@ -4,6 +4,7 @@
 #file:./inspiration.instructions.md
 #file:./principles.instructions.md
 #file:./prompt.instructions.md
+#file:./time-limit.instructions.md
 
 ## Tools
 
