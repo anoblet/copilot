@@ -15,6 +15,7 @@ interface LoadedConfig {
 
 const workspaceRoot = path.resolve(__dirname, '..', '..');
 const copilotDir = path.resolve(__dirname, '..');
+const executionDir = process.cwd();
 
 async function pathExists(candidate: string): Promise<boolean> {
 	try {
@@ -115,7 +116,7 @@ async function processInstructions(instructions: InstructionMap | undefined, con
 
 	for (const [name, relPath] of Object.entries(instructions)) {
 		const target = await resolveTargetPath(relPath, configDir);
-		const linkPath = path.resolve(copilotDir, '.github', 'instructions', `${name}.instructions.md`);
+		const linkPath = path.resolve(executionDir, '.github', 'instructions', `${name}.instructions.md`);
 
 		await ensureSymlink(target, linkPath);
 	}
