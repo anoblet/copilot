@@ -6,5 +6,14 @@
   },
   "chat.promptFilesLocations": {
     "copilot/prompts": true
-  }
+  },
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always"
+  },
+  "editor.formatOnSave": false,
+  "github.copilot.chat.agent.thinkingTool": true,
+  "github.copilot.chat.alternateGptPrompt.enabled": true,
+  "github.copilot.chat.claudeSonnet45AlternatePrompt": "v2",
+  "github.copilot.chat.gpt5AlternatePrompt": "v2",
+  "github.copilot.chat.responsesApiReasoningEffort": "high"
 }
