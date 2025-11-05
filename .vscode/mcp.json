@@ -1,4 +1,12 @@
 {
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "tavily_api_key",
+      "description": "Tavily API Key",
+      "password": true
+    }
+  ],
   "servers": {
     "chroma": {
       "command": "uvx",
@@ -26,11 +34,16 @@
     },
     "playwright": {
       "command": "npx",
-      "args": ["@playwright/mcp@latest"]
+      "args": [
+        "@playwright/mcp@latest"
+      ]
     },
     "sequential-thinking": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
     },
     "serena": {
       "type": "stdio",
@@ -44,9 +57,21 @@
         "ide-assistant"
       ]
     },
+    "tavily": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "tavily-mcp@latest"
+      ],
+      "env": {
+        "TAVILY_API_KEY": "${input:tavily_api_key}"
+      }
+    },
     "time": {
       "command": "uvx",
-      "args": ["mcp-server-time"]
+      "args": [
+        "mcp-server-time"
+      ]
     }
   }
 }

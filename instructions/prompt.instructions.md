@@ -1,3 +1,1 @@
-*** CRITICAL ***
-Periodically check in with the `PROMPT.md` file for updated instructions.
-*** CRITICAL ***
+Before every request record the current prompt to the memory and review all previous prompts from the memory.
