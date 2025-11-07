@@ -25,28 +25,279 @@ This project provides a sophisticated customization layer for GitHub Copilot, tr
 
 ## 🏗️ Architecture
 
-The framework operates as a configuration layer between you and GitHub Copilot, providing:
+The framework operates as a configuration layer between you and GitHub Copilot, providing a comprehensive system of instructions, agents, memory, and MCP server integrations.
 
+### System Architecture
+
+```mermaid
+graph TB
+    subgraph "Developer Interface"
+        DEV[Developer]
+    end
+
+    subgraph "GitHub Copilot Layer"
+        COPILOT[GitHub Copilot]
+        CHAT[Copilot Chat]
+    end
+
+    subgraph "Framework Core"
+        INST[Instructions]
+        AGENTS[Agents]
+        MODES[Chat Modes]
+        PROMPTS[Prompts]
+        MEM[Memory System]
+        MCP[MCP Servers]
+    end
+
+    subgraph "Instructions Hierarchy"
+        INST_MAIN[index.instructions.md]
+        INST_GIT[git-flow.instructions.md]
+        INST_PRIN[principles.instructions.md]
+        INST_PROMPT[prompt.instructions.md]
+        INST_TOOLS[tools.instructions.md]
+        INST_TOOL_SEQ[sequential-thinking]
+        INST_TOOL_SER[serena]
+        INST_TOOL_MEM[memory]
+        INST_TOOL_CHR[chroma]
+        INST_TOOL_PW[playwright]
+    end
+
+    subgraph "Memory Architecture"
+        MEM_USER[User Memory<br/>user.jsonl]
+        MEM_PROJ[Project Memory<br/>project.jsonl]
+        MEM_PROMPT[Prompt Memory<br/>prompt.jsonl]
+    end
+
+    subgraph "MCP Server Ecosystem"
+        MCP_CHROMA[Chroma<br/>Vector DB]
+        MCP_GITHUB[GitHub<br/>Repository Mgmt]
+        MCP_PLAYWRIGHT[Playwright<br/>Browser Automation]
+        MCP_SEQ[Sequential Thinking<br/>Complex Reasoning]
+        MCP_SERENA[Serena<br/>Semantic Code Analysis]
+        MCP_TAVILY[Tavily<br/>Web Search]
+        MCP_TIME[Time<br/>Timezone Utils]
+        MCP_CONTEXT7[Context7<br/>Enhanced Context]
+    end
+
+    subgraph "Agent System"
+        AGENT_PLAN[Plan Agent<br/>plan.agent.md]
+        AGENT_MERMAID[Mermaid Agent<br/>mermaid.agent.md]
+    end
+
+    subgraph "Chat Mode Configuration"
+        MODE_CLAUDE[Claude Sonnet 4]
+        MODE_GPT5[GPT-5]
+        MODE_GPT5MINI[GPT-5 Mini]
+    end
+
+    subgraph "Prompt Library"
+        P_ALIGN[align]
+        P_COMPLEX[complexity]
+        P_LEARN[learn]
+        P_MAINT[maintenance]
+        P_ORG[organize-memory]
+        P_TASKS[tasks]
+        P_MORE[... 15+ prompts]
+    end
+
+    DEV --> CHAT
+    CHAT --> COPILOT
+    COPILOT --> INST
+    COPILOT --> AGENTS
+    COPILOT --> MODES
+    COPILOT --> PROMPTS
+    COPILOT --> MEM
+    COPILOT --> MCP
+
+    INST --> INST_MAIN
+    INST_MAIN --> INST_GIT
+    INST_MAIN --> INST_PRIN
+    INST_MAIN --> INST_PROMPT
+    INST_MAIN --> INST_TOOLS
+    INST_TOOLS --> INST_TOOL_SEQ
+    INST_TOOLS --> INST_TOOL_SER
+    INST_TOOLS --> INST_TOOL_MEM
+    INST_TOOLS --> INST_TOOL_CHR
+    INST_TOOLS --> INST_TOOL_PW
+
+    MEM --> MEM_USER
+    MEM --> MEM_PROJ
+    MEM --> MEM_PROMPT
+
+    MCP --> MCP_CHROMA
+    MCP --> MCP_GITHUB
+    MCP --> MCP_PLAYWRIGHT
+    MCP --> MCP_SEQ
+    MCP --> MCP_SERENA
+    MCP --> MCP_TAVILY
+    MCP --> MCP_TIME
+    MCP --> MCP_CONTEXT7
+
+    AGENTS --> AGENT_PLAN
+    AGENTS --> AGENT_MERMAID
+
+    MODES --> MODE_CLAUDE
+    MODES --> MODE_GPT5
+    MODES --> MODE_GPT5MINI
+
+    PROMPTS --> P_ALIGN
+    PROMPTS --> P_COMPLEX
+    PROMPTS --> P_LEARN
+    PROMPTS --> P_MAINT
+    PROMPTS --> P_ORG
+    PROMPTS --> P_TASKS
+    PROMPTS --> P_MORE
+
+    style COPILOT fill:#4078c0,stroke:#2d5d8e,color:#fff
+    style INST fill:#6cc644,stroke:#4a9c2e,color:#fff
+    style MEM fill:#bd2c00,stroke:#8b2200,color:#fff
+    style MCP fill:#f39c12,stroke:#c87f0a,color:#fff
 ```
-┌─────────────────────────────────────────────────────────┐
-│                    GitHub Copilot                       │
-└─────────────────────────────────────────────────────────┘
-                           ▲
-                           │
-┌─────────────────────────────────────────────────────────┐
-│              @anoblet/copilot Framework                 │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  │
-│  │ Instructions │  │    Agents    │  │  Chat Modes  │  │
-│  └──────────────┘  └──────────────┘  └──────────────┘  │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  │
-│  │   Prompts    │  │    Memory    │  │ MCP Servers  │  │
-│  └──────────────┘  └──────────────┘  └──────────────┘  │
-└─────────────────────────────────────────────────────────┘
-                           ▲
-                           │
-                    ┌──────┴──────┐
-                    │  Developer  │
-                    └─────────────┘
+
+### Request Flow Sequence
+
+```mermaid
+sequenceDiagram
+    participant Dev as Developer
+    participant Chat as Copilot Chat
+    participant Inst as Instructions
+    participant Mem as Memory System
+    participant MCP as MCP Servers
+    participant Code as Codebase
+
+    Dev->>Chat: Submit request
+    Chat->>Inst: Load instructions hierarchy
+    Inst->>Inst: Apply principles (SOLID, DRY, YAGNI)
+    Inst->>Inst: Load tool-specific instructions
+    
+    Chat->>Mem: Read prompt.jsonl (conversation history)
+    Mem-->>Chat: Previous context
+    
+    Chat->>Mem: Read user.jsonl (preferences)
+    Mem-->>Chat: Universal preferences
+    
+    Chat->>Mem: Read project.jsonl (project context)
+    Mem-->>Chat: Project-specific context
+    
+    Chat->>MCP: Query MCP servers as needed
+    
+    alt Complex reasoning needed
+        MCP->>MCP: Sequential Thinking
+        MCP-->>Chat: Structured analysis
+    end
+    
+    alt Code analysis needed
+        MCP->>MCP: Serena semantic search
+        MCP-->>Code: Symbol-level insights
+        Code-->>Chat: Code structure
+    end
+    
+    alt Web search needed
+        MCP->>MCP: Tavily search
+        MCP-->>Chat: Web results
+    end
+    
+    alt Vector storage needed
+        MCP->>MCP: Chroma operations
+        MCP-->>Chat: Semantic results
+    end
+    
+    Chat->>Chat: Apply chat mode configuration
+    Chat->>Chat: Process with selected agent (if any)
+    Chat->>Chat: Generate response
+    
+    Chat->>Mem: Update prompt.jsonl
+    Chat->>Mem: Update project.jsonl (if needed)
+    
+    Chat-->>Dev: Return response with actions
+    
+    opt Git Flow enforcement
+        Chat->>Code: Verify not on main branch
+        Chat->>Code: Apply changes on feature branch
+    end
+```
+
+### Processing Flow
+
+```mermaid
+flowchart LR
+    subgraph "Input Layer"
+        REQ[User Request]
+        MODE[Chat Mode Selection]
+        AGENT[Agent Selection]
+    end
+
+    subgraph "Context Gathering"
+        LOAD_INST[Load Instructions]
+        LOAD_MEM[Load Memory]
+        LOAD_PROMPTS[Load Prompt History]
+    end
+
+    subgraph "Processing Layer"
+        APPLY_PRIN[Apply Principles<br/>SOLID, DRY, YAGNI, MVC]
+        APPLY_MODE[Apply Mode Config]
+        SEQ_THINK{Complex<br/>Task?}
+        USE_MCP[Query MCP Servers]
+    end
+
+    subgraph "MCP Operations"
+        OP_SERENA[Serena:<br/>Code Analysis]
+        OP_SEQ[Sequential:<br/>Reasoning]
+        OP_CHROMA[Chroma:<br/>Vector Search]
+        OP_GITHUB[GitHub:<br/>Repo Ops]
+        OP_TAVILY[Tavily:<br/>Web Search]
+        OP_PW[Playwright:<br/>Browser]
+    end
+
+    subgraph "Execution Layer"
+        GEN_RESP[Generate Response]
+        EXEC_CODE[Execute Code Changes]
+        UPDATE_MEM[Update Memory]
+    end
+
+    subgraph "Output Layer"
+        RESP[Response to Developer]
+        CODE_CHG[Code Changes]
+        MEM_UPDATE[Memory Updates]
+    end
+
+    REQ --> LOAD_INST
+    MODE --> APPLY_MODE
+    AGENT --> APPLY_MODE
+    
+    LOAD_INST --> APPLY_PRIN
+    LOAD_MEM --> APPLY_PRIN
+    LOAD_PROMPTS --> APPLY_PRIN
+    
+    APPLY_PRIN --> SEQ_THINK
+    APPLY_MODE --> SEQ_THINK
+    
+    SEQ_THINK -->|Yes| OP_SEQ
+    SEQ_THINK -->|No| USE_MCP
+    OP_SEQ --> USE_MCP
+    
+    USE_MCP --> OP_SERENA
+    USE_MCP --> OP_CHROMA
+    USE_MCP --> OP_GITHUB
+    USE_MCP --> OP_TAVILY
+    USE_MCP --> OP_PW
+    
+    OP_SERENA --> GEN_RESP
+    OP_CHROMA --> GEN_RESP
+    OP_GITHUB --> GEN_RESP
+    OP_TAVILY --> GEN_RESP
+    OP_PW --> GEN_RESP
+    
+    GEN_RESP --> EXEC_CODE
+    EXEC_CODE --> UPDATE_MEM
+    
+    UPDATE_MEM --> RESP
+    UPDATE_MEM --> CODE_CHG
+    UPDATE_MEM --> MEM_UPDATE
+    
+    style APPLY_PRIN fill:#6cc644,stroke:#4a9c2e,color:#fff
+    style UPDATE_MEM fill:#bd2c00,stroke:#8b2200,color:#fff
+    style USE_MCP fill:#f39c12,stroke:#c87f0a,color:#fff
 ```
 
 ---
