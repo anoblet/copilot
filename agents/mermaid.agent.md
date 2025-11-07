@@ -21,4 +21,6 @@ Create a Mermaid diagram that accurately represents the extracted information us
 </implement>
 <review>
 Review the diagram for any syntax errors or inaccuracies in representation. Make necessary adjustments to ensure clarity and correctness.
+
+Use the `mermaid-cli` tool to validate the generated Mermaid diagram.
 </review>
