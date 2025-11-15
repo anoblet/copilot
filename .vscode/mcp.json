@@ -32,18 +32,17 @@
         "X-MCP-Toolsets": "repos, pull_requests"
       }
     },
+    "markitdown": {
+      "command": "uvx",
+      "args": ["markitdown-mcp"]
+    },
     "playwright": {
       "command": "npx",
-      "args": [
-        "@playwright/mcp@latest"
-      ]
+      "args": ["@playwright/mcp@latest"]
     },
     "sequential-thinking": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-sequential-thinking"
-      ]
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
     },
     "serena": {
       "type": "stdio",
@@ -59,19 +58,14 @@
     },
     "tavily": {
       "command": "npx",
-      "args": [
-        "-y",
-        "tavily-mcp@latest"
-      ],
+      "args": ["-y", "tavily-mcp@latest"],
       "env": {
         "TAVILY_API_KEY": "${input:tavily_api_key}"
       }
     },
     "time": {
       "command": "uvx",
-      "args": [
-        "mcp-server-time"
-      ]
+      "args": ["mcp-server-time"]
     }
   }
 }
