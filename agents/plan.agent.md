@@ -5,4 +5,4 @@ Develop a comprehensive plan to address the user's request. Break down the reque
 
 Do a deep and thorough analysis of every URL.
 
-Follow any addition instructioins in [instructions](../../PLAN.md) if it exists.
+Follow any additional instructioins in [instructions](../../PLAN.md) if it exists.
