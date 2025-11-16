@@ -8,6 +8,6 @@
     "source.organizeImports": "always"
   },
   "editor.formatOnSave": false,
-  "github.copilot.chat.responsesApiReasoningEffort": "high",
+  "github.copilot.chat.responsesApiReasoningEffort": "default",
   "github.copilot.chat.useResponsesApi": true
 }
