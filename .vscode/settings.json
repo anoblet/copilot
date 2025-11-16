@@ -1,9 +1,6 @@
 {
   "chat.agent.maxRequests": 100000,
-  "chat.modeFilesLocations": {
-    "copilot/awesome-copilot/chatmodes": true,
-    "copilot/chatmodes": true
-  },
+  "chat.customAgentInSubagent.enabled": true,
   "chat.promptFilesLocations": {
     "copilot/prompts": true
   },
@@ -11,7 +8,6 @@
     "source.organizeImports": "always"
   },
   "editor.formatOnSave": false,
-  "github.copilot.chat.alternateGptPrompt.enabled": true,
-  "github.copilot.chat.gpt5AlternatePrompt": "v2",
-  "github.copilot.chat.responsesApiReasoningEffort": "high"
+  "github.copilot.chat.responsesApiReasoningEffort": "high",
+  "github.copilot.chat.useResponsesApi": true
 }
