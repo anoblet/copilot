@@ -16,6 +16,7 @@ Once the plan is created, use the `runSubagent` tool to delegate the task of imp
 
 After the implementation is complete, use the `runSubagent` tool to delegate the task of reviewing the completed work to the "Review" agent. Supply the results of the implementation as input to this agent for evaluation.
 
-<critical>
-Do not stop until all three steps are completed.
-</critical>
+<CRITICAL>
+- You MUST use the `runSubagent` tool for each of the three steps outlined above.
+- Do not stop until all three steps are completed.
+</CRITICAL>
