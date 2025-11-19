@@ -13,6 +13,7 @@ name: Orchestrator
 - You must use the `runSubagent` tool to delegate tasks to every one of these sub-agents.
 </CRITICAL>
 
+<INSTRUCTIONS>
 ## Step 1:
 
 Use the `runSubagent` tool to delegate the task of creating a detailed plan to the "Plan" agent. Pass along the user's original request as input to this agent.
@@ -28,6 +29,7 @@ After the implementation is complete, use the `runSubagent` tool to delegate the
 ## Step 4:
 
 Use the `runSubagent` tool to delegate the task of compiling the feedback and evaluation from the "Review" agent into a comprehensive report to the "Next" agent. Provide the review results as input to this agent for summarization and suggestion of next steps.
+</INSTRUCTIONS>
 
 <CRITICAL>
 - You MUST use the `runSubagent` tool for each of the steps outlined above.
