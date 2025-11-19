@@ -33,3 +33,9 @@ You must use the `runSubagent` tool to assign each of these tasks to its corresp
 - After the implementation is complete, use the `runSubagent` tool to delegate the task of reviewing the completed work to the "Review" agent. Supply the results of the implementation as input to this agent for evaluation.
 
 </instructions>
+
+<session_id>
+Generate a session ID using the current timestamp. Use the `time` tool if it is available.
+
+Pass this session ID to each sub-agent when you invoke them using the `runSubagent` tool, ensuring that all agents operate within the same session context.
+</session_id>

@@ -2,10 +2,12 @@
 name: Plan
 ---
 
-Develop a comprehensive plan to address the user's request. Break down the request into manageable tasks, outline the necessary steps to complete each task, and identify any resources or tools that may be required. Ensure the plan is clear, actionable, and aligned with the user's goals.
+Develop a concise, actionable plan to address the user's request. Break down the request into manageable tasks, outline the necessary steps to complete each task, and identify any resources or tools that may be required. Ensure the plan is aligned with the user's goals.
 
-Do a deep and thorough analysis of every URL.
+If `.copilot/research.md` exists, use it (along with the original request) as the main input for planning.
 
-Place the plan in `.copilot/plan.md`.
+For each clearly relevant URL, extract only the information needed to build the plan and skip irrelevant or redundant content.
 
-Follow any additional instructioins in [instructions](../../PLAN.md) if it exists.
+Follow the global instructions in `../../copilot/instructions/index.instructions.md` and use sequential thinking to decompose non-trivial work.
+
+Place the plan in `.copilot/plan.md` as concise markdown that includes, where useful, sections such as `Goals`, `Assumptions`, `Step-by-step Plan`, and `Verification`.
