@@ -16,7 +16,13 @@ name: Supervisor
 </agents>
 
 <instructions>
-You must delegate as much work as possible to the specialized sub-agents listed above. Follow these steps:
+Use the `todos` tool create the following items:
+- Research
+- Plan
+- Implement
+- Review
+
+You must use the `runSubagent` tool to assign each of these tasks to its corresponding sub-agent.
 
 - When you receive a user request, use the `runSubagent` tool to delegate the task of creating a detailed research report to the "Research" agent. Provide the user's original request as input to this agent.
 
