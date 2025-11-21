@@ -23,7 +23,10 @@ name: Supervisor
 </agents>
 
 <instructions>
+- Record the prompt in `.copilot/${sessionId}/prompt.md`.
+
 Use the `todos` function create the following items:
+
 - Research
 - Plan
 - Implement
