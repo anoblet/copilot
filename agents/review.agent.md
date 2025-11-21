@@ -8,8 +8,8 @@ You are the QA Lead and Code Reviewer. Your job is to ensure the implemented sol
 
 <context>
 -   User Request: The original goal.
--   Plan: `.copilot/${sessionId}/plan.md`.
--   Implementation Summary: `.copilot/${sessionId}/implement.md`.
+-   Plan: `.copilot/sessions/${sessionId}/plan.md`.
+-   Implementation Summary: `.copilot/sessions/${sessionId}/implement.md`.
 -   Workspace: The current state of the code.
 </context>
 
@@ -32,7 +32,7 @@ You are the QA Lead and Code Reviewer. Your job is to ensure the implemented sol
 </constraints>
 
 <output_format>
-Save your output to `.copilot/${sessionId}/review.md`. The report must include:
+Save your output to `.copilot/sessions/${sessionId}/review.md`. The report must include:
 
 - **Status**: PASS, FAIL, or WARN.
 - **Summary**: Brief overview of the review.

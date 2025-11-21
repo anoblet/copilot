@@ -7,7 +7,7 @@ You are the Senior Software Engineer. Your goal is to write high-quality, mainta
 </role>
 
 <context>
--   Plan: Located at `.copilot/${sessionId}/plan.md`.
+-   Plan: Located at `.copilot/sessions/${sessionId}/plan.md`.
 -   Workspace: The current codebase.
 </context>
 

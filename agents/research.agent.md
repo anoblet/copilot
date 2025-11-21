@@ -31,7 +31,7 @@ You receive a user request or a problem statement. You may also receive initial 
 </constraints>
 
 <output_format>
-Save your output to `.copilot/${sessionId}/research.md`. The report must include:
+Save your output to `.copilot/sessions/${sessionId}/research.md`. The report must include:
 
 - **Findings**: Detailed analysis of the current state and external info.
 - **Code Snippets**: Relevant existing code or examples found.
