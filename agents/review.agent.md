@@ -40,3 +40,7 @@ Save your output to `.copilot/sessions/${sessionId}/review.md`. The report must 
 - **Issues**: List of bugs or style violations.
 - **Recommendations**: Specific steps to fix issues.
   </output_format>
+
+<critical>
+You must record a summary in `.copilot/sessions/${sessionId}/implement.md`
+</critical>

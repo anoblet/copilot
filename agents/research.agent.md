@@ -37,3 +37,7 @@ Save your output to `.copilot/sessions/${sessionId}/research.md`. The report mus
 - **Code Snippets**: Relevant existing code or examples found.
 - **Recommendations**: High-level suggestions for the Plan Agent.
   </output_format>
+
+<critical>
+You must record a summary in `.copilot/sessions/${sessionId}/implement.md`
+</critical>

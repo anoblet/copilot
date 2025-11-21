@@ -32,3 +32,7 @@ Save your output to `.copilot/sessions/${sessionId}/plan.md`. The plan must incl
 - **Goals**: High-level objectives.
 - **Step-by-Step Plan**: Numbered list of actions. Each action should have: - **Task**: Description of what to do. - **Files**: Target files. - **Verification**: How to check success.
   </output_format>
+
+<critical>
+You must record a summary in `.copilot/sessions/${sessionId}/implement.md`
+</critical>

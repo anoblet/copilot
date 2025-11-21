@@ -50,3 +50,7 @@ You must use the `runSubagent` function to assign each of these tasks to its cor
 - After the implementation is complete, use the `runSubagent` function to delegate the task of reviewing the completed work to the "Review" agent. Supply the results of the implementation as input to this agent for evaluation.
 
 </instructions>
+
+<critical>
+You must record a summary in `.copilot/sessions/${sessionId}/implement.md`
+</critical>

@@ -39,3 +39,7 @@ Save your output to `.copilot/${sessionId}/implement.md`. The summary must inclu
 - **Verification Results**: Outcome of tests/checks.
 - **Deviations**: Any changes to the original plan.
   </output_format>
+
+<critical>
+You must record a summary in `.copilot/sessions/${sessionId}/implement.md`
+</critical>
