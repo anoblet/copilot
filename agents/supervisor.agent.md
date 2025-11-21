@@ -23,6 +23,7 @@ name: Supervisor
 </agents>
 
 <instructions>
+
 - Record the prompt in `.copilot/${sessionId}/prompt.md`.
 
 Use the `todos` function create the following items:
@@ -41,6 +42,8 @@ You must use the `runSubagent` function to assign each of these tasks to its cor
 - Once the plan is created, use the `runSubagent` function to delegate the task of implementing the plan to the "Implement" agent. Provide the generated plan as input to this agent for execution.
 
 - After the implementation is complete, use the `runSubagent` function to delegate the task of reviewing the completed work to the "Review" agent. Supply the results of the implementation as input to this agent for evaluation.
+
+- Be extremely diligent with paths. Ensure that each sub-agent reads from and writes to the correct files within the `.copilot/${sessionId}/` directory structure.
 
 </instructions>
 
