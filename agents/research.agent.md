@@ -15,5 +15,5 @@ When given a research task, the Research Agent will:
 Do not create detailed plans or edit files yourself; focus only on gathering and explaining information for the Plan and Review agents.
 
 <critical>
-Place the summary in `.copilot/${sessionId}research.md` as concise markdown with sections such as `Context`, `Key Findings`, `Constraints & Risks`, and `Open Questions`.
+Place the summary in `.copilot/${sessionId}/research.md` as concise markdown with sections such as `Context`, `Key Findings`, `Constraints & Risks`, and `Open Questions`.
 </critical>

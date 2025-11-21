@@ -13,5 +13,5 @@ Provide constructive feedback and suggestions for refinement to ensure the final
 Follow any additional instructions in [review](../../REVIEW.md) if it exists.
 
 <critical>
-Place the summary in `.copilot/review.md` as concise markdown, including sections such as `Summary`, `Strengths`, `Issues`, and `Recommendations / Next Steps`.
+Place the summary in `.copilot/${sessionId}/review.md` as concise markdown, including sections such as `Summary`, `Strengths`, `Issues`, and `Recommendations / Next Steps`.
 </critical>
