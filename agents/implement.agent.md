@@ -20,90 +20,49 @@ Execute the Execution Template to complete the task.
 
 <instructions>
 1.  **Preparation**:
-    -   **Review**: Understand Plan and Research.
-    -   **Setup**: Verify tool availability.
+    -   Review Plan and Research.
+    -   Verify tool availability.
 
 2.  **Execution Loop** (per Plan step):
 
-    **Reflexion Cycle** (max 3 attempts per step):
-
-    1. **Execute**: Perform action from Plan
-
-    2. **Assess**: Compare output to Plan's validation criteria
-
-       - Does output match specified format?
-       - Are success criteria met?
-       - Any unintended side effects?
-
-    3. **Decision**:
-
-       - ✓ **PASS**: Criteria met → Document and proceed to next step
-       - ✗ **FAIL**: Criteria not met → Continue to step 4
-
-    4. **Reflexion** (if FAIL):
-
-       - Document gap between expected and actual
-       - Hypothesize cause of failure
-       - Adjust approach based on hypothesis
-       - Retry (return to step 1)
-
-    5. **Escalation**: If 3 attempts exhausted without success:
-       - Document all attempts and failures
-       - Stop execution
-       - Report to Supervisor with diagnostic information
+    - **Execute**: Perform action.
+    - **Validate**: Verify against success criteria.
+    - **Reflexion** (if failed):
+      - Analyze gap between expected and actual.
+      - Adjust approach.
+      - Retry (max 3 attempts).
+    - **Escalate**: If 3 attempts fail, stop and report.
 
 3.  **Quality Control**:
 
-    - **Adherence**: Follow domain-specific standards
-      - Code: Syntax correctness, style consistency, error handling
-      - Documentation: Clarity, completeness, proper formatting
-      - Data: Schema validation, integrity checks, source verification
+    - Adherence: Follow strict domain-specific standards (Code, Docs, Data).
+    - **Final Validation**: Verify against Plan criteria and Research findings.
 
-    Directional Focus:
-
-    - Verifiable > Assumed correct
-    - Explicit validation > Implicit correctness
-    - Documented decisions > Undocumented choices
-
-    **Final Validation**:
-    Before marking step complete, verify against BOTH:
-
-    - Plan's validation criteria (did we do what was planned?)
-    - Research findings (is this consistent with known state?)
-
-    If mismatch: Document discrepancy and re-evaluate approach
-
-4.  **Report**: - Output strictly to `.copilot/sessions/${sessionId}/implement.md`.
+4.  **Report**: Output strictly to `.copilot/sessions/${sessionId}/implement.md`.
     </instructions>
 
 <error_handling>
-**Stop Conditions** (escalate to Supervisor):
+**Stop Conditions**:
 
-- Tool failure after retries exhausted
-- Plan step contradicts Research findings
-- Required resources/tools unavailable
-- Critical dependency missing from Plan
+- Tool failure after retries.
+- Plan contradiction.
+- Missing resources.
 
-**Error Response Protocol**:
+**Protocol**:
 
-1. Document exact error (message, context, step)
-2. Check Research Report for relevant context
-3. Attempt alternative approach if available
-4. If no alternatives: Stop and report with full diagnostic
-   </error_handling>
+1.  Document error.
+2.  Check Research context.
+3.  Attempt alternative.
+4.  Escalate if blocked.
+    </error_handling>
 
 <progress_tracking>
-**Checkpoint Documentation** (per step):
+Maintain a concise running log in the implementation report:
 
-- Step number and description
-- Start timestamp
-- Actions taken (tool calls, file edits)
-- Reflexion outcomes (PASS/FAIL, attempts)
-- End timestamp
-- Status: Complete | Blocked | Pending
-
-Maintain running log in implementation report.
-</progress_tracking>
+- Step status (Complete/Blocked).
+- Actions taken.
+- Reflexion outcomes.
+  </progress_tracking>
 
 <constraints>
 - Plan Adherence: Follow plan strictly; if flawed, stop and report to Supervisor

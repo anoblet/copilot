@@ -20,81 +20,30 @@ Execute the Strategy Template to produce a Plan.
 
 <instructions>
 1.  **Strategize** (Tree of Thoughts):
-    
-    Generate 3 distinct strategies, score each criterion (1-10):
-    
-    - **Feasibility**: Are required resources and skills available?
-      - 1-3: Missing critical resources
-      - 4-7: Partial resources, workarounds needed
-      - 8-10: All resources available
-    
-    - **Risk**: What is the failure probability?
-      - 1-3: High certainty of success
-      - 4-7: Moderate risk, mitigations available
-      - 8-10: High failure risk, many unknowns
-    
-    - **Impact**: Does it fully satisfy requirements?
-      - 1-3: Partial solution
-      - 4-7: Meets most requirements
-      - 8-10: Comprehensive solution
-    
-    **Selection**: 
-    - Calculate total score (Feasibility + (11 - Risk) + Impact)
-    - Choose highest score
-    - If tied, prefer lowest risk
-    
-    **Self-Consistency Check**: Verify selected strategy addresses ALL findings from Research Report
+    -   Generate 3 distinct strategies.
+    -   Evaluate each against **Feasibility**, **Risk**, and **Impact**.
+    -   Select the optimal strategy and provide a rationale.
+    -   **Self-Consistency Check**: Ensure the strategy addresses all Research Report findings.
 
 2.  **Develop Plan**:
 
-    - **Atomic Steps**: Each step must be:
-
-      - Single-responsibility (one action only)
-      - Verifiable (clear success criteria)
-      - Context-independent (no assumptions about prior state)
-
-      Format: `[Action Verb] + [Target Object] + [Expected Outcome]`
-      Example: "Edit configuration file → Add database connection → Validate syntax"
-
-    - **Validation**: Define verification method per step
-
-      - What to check
-      - How to verify
-      - Success criteria
-
-    - **Resources**: List required inputs and dependencies
-
-    - **Dependencies**: Map step relationships
-      - Which steps must complete before others?
-      - Which steps can execute in parallel?
-      - What are the critical path items?
+    - **Atomic Steps**: Break down the strategy into single-responsibility actions.
+      - Format: `[Action Verb] + [Target Object] + [Expected Outcome]`
+    - **Validation**: Define clear success criteria for each step.
+    - **Dependencies**: Map step relationships and critical path.
 
 3.  **Risk Assessment**:
 
-    - **Identify Risks**: Per step, consider:
+    - Identify potential failure points per step.
+    - Define mitigation strategies for high-impact risks.
 
-      - What could go wrong?
-      - What assumptions could be invalid?
-      - What dependencies could fail?
-
-    - **Assess Impact**:
-
-      - Blocking: Stops all progress
-      - Major: Requires significant rework
-      - Minor: Delays but doesn't block
-
-    - **Mitigate**: For Blocking and Major risks:
-      - Contingency: Alternative approach
-      - Prevention: Steps to reduce probability
-      - Detection: How to identify if risk occurs
-
-4.  **Output**: - Save strictly to `.copilot/sessions/${sessionId}/plan.md`.
+4.  **Output**: Save strictly to `.copilot/sessions/${sessionId}/plan.md`.
 
 **Directional Guidance**:
 
-- Favor incremental validation over big-bang approaches
-- Prefer explicit steps over implicit assumptions
-- Design for reversibility (enable rollback)
+- Favor incremental validation.
+- Prefer explicit steps over implicit assumptions.
+- Design for reversibility.
   </instructions>
 
 <constraints>

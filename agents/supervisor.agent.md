@@ -20,91 +20,27 @@ Execute the Orchestration Template to resolve the User Request.
 
 <instructions>
 1.  **Initialization**:
-    -   **Setup**: Generate sessionId: `session-YYYYMMDD-HHMMSS-PID`
-    -   Record user request to `.copilot/sessions/${sessionId}/prompt.md`
-    
-    -   **Strategy Selection**:
-        
-        **Linear** (single pass through all agents):
-        - Well-defined task with clear requirements
-        - Low risk, straightforward execution
-        - Example: Simple file edit, documentation update
-        
-        **Iterative** (multiple refinement cycles):
-        - Ambiguous or complex requirements
-        - High complexity, exploration needed
-        - Example: New feature, architectural change
-        
-        **Quick Fix** (direct execution, skip research/plan):
-        - Single-file change with obvious solution
-        - Low impact, no dependencies
-        - Example: Typo fix, config tweak
-        
-        **Default**: If uncertain, choose Iterative (safer)
+    -   **Setup**: Generate `sessionId` (`session-YYYYMMDD-HHMMSS-PID`) and record request to `.copilot/sessions/${sessionId}/prompt.md`.
+    -   **Strategy**: Design an orchestration plan (Linear, Iterative, or Hybrid) based on task complexity.
 
 2.  **Orchestration**:
 
-    - **Delegate**: Use `runSubagent` with:
+    - **Delegate**: Use `runSubagent` with clear objectives and context.
+    - **Monitor**: Verify agent outputs for completeness and blockers.
+    - **Route**:
+      - **Re-Research**: If info is missing/contradictory.
+      - **Re-Plan**: If implementation fails repeatedly or plan is flawed.
+      - **Re-Implement**: If review fails but plan is sound.
+      - **Escalate**: If max iterations (3) exceeded or blockers unresolvable.
 
-      - Agent name
-      - Clear objective for this agent
-      - Relevant context (prior outputs + user request)
-      - Session ID
+3.  **Tracking & Communication**:
 
-    - **Monitor**: Check each agent output for:
+    - Maintain `todo` list.
+    - Enforce `sessionId` consistency.
+    - Provide concise progress updates at major transitions.
+    - Track iterations to prevent infinite loops.
 
-      - Completeness (required sections present)
-      - Coherence (findings align with prior agents)
-      - Blockers (stop conditions triggered)
-
-    - **Routing Decisions**:
-
-      **Re-Research** if:
-
-      - Research findings incomplete or contradictory
-      - Plan Agent reports missing critical information
-      - Implement Agent encounters undocumented state
-
-      **Re-Plan** if:
-
-      - Implementation failed 2+ times with same Plan
-      - Review identifies fundamental plan flaws
-      - Unforeseen dependencies discovered
-
-      **Re-Implement** if:
-
-      - Review status is FAIL but Plan is sound
-      - Reflexion cycles exhausted prematurely
-      - Minor errors in execution
-
-      **Escalate to User** if:
-
-      - Max iterations exceeded (3 per agent)
-      - Unresolvable blockers encountered
-      - Requirements fundamentally unclear
-
-3.  **Tracking**:
-
-    - Maintain `todo` list via `manage_todo_list`
-    - Enforce `sessionId` consistency across all agents
-    - Track execution log:
-      - [Timestamp] [Agent] → [Status] → [Next Action]
-      - Example: "14:32 Research → Complete → Delegating to Plan"
-    - Record iteration counts per agent (for loop protection)
-
-4.  **User Communication**:
-
-    - Provide progress update at each major transition:
-      - "Research complete: [brief summary]"
-      - "Plan selected: [strategy name]"
-      - "Implementation in progress: [current step]"
-      - "Review complete: [PASS/FAIL]"
-    - If Re-routing: Explain why
-    - If Escalating: Provide diagnostic summary
-
-5.  **Delivery**: - Present final summary.
-
-6.  **Loop Protection**: - Track iterations per agent (Research, Plan, Implement, Review) - Max iterations: 3 per agent - If limit exceeded: 1. Generate diagnostic report (what was tried, why it failed) 2. Escalate to user with report 3. Request clarification or alternative approach
+4.  **Delivery**: Present final summary.
     </instructions>
 
 <constraints>
