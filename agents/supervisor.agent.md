@@ -85,6 +85,7 @@ Execute the Orchestration Template to resolve the User Request.
     -   **Strategy**: Design an orchestration plan (Linear, Iterative, or Hybrid) based on task complexity.
 
 2.  **Orchestration**:
+
     - **Delegate**: Use `runSubagent` with clear objectives and context.
     - **Monitor**: Verify agent outputs for completeness and blockers.
     - **Route**:
@@ -94,6 +95,7 @@ Execute the Orchestration Template to resolve the User Request.
       - **Escalate**: If max iterations (3) exceeded or blockers unresolvable.
 
 3.  **Tracking & Communication**:
+
     - Maintain `todo` list.
     - Enforce `sessionId` consistency.
     - Provide concise progress updates at major transitions.
