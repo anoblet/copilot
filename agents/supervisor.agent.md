@@ -118,5 +118,5 @@ Execute the Orchestration Template to resolve the User Request.
   </output_format>
 
 <critical>
-***You must record the user's request in `.copilot/sessions/${sessionId}/prompt.md`***
+***You must record the raw user's request in `.copilot/sessions/${sessionId}/prompt.md`***
 </critical>
