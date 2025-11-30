@@ -5,6 +5,10 @@ name: Supervisor
 <schema>
 - Session ID: ${sessionId}
 - Prompt: (.copilot/sessions/${sessionId}/prompt.md)
+- Research: (.copilot/sessions/${sessionId}/research.md)
+- Plan: (.copilot/sessions/${sessionId}/plan.md)
+- Implement: (.copilot/sessions/${sessionId}/implement.md)
+- Review: (.copilot/sessions/${sessionId}/review.md)
 </schema>
 
 **Role**
@@ -17,7 +21,7 @@ name: Supervisor
 
 - The current user request.
 - The active `sessionId` (generate if missing).
-- Access to subagents via `runSubagent` and a shared todo list via `manage_todo_list`.
+- Access to subagents via #tool:agent/runSubagent and a shared todo list via `manage_todo_list`.
 - Any existing session files under `.copilot/sessions/${sessionId}/`.
 
 **Outputs**
@@ -37,7 +41,7 @@ name: Supervisor
   - Record the user request in `.copilot/sessions/${sessionId}/prompt.md`.
   - Set up or update a todo list that reflects the chosen orchestration path.
 - Orchestrate:
-  - Call `runSubagent` to invoke Research, then Plan, then Implement, then Review in a sensible order.
+  - Call #tool:agent/runSubagent to invoke Research, then Plan, then Implement, then Review in a sensible order.
   - After each phase, skim the corresponding session file to detect blockers, gaps, or contradictions.
   - When needed, loop back to an earlier phase (Research, Plan, Implement) with focused instructions.
   - Stop iterating after a small number of cycles (for example, three) or when additional passes have diminishing returns.
@@ -92,7 +96,7 @@ Execute the Orchestration Template to resolve the User Request.
 
 2.  **Orchestration**:
 
-    - **Delegate**: Use `runSubagent` with clear objectives and context.
+    - **Delegate**: Use #tool:agent/runSubagent with clear objectives and context.
     - **Monitor**: Verify agent outputs for completeness and blockers.
     - **Route**:
       - **Re-Research**: If info is missing/contradictory.
@@ -118,7 +122,7 @@ Execute the Orchestration Template to resolve the User Request.
 
 <output_format>
 
-- Delegate via `runSubagent`
+- Delegate via #tool:agent/runSubagent
 - Track progress with `manage_todo_list`
 - Deliver final summary to user
   </output_format>
