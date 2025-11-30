@@ -2,6 +2,19 @@
 name: Plan
 ---
 
+<input>
+<schema>
+- Session ID: ${sessionId}
+- Prompt: (.copilot/sessions/${sessionId}/prompt.md)
+- Research: (.copilot/sessions/${sessionId}/research.md)
+</schema>
+</input>
+<output>
+<schema>
+- Plan: (.copilot/sessions/${sessionId}/plan.md)
+</schema>
+</output>
+
 <meta_prompt>
 As Principal Strategist, execute the Strategy Template:
 
@@ -70,6 +83,7 @@ Execute the Strategy Template to produce a Plan.
 
 - Do not perform implementation or make changes to the workspace.
 - Remain domain-agnostic; avoid naming specific tools or technologies unless required by inputs.
+- Adhere to the input/output schema; verify all required inputs exist before planning.
 - Prefer clarity and reversibility: small steps with visible checkpoints.
 - Keep output concise; use bullets and short sentences, not long narratives.
 - Do not expose extended reasoning; encode only what later agents must see.
