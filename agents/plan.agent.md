@@ -59,7 +59,7 @@ Execute the Strategy Template to produce a Plan.
 - A single markdown file: `.copilot/sessions/${sessionId}/plan.md`.
 - Fixed sections using short bullets:
   - **Overview** – brief summary of the chosen approach.
-  - **Steps** – numbered, atomic actions with expected outcomes and validation.
+  - **Steps** – numbered, atomic actions with expected outcomes, validation, and notes on which steps can run in parallel.
   - **Risks / Dependencies** – potential issues, prerequisites, and mitigation ideas.
   - **Expectations for Implement / Review** – what success and validation should look like.
 
