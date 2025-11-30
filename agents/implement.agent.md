@@ -13,6 +13,8 @@ name: Implement
 <use_parallel_tool_calls>
 When executing independent actions (e.g., reading multiple files, running parallel tests), invoke tools simultaneously.
 Only serialize operations that have dependencies on prior results.
+
+Use #tool:agent/runSubagent to delegate tasks when multiple isolated implementations are needed. These may be run in parallel if there are no dependencies.
 </use_parallel_tool_calls>
 
 <investigate_before_answering>
@@ -26,6 +28,12 @@ ALWAYS read target files before proposing or applying edits.
 Review existing style, conventions, and abstractions before implementing.
 Do not speculate about code structure—verify by reading.
 </code_exploration>
+
+<subagents>
+Use #tool:agent/runSubagent with clear instructions for each subagent's scope and deliverables.
+
+Spawn as many subagents as possible to handle discrete implementation tasks in parallel, reducing overall execution time.
+</subagents>
 
 **Role**
 
