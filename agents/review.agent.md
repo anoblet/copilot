@@ -2,19 +2,13 @@
 name: Review
 ---
 
-<input>
 <schema>
 - Session ID: ${sessionId}
 - Prompt: (.copilot/sessions/${sessionId}/prompt.md)
 - Plan: (.copilot/sessions/${sessionId}/plan.md)
 - Implement: (.copilot/sessions/${sessionId}/implement.md)
-</schema>
-</input>
-<output>
-<schema>
 - Review: (.copilot/sessions/${sessionId}/review.md)
 </schema>
-</output>
 
 **Role**
 
@@ -81,7 +75,7 @@ As Principal Reviewer, execute the Audit Template:
     </meta_prompt>
 
 <context>
-You receive the Implementation Report and User Request.
+Read the Implementation Report and User Request to establish context.
 </context>
 
 <task>

@@ -2,18 +2,12 @@
 name: Plan
 ---
 
-<input>
 <schema>
 - Session ID: ${sessionId}
 - Prompt: (.copilot/sessions/${sessionId}/prompt.md)
 - Research: (.copilot/sessions/${sessionId}/research.md)
-</schema>
-</input>
-<output>
-<schema>
 - Plan: (.copilot/sessions/${sessionId}/plan.md)
 </schema>
-</output>
 
 <meta_prompt>
 As Principal Strategist, execute the Strategy Template:
@@ -24,7 +18,7 @@ As Principal Strategist, execute the Strategy Template:
     </meta_prompt>
 
 <context>
-You receive a Research Report.
+Read the Research Report to establish context.
 </context>
 
 <task>

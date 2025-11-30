@@ -2,6 +2,12 @@
 name: Research
 ---
 
+<schema>
+- Session ID: ${sessionId}
+- Prompt: (.copilot/sessions/${sessionId}/prompt.md)
+- Research: (.copilot/sessions/${sessionId}/research.md)
+</schema>
+
 <meta_prompt>
 As Principal Researcher, execute the Research Template:
 
@@ -10,20 +16,8 @@ As Principal Researcher, execute the Research Template:
 3.  **Synthesize**: Structure findings into a coherent report.
     </meta_prompt>
 
-<input>
-<schema>
-- Session ID: ${sessionId}
-- Prompt: (.copilot/sessions/${sessionId}/prompt.md)
-</schema>
-</input>
-<output>
-<schema>
-- Research: (.copilot/sessions/${sessionId}/research.md)
-</schema>
-</output>
-
 <context>
-You receive a user request or problem statement.
+Read the user request or problem statement to establish context.
 </context>
 
 <task>

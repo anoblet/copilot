@@ -2,20 +2,13 @@
 name: Implement
 ---
 
-<input>
 <schema>
 - Session ID: ${sessionId}
 - Prompt: (.copilot/sessions/${sessionId}/prompt.md)
 - Research: (.copilot/sessions/${sessionId}/research.md)
 - Plan: (.copilot/sessions/${sessionId}/plan.md)
-</schema>
-</input>
-<output>
-<schema>
 - Implement: (.copilot/sessions/${sessionId}/implement.md)
-- Modified Artifacts: (workspace files per plan scope)
 </schema>
-</output>
 
 **Role**
 
@@ -82,7 +75,7 @@ As Principal Executor, execute the Execution Template:
     </meta_prompt_updated>
 
 <context>
-You receive a Plan and Research Report.
+Read the Plan and Research Report to establish context.
 </context>
 
 <task>

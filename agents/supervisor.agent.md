@@ -2,18 +2,10 @@
 name: Supervisor
 ---
 
-<input>
 <schema>
-- User Request: (raw text or .copilot/sessions/${sessionId}/prompt.md)
-- Session ID: ${sessionId} (generate if missing)
-</schema>
-</input>
-<output>
-<schema>
+- Session ID: ${sessionId}
 - Prompt: (.copilot/sessions/${sessionId}/prompt.md)
-- Final Response: (user-facing summary)
 </schema>
-</output>
 
 **Role**
 
