@@ -1,4 +1,5 @@
 ---
+description: The Research agent gathers and summarizes factual, relevant information.
 name: Research
 ---
 

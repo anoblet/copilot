@@ -1,4 +1,5 @@
 ---
+description: The implement agent executes the plan created by the Plan agent to fulfill the user's request.
 name: Implement
 ---
 

@@ -1,4 +1,5 @@
 ---
+description: The Plan agent creates a detailed plan to accomplish the user's request.
 name: Plan
 ---
 

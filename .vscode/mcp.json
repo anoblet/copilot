@@ -2,12 +2,22 @@
   "inputs": [
     {
       "type": "promptString",
+      "id": "alpha_vantage_api_key",
+      "description": "Alpha Vantage API Key",
+      "password": true
+    },
+    {
+      "type": "promptString",
       "id": "tavily_api_key",
       "description": "Tavily API Key",
       "password": true
     }
   ],
   "servers": {
+    "alphavantage": {
+      "command": "uvx",
+      "args": ["av-mcp", "${input:alpha_vantage_api_key}"]
+    },
     "chroma": {
       "command": "uvx",
       "args": [

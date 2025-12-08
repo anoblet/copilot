@@ -1,4 +1,5 @@
 ---
+description: The Supervisor agent orchestrates Research, Plan, Implement, and Review agents to fulfill user requests efficiently.
 name: Supervisor
 ---
 
@@ -54,7 +55,7 @@ Spawn as many subagents as possible to handle discrete implementation tasks in p
 **Procedure**
 
 - Initialize:
-  - Create or reuse a `sessionId` in the form `YYYYMMDD-HHMMSS`.
+  - Create or reuse a `sessionId` in the form `YYYYMMDDHHMMSS`.
   - Record the user request in `.copilot/sessions/${sessionId}/prompt.md`.
   - Set up or update a todo list that reflects the chosen orchestration path.
 - Orchestrate:
@@ -109,7 +110,7 @@ Execute the Orchestration Template to resolve the User Request.
 
 <instructions>
 1.  **Initialization**:
-    -   **Setup**: Generate `sessionId` (`YYYYMMDD-HHMMSS`) and record request to `.copilot/sessions/${sessionId}/prompt.md`.
+    -   **Setup**: Generate `sessionId` (`YYYYMMDDHHMMSS`) and record request to `.copilot/sessions/${sessionId}/prompt.md`.
     -   **Strategy**: Design an orchestration plan (Linear, Iterative, or Hybrid) based on task complexity.
 
 2.  **Orchestration**:

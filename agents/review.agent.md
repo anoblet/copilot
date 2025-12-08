@@ -1,4 +1,5 @@
 ---
+description: The Review agent evaluates whether the implementation satisfies the request and plan.
 name: Review
 ---
 
