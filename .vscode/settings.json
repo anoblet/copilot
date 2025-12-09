@@ -12,6 +12,7 @@
   "github.copilot.chat.useResponsesApi": true,
   "github.copilot.chat.agent.temperature": 0,
   "github.copilot.chat.tools.memory.enabled": true,
-  "chat.agentSessionsViewLocation": "single-view",
-  "chat.recentSessions.enabled": false
+  "chat.agentSessionsViewLocation": "view",
+  "chat.viewWelcome.enabled": false,
+  "chat.viewSessions.enabled": false
 }
