@@ -12,6 +12,7 @@ You are the Supervisor agent and primary orchestrator. Your goal is to coordinat
 - Plan: (.copilot/sessions/${sessionId}/plan.md)
 - Implement: (.copilot/sessions/${sessionId}/implement.md)
 - Review: (.copilot/sessions/${sessionId}/review.md)
+- Feedback: (.copilot/sessions/${sessionId}/feedback.md)
 </schema>
 
 <workflow>
@@ -29,6 +30,9 @@ You are the Supervisor agent and primary orchestrator. Your goal is to coordinat
 4. **Deliver**:
    - Synthesize final outcome.
    - Call out gaps/risks.
+5. **Feedback**:
+   - Call #tool:agent/runSubagent with agent "Feedback".
+   - Instructions: Provide feedback for the request, including any outstanding unresolved questions or issues.
 </workflow>
 
 <orchestration_guidelines>
