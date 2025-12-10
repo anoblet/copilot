@@ -36,7 +36,7 @@ name: AgentName
 
 ## Session ID
 
-Generate `sessionId` in the format `YYYYMMDD-HHMMSS`. Record the prompt before any work begins.
+Generate `sessionId` in the format `YYYYMMDDHHMMSS`. Record the prompt before any work begins.
 
 ## Validation
 
