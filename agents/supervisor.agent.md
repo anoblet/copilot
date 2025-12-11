@@ -58,3 +58,7 @@ Use #tool:agent/runSubagent with clear instructions for each subagent's scope an
 - Avoid infinite loops: track iterations and stop when progress stalls.
 - Keep communication with the user compact and focused on decisions and outcomes.
 </constraints>
+
+<response>
+.copilot/sessions/${sessionId}/documentation.md
+</response>

@@ -1,38 +1,55 @@
-# Link
+# link
 
-The goal of this package is to create a cli tool that will most likely be called from a consuming repository. For example:
+A utility to create relative symlinks based on a JSON configuration file. Useful for linking local packages or configuration files across a monorepo.
 
-Directory: `/homeassistant`:
+## Installation
 
+This package is typically used within the workspace.
+
+```bash
+pnpm install
 ```
-pnpm run link link.json
-```
 
-Which calls:
+## Usage
 
-```
+Run the script with a configuration file as an argument.
+
+```bash
 node copilot/packages/link/src/index.ts link.json
 ```
 
-The goal is to use a json file to create relative symlinks from one directory to another. This is useful for linking local packages during development.
+## Configuration
 
-Here is an example `link.json` file:
+The configuration file (e.g., `link.json`) defines the directory structure and the files to link.
+
+**Example `link.json`:**
 
 ```json
 {
   ".github": {
     "agents": [
       "../../copilot/agents/implement.agent.md",
-      "../../copilot/agents/plan.agent.md",
-      "../../copilot/agents/research.agent.md",
-      "../../copilot/agents/review.agent.md"
+      "../../copilot/agents/plan.agent.md"
     ]
   },
-  ".vscode": ["../copilot/.vscode/mcp.json", "../copilot/.vscode/settings.json"]
+  ".vscode": [
+    "../copilot/.vscode/settings.json"
+  ]
 }
 ```
 
-All paths are relative. For example:
+**Structure:**
+- Keys represent directories.
+- Values can be:
+    - An array of strings: Each string is a relative path to the source file. A symlink will be created in the current directory key with the same basename.
+    - An object: Represents a subdirectory.
 
-`.github/agents/implement.agent.md` will link to `copilot/agents/implement.agent.md`.
-`.vscode/mcp.json` will link to `copilot/.vscode/mcp.json`.
+**Behavior:**
+- Creates directories if they don't exist.
+- Overwrites existing symlinks.
+- Paths in the array are used as the symlink target (relative to the link location).
+
+## Dependencies
+
+*   `fs`: Node.js file system module.
+*   `path`: Node.js path module.
