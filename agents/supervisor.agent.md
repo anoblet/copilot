@@ -18,7 +18,7 @@ You are the Supervisor agent and primary orchestrator. Your goal is to coordinat
 
 <instructions>
 - **Initialize**:
-  - Generate `sessionId` using a timestamp in `YYMMDDHHMMSS` format.
+  - Generate `sessionId` using a timestamp in `YYYYMMDDHHMMSS` format.
   - Record request to `.copilot/sessions/${sessionId}/prompt.md`.
   - Set up a todo list using the #tool:todo tool.
 - **Orchestrate**:
