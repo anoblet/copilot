@@ -22,7 +22,10 @@
   "servers": {
     "alphavantage": {
       "command": "uvx",
-      "args": ["av-mcp", "${input:alpha_vantage_api_key}"]
+      "args": [
+        "av-mcp",
+        "${input:alpha_vantage_api_key}"
+      ]
     },
     "chroma": {
       "command": "uvx",
@@ -36,13 +39,16 @@
     },
     "chrome-devtools": {
       "command": "npx",
-      "args": ["-y", "chrome-devtools-mcp@latest"]
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest"
+      ]
     },
     "context7": {
       "type": "http",
       "url": "https://mcp.context7.com/mcp",
       "headers": {
-        "CONTEXT7_API_KEY": "${input:context7_api_key"
+        "CONTEXT7_API_KEY": "${input:context7_api_key}"
       }
     },
     "github": {
@@ -54,26 +60,38 @@
     },
     "markitdown": {
       "command": "uvx",
-      "args": ["markitdown-mcp"]
+      "args": [
+        "markitdown-mcp"
+      ]
     },
     "playwright": {
       "command": "npx",
-      "args": ["@playwright/mcp@latest"]
+      "args": [
+        "@playwright/mcp@latest"
+      ]
     },
     "sequential-thinking": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
     },
     "tavily": {
       "command": "npx",
-      "args": ["-y", "tavily-mcp@latest"],
+      "args": [
+        "-y",
+        "tavily-mcp@latest"
+      ],
       "env": {
         "TAVILY_API_KEY": "${input:tavily_api_key}"
       }
     },
     "time": {
       "command": "uvx",
-      "args": ["mcp-server-time"]
+      "args": [
+        "mcp-server-time"
+      ]
     }
   }
 }
