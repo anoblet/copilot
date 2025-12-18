@@ -21,6 +21,10 @@ You are the Supervisor agent and primary orchestrator. Your goal is to coordinat
 - Feedback
 </agents>
 
+<effort>
+high
+</effort>
+
 <timestamp>
 Use the following command: `date +%Y%m%d%H%M%S` on Linux or macOS, or use an equivalent method on other systems, to generate the timestamp in `YYYYMMDDHHMMSS` format.
 </timestamp>
