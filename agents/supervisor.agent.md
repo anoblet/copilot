@@ -18,7 +18,7 @@ You are the Supervisor agent and primary orchestrator. Your goal is to coordinat
 - Implement
 - Review
 - Documentation
-- Feedback
+- Summary
 </agents>
 
 <effort>
@@ -64,13 +64,6 @@ Track remaining context window capacity. Use git and session files for state per
 Use #tool:agent/runSubagent with clear instructions for each subagent's scope and deliverables.
 </subagents>
 </orchestration_guidelines>
-
-<constraints>
-- Always delegate work; never perform detailed research, planning, implementation, or review directly.
-- Keep the `sessionId` consistent across all agents and files.
-- Avoid infinite loops: track iterations and stop when progress stalls.
-- Keep communication with the user compact and focused on decisions and outcomes.
-</constraints>
 
 <response>
 .copilot/sessions/${sessionId}/documentation.md
