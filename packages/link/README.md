@@ -4,6 +4,8 @@ A utility to create relative symlinks based on a JSON configuration file. Useful
 
 ## Installation
 
+**Node.js requirement:** Node **>= 24** (this package runs directly from `src/index.ts`).
+
 This package is typically used within the workspace.
 
 ```bash
@@ -26,30 +28,40 @@ The configuration file (e.g., `link.json`) defines the directory structure and t
 
 ```json
 {
-  ".github": {
-    "agents": [
-      "../../copilot/agents/implement.agent.md",
-      "../../copilot/agents/plan.agent.md"
-    ]
-  },
-  ".vscode": [
-    "../copilot/.vscode/settings.json"
-  ]
+  ".github": [
+    {
+      "agents": [
+        "../../copilot/agents/documentation.agent.md",
+        "../../copilot/agents/feedback.agent.md",
+        "../../copilot/agents/implement.agent.md",
+        "../../copilot/agents/plan.agent.md",
+        "../../copilot/agents/research.agent.md",
+        "../../copilot/agents/review.agent.md",
+        "../../copilot/agents/supervisor.agent.md"
+      ]
+    },
+    "../../copilot/.github/copilot-instructions.md"
+  ],
+  ".vscode": ["../copilot/.vscode/mcp.json", "../copilot/.vscode/settings.json"]
 }
 ```
 
 **Structure:**
+
 - Keys represent directories.
 - Values can be:
-    - An array of strings: Each string is a relative path to the source file. A symlink will be created in the current directory key with the same basename.
-    - An object: Represents a subdirectory.
+  - An object (legacy): Nested directory structure.
+  - An array of entries: Items can be either:
+    - a string (a relative path to the source file to symlink into this directory), or
+    - an object mapping one or more subdirectory names to nested values (arrays and/or objects).
 
 **Behavior:**
+
 - Creates directories if they don't exist.
 - Overwrites existing symlinks.
 - Paths in the array are used as the symlink target (relative to the link location).
 
 ## Dependencies
 
-*   `fs`: Node.js file system module.
-*   `path`: Node.js path module.
+- `fs`: Node.js file system module.
+- `path`: Node.js path module.
