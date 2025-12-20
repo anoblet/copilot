@@ -1,6 +1,6 @@
 # MCP
 
-Client and server for accepting user input as a tool call. Exposes one tool: 'user_input'. The user will run the client in their terminal. Choose the correct server type. Use TypeScript for both the server and the client. The responsibility of the 'user_input' tool is for the agent to ask the user for input via the terminal. The server will return the user's input to the agent. The client and server should be streamable. The package is part of the `copilot` submodule and should be consumable by the parent repository.
+Client and server for accepting user input as a tool call. Exposes one tool: 'user_input'. The user will run the client in their terminal. Choose the correct server type. Use TypeScript for both the server and the client. The responsibility of the 'user_input' tool is for the agent to ask the user for input via the terminal. The server will return the user's input to the agent. The client and server should be streamable. The package is part of the `copilot` submodule and should be consumable by the parent repository. Use the `#tools:github/*` tools to reference any GitHub resources.
 
 ## VS Code
 
