@@ -18,3 +18,7 @@
 - Use ESNext module syntax.
 - Run Typescript directly with Node.js (no build step).
 </instructions>
+
+<constraints>
+- Absolutely, under no circumstance, should you consider yourself finished before you have completed every task using the #tools:todo tool.
+</constraints>
