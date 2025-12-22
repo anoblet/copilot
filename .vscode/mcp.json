@@ -44,6 +44,16 @@
         "chrome-devtools-mcp@latest"
       ]
     },
+    "copilot-mcp": {
+      "command": "node",
+      "args": [
+        "${workspaceFolder}/../packages/mcp/src/server/stdio.ts"
+      ],
+      "env": {
+        "MCP_PORT": "4300",
+        "MCP_USER_INPUT_TIMEOUT_MS": "600000"
+      }
+    },
     "context7": {
       "type": "http",
       "url": "https://mcp.context7.com/mcp",

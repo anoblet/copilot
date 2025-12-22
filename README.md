@@ -17,7 +17,7 @@ This project provides a sophisticated customization layer for GitHub Copilot, tr
 - 🤖 **Custom Agents** - Specialized agents for planning and implementation
 - 🎨 **Chat Modes** - Optimized configurations for Claude Sonnet 4, GPT-5, and GPT-5 Mini
 - 📝 **Reusable Prompts** - Pre-built prompts for common development tasks
-- 🔧 **MCP Integration** - Seamless integration with 8+ Model Context Protocol servers
+- 🔧 **MCP Integration** - Seamless integration with 9+ Model Context Protocol servers
 - 📐 **Development Principles** - Built on SOLID, DRY, YAGNI, and MVC principles
 - 🌿 **Git Flow Workflow** - Structured branching model for professional development
 
@@ -169,48 +169,48 @@ sequenceDiagram
     Chat->>Inst: Load instructions hierarchy
     Inst->>Inst: Apply principles (SOLID, DRY, YAGNI)
     Inst->>Inst: Load tool-specific instructions
-    
+
     Chat->>Mem: Read prompt.jsonl (conversation history)
     Mem-->>Chat: Previous context
-    
+
     Chat->>Mem: Read user.jsonl (preferences)
     Mem-->>Chat: Universal preferences
-    
+
     Chat->>Mem: Read project.jsonl (project context)
     Mem-->>Chat: Project-specific context
-    
+
     Chat->>MCP: Query MCP servers as needed
-    
+
     alt Complex reasoning needed
         MCP->>MCP: Sequential Thinking
         MCP-->>Chat: Structured analysis
     end
-    
+
     alt Code analysis needed
         MCP->>MCP: Serena semantic search
         MCP-->>Code: Symbol-level insights
         Code-->>Chat: Code structure
     end
-    
+
     alt Web search needed
         MCP->>MCP: Tavily search
         MCP-->>Chat: Web results
     end
-    
+
     alt Vector storage needed
         MCP->>MCP: Chroma operations
         MCP-->>Chat: Semantic results
     end
-    
+
     Chat->>Chat: Apply chat mode configuration
     Chat->>Chat: Process with selected agent (if any)
     Chat->>Chat: Generate response
-    
+
     Chat->>Mem: Update prompt.jsonl
     Chat->>Mem: Update project.jsonl (if needed)
-    
+
     Chat-->>Dev: Return response with actions
-    
+
     opt Git Flow enforcement
         Chat->>Code: Verify not on main branch
         Chat->>Code: Apply changes on feature branch
@@ -264,37 +264,37 @@ flowchart LR
     REQ --> LOAD_INST
     MODE --> APPLY_MODE
     AGENT --> APPLY_MODE
-    
+
     LOAD_INST --> APPLY_PRIN
     LOAD_MEM --> APPLY_PRIN
     LOAD_PROMPTS --> APPLY_PRIN
-    
+
     APPLY_PRIN --> SEQ_THINK
     APPLY_MODE --> SEQ_THINK
-    
+
     SEQ_THINK -->|Yes| OP_SEQ
     SEQ_THINK -->|No| USE_MCP
     OP_SEQ --> USE_MCP
-    
+
     USE_MCP --> OP_SERENA
     USE_MCP --> OP_CHROMA
     USE_MCP --> OP_GITHUB
     USE_MCP --> OP_TAVILY
     USE_MCP --> OP_PW
-    
+
     OP_SERENA --> GEN_RESP
     OP_CHROMA --> GEN_RESP
     OP_GITHUB --> GEN_RESP
     OP_TAVILY --> GEN_RESP
     OP_PW --> GEN_RESP
-    
+
     GEN_RESP --> EXEC_CODE
     EXEC_CODE --> UPDATE_MEM
-    
+
     UPDATE_MEM --> RESP
     UPDATE_MEM --> CODE_CHG
     UPDATE_MEM --> MEM_UPDATE
-    
+
     style APPLY_PRIN fill:#6cc644,stroke:#4a9c2e,color:#fff
     style UPDATE_MEM fill:#bd2c00,stroke:#8b2200,color:#fff
     style USE_MCP fill:#f39c12,stroke:#c87f0a,color:#fff
@@ -351,16 +351,17 @@ copilot/
 
 The framework integrates the following Model Context Protocol servers:
 
-| Server | Purpose | Technology |
-|--------|---------|------------|
-| **Chroma** | Vector database for semantic memory and document storage | `uvx chroma-mcp` |
-| **Context7** | Enhanced context retrieval and analysis | HTTP API |
-| **GitHub** | Repository management, PRs, and code search | HTTP API |
-| **Playwright** | Browser automation and UI testing | `npx @playwright/mcp` |
-| **Sequential Thinking** | Complex reasoning and task breakdown | `npx @modelcontextprotocol/server-sequential-thinking` |
-| **Serena** | Semantic code analysis and symbol navigation | `uvx serena` |
-| **Tavily** | Web search and content extraction | `npx tavily-mcp` |
-| **Time** | Timezone conversion and current time queries | `uvx mcp-server-time` |
+| Server                  | Purpose                                                              | Technology                                             |
+| ----------------------- | -------------------------------------------------------------------- | ------------------------------------------------------ |
+| **Chroma**              | Vector database for semantic memory and document storage             | `uvx chroma-mcp`                                       |
+| **Context7**            | Enhanced context retrieval and analysis                              | HTTP API                                               |
+| **GitHub**              | Repository management, PRs, and code search                          | HTTP API                                               |
+| **Playwright**          | Browser automation and UI testing                                    | `npx @playwright/mcp`                                  |
+| **Sequential Thinking** | Complex reasoning and task breakdown                                 | `npx @modelcontextprotocol/server-sequential-thinking` |
+| **Serena**              | Semantic code analysis and symbol navigation                         | `uvx serena`                                           |
+| **Tavily**              | Web search and content extraction                                    | `npx tavily-mcp`                                       |
+| **Time**                | Timezone conversion and current time queries                         | `uvx mcp-server-time`                                  |
+| **@copilot/mcp**        | Local MCP server providing a `user_input` tool via a terminal bridge | `pnpm --filter @copilot/mcp start`                     |
 
 ---
 
@@ -377,12 +378,14 @@ The framework integrates the following Model Context Protocol servers:
 ### Installation
 
 1. **Clone the repository:**
+
    ```bash
    git clone <repository-url>
    cd copilot
    ```
 
 2. **Run the bootstrap process:**
+
    ```bash
    cd copilot
    git submodule init
@@ -390,10 +393,12 @@ The framework integrates the following Model Context Protocol servers:
    ```
 
 3. **Configure VS Code:**
+
    - Add `"chat.tools.global.autoApprove": true` to your user settings
    - Create soft links to the `.github` directory as defined in `../bootstrap.json`
 
 4. **Configure API keys:**
+
    - When prompted, enter your Tavily API key for web search capabilities
    - Add Context7 API key if you have one (optional)
 
@@ -402,6 +407,7 @@ The framework integrates the following Model Context Protocol servers:
 ### Verification
 
 Open GitHub Copilot Chat and verify:
+
 - Custom chat modes appear in the mode selector
 - Custom prompts are available
 - Memory systems are accessible
@@ -420,6 +426,7 @@ Access optimized AI configurations through the chat mode selector:
 - **GPT-5 Mini** - Faster responses for simpler tasks
 
 Each mode includes:
+
 - Model-specific optimizations
 - Context gathering protocols
 - Quality assurance guidelines
@@ -429,22 +436,23 @@ Each mode includes:
 
 Invoke reusable prompts from the command palette or chat:
 
-| Prompt | Purpose |
-|--------|---------|
-| `align` | Align project with PROMPT.md and complete TASKS.md |
-| `complexity` | Analyze and report code complexity |
-| `learn` | Extract lessons learned from conversations |
-| `maintenance` | Clean up legacy code and comments |
-| `organize-memory` | Structure memory entities into categories |
-| `mermaid` | Generate Mermaid diagrams |
-| `summarize` | Create conversation summaries |
-| `tasks` | Generate task lists from requirements |
+| Prompt            | Purpose                                            |
+| ----------------- | -------------------------------------------------- |
+| `align`           | Align project with PROMPT.md and complete TASKS.md |
+| `complexity`      | Analyze and report code complexity                 |
+| `learn`           | Extract lessons learned from conversations         |
+| `maintenance`     | Clean up legacy code and comments                  |
+| `organize-memory` | Structure memory entities into categories          |
+| `mermaid`         | Generate Mermaid diagrams                          |
+| `summarize`       | Create conversation summaries                      |
+| `tasks`           | Generate task lists from requirements              |
 
 ### Agents
 
 Specialized agents for multi-step workflows:
 
 **Plan Agent** (`@plan`)
+
 - Creates detailed implementation plans
 - Breaks tasks into actionable steps
 - Sorts by time complexity
@@ -456,12 +464,14 @@ Specialized agents for multi-step workflows:
 The framework maintains three separate memory systems:
 
 1. **User Memory** (`memory/user.jsonl`)
+
    - Personal information and preferences
    - Universal development standards
    - Technology preferences
    - Persistent across all projects
 
 2. **Project Memory** (`memory/project.jsonl`)
+
    - Project-specific context and goals
    - Architecture decisions
    - Current work state
@@ -473,14 +483,18 @@ The framework maintains three separate memory systems:
    - Session state
 
 **Usage:**
+
 ```markdown
 # Read from user memory
+
 Use user-memory to get development preferences
 
 # Read from project memory
+
 Use project-memory to get current project goals
 
 # Write to appropriate memory
+
 Record this preference in user-memory
 Record this architecture decision in project-memory
 ```
@@ -492,6 +506,7 @@ Record this architecture decision in project-memory
 This framework enforces the following principles through instructions:
 
 ### SOLID Principles
+
 - **S**ingle Responsibility
 - **O**pen/Closed
 - **L**iskov Substitution
@@ -499,11 +514,13 @@ This framework enforces the following principles through instructions:
 - **D**ependency Inversion
 
 ### Additional Principles
+
 - **DRY** (Don't Repeat Yourself)
 - **YAGNI** (You Aren't Gonna Need It)
 - **MVC** (Model-View-Controller)
 
 ### Quality Philosophy
+
 - **Quality over speed** - Take time for proper analysis and validation
 - **Understanding first** - Deeply understand goals before taking action
 - **Memory-driven** - Record context before, during, and after work
@@ -569,8 +586,10 @@ Contributions are welcome! Please follow these guidelines:
 ### Sequential Thinking
 
 The Sequential Thinking MCP server is used for all complex reasoning:
+
 ```markdown
 Use sequential thinking to:
+
 - Break down this complex requirement
 - Plan the implementation approach
 - Identify dependencies and constraints
@@ -579,8 +598,10 @@ Use sequential thinking to:
 ### Serena Semantic Analysis
 
 Leverage Serena for code understanding:
+
 ```markdown
 Use Serena to:
+
 - Find all database query functions
 - Analyze cross-system dependencies
 - Show symbol-level insights for this function
@@ -590,6 +611,7 @@ Use Serena to:
 ### Chroma Vector Storage
 
 Store and retrieve semantic context:
+
 - Record prompts before starting work
 - Store summaries after completing tasks
 - Query similar past work for context
@@ -600,6 +622,7 @@ Store and retrieve semantic context:
 ## 📚 Inspiration
 
 This project draws inspiration from:
+
 - [astronautical-apogee](https://github.com/anoblet/astronautical-apogee)
 - [lit-cms](https://github.com/anoblet/lit-cms)
 - [my-project](https://github.com/anoblet/my-project)
@@ -621,6 +644,7 @@ ISC
 ## 🙏 Acknowledgments
 
 This framework leverages the incredible work of:
+
 - GitHub Copilot team
 - Model Context Protocol (MCP) community
 - Open source MCP server developers
@@ -631,6 +655,7 @@ This framework leverages the incredible work of:
 ## 📞 Support
 
 For questions, issues, or contributions, please:
+
 - Open an issue on GitHub
 - Follow the contribution guidelines above
 - Consult the instruction files in `instructions/`
