@@ -47,7 +47,7 @@
     "copilot-mcp": {
       "command": "node",
       "args": [
-        "${workspaceFolder}/../packages/mcp/src/server/stdio.ts"
+        "${workspaceFolder}/copilot/packages/mcp/src/server/stdio.ts"
       ],
       "env": {
         "MCP_PORT": "4300",
