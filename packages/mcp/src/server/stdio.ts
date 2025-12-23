@@ -9,8 +9,8 @@ import {
   DEFAULT_TIMEOUT_MS,
   createMcpServer,
   log,
+  parseNonNegativeInt,
   parsePort,
-  parsePositiveInt,
 } from "./shared.ts";
 import { UserInputBroker } from "./userInputBroker.ts";
 
@@ -26,7 +26,7 @@ export async function main(): Promise<void> {
   const port =
     parsePort(process.env.MCP_PORT ?? process.env.PORT) ?? DEFAULT_PORT;
   const timeoutMs =
-    parsePositiveInt(process.env.MCP_USER_INPUT_TIMEOUT_MS) ??
+    parseNonNegativeInt(process.env.MCP_USER_INPUT_TIMEOUT_MS) ??
     DEFAULT_TIMEOUT_MS;
 
   const broker = new UserInputBroker();

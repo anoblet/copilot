@@ -15,9 +15,11 @@ export const userInputInputSchema = {
   /**
    * Optional timeout (ms) before the server fails the tool call.
    *
+   * Use `0` to disable the server-side timeout (wait indefinitely).
+   *
    * This is best-effort and only affects the server-side wait.
    */
-  timeoutMs: z.number().int().positive().optional(),
+  timeoutMs: z.number().int().nonnegative().optional(),
 };
 
 /**

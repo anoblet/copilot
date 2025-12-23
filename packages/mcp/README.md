@@ -47,7 +47,7 @@ In this repo, add a server entry like this to `.vscode/mcp.json` (already presen
       "args": ["${workspaceFolder}/copilot/packages/mcp/src/server/stdio.ts"],
       "env": {
         "MCP_PORT": "4300",
-        "MCP_USER_INPUT_TIMEOUT_MS": "600000"
+        "MCP_USER_INPUT_TIMEOUT_MS": "0"
       }
     }
   }
@@ -96,7 +96,7 @@ Note: this `type: "http"` entry tells VS Code how to connect; it does not start 
 ### Server environment variables
 
 - `MCP_PORT` / `PORT`: HTTP listen port (default: `4300`)
-- `MCP_USER_INPUT_TIMEOUT_MS`: default timeout for `user_input` calls (default: `600000` / 10 minutes)
+- `MCP_USER_INPUT_TIMEOUT_MS`: default timeout for `user_input` calls (default: `600000` / 10 minutes). Set to `0` for no server-side timeout.
 
 ### Timeouts
 
@@ -105,6 +105,8 @@ The effective timeout for `user_input` is chosen in this order (highest preceden
 1. Tool call argument `timeoutMs`
 2. Server environment variable `MCP_USER_INPUT_TIMEOUT_MS` (commonly set via VS Code `.vscode/mcp.json`)
 3. Package default (10 minutes)
+
+`timeoutMs: 0` disables the server-side timeout (wait indefinitely).
 
 Note: This only controls the server-side wait for a human response; some clients may impose their own request/connection timeouts.
 

@@ -90,6 +90,18 @@ export function parsePositiveInt(
 }
 
 /**
+ * Parses a non-negative integer (0 or greater) from an environment variable-like string.
+ */
+export function parseNonNegativeInt(
+  value: string | undefined
+): number | undefined {
+  if (value === undefined || value === "") return undefined;
+  const n = Number(value);
+  if (!Number.isInteger(n) || n < 0) return undefined;
+  return n;
+}
+
+/**
  * Writes a log line to stderr.
  *
  * Stderr is used to avoid polluting any protocol streams.

@@ -61,14 +61,17 @@ export class UserInputBroker {
     const requestId = randomUUID();
 
     const value = await new Promise<string>((resolve, reject) => {
-      const timeout = setTimeout(() => {
-        this.pending.delete(requestId);
-        reject(
-          new Error(
-            `Timed out waiting for terminal input after ${options.timeoutMs}ms`
-          )
-        );
-      }, options.timeoutMs);
+      const timeout =
+        options.timeoutMs > 0
+          ? setTimeout(() => {
+              this.pending.delete(requestId);
+              reject(
+                new Error(
+                  `Timed out waiting for terminal input after ${options.timeoutMs}ms`
+                )
+              );
+            }, options.timeoutMs)
+          : undefined;
 
       this.pending.set(requestId, {
         prompt: options.prompt,

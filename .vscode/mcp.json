@@ -51,7 +51,7 @@
       ],
       "env": {
         "MCP_PORT": "4300",
-        "MCP_USER_INPUT_TIMEOUT_MS": "600000"
+        "MCP_USER_INPUT_TIMEOUT_MS": "0"
       }
     },
     "context7": {
