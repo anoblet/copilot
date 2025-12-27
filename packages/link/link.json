@@ -11,7 +11,7 @@
         "../../copilot/agents/supervisor.agent.md"
       ]
     },
-    "../../copilot/.github/copilot-instructions.md"
+    "../copilot/.github/copilot-instructions.md"
   ],
   ".vscode": [
     "../copilot/.vscode/mcp.json",

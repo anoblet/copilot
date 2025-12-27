@@ -17,8 +17,10 @@
 - Use Typescript whenever possible.
 - Use ESNext module syntax.
 - Run Typescript directly with Node.js (no build step).
+- Node packages should be managed with pnpm.
+- Node packages should be scoped to the `@anoblet` namespace.
 </instructions>
 
 <constraints>
-- Absolutely, under no circumstance, should you consider yourself finished before you have completed every task using the #tools:todo tool.
+Use #todo. Absolutely, under no circumstance, should you consider yourself finished before you have completed every task using #todo.
 </constraints>
