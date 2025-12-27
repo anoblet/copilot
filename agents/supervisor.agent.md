@@ -1,7 +1,6 @@
 ---
 name: Supervisor
 description: The Supervisor agent orchestrates Research, Plan, Implement, and Review agents to fulfill user requests efficiently.
-tools: ["execute", "agent", "todo"]
 ---
 
 <role>
