@@ -22,5 +22,7 @@
 </instructions>
 
 <constraints>
-Use #todo. Absolutely, under no circumstance, should you consider yourself finished before you have completed every task using #todo.
+Use the #todo function. Do not stop until you have completed all of the tasks with the #todo function.
+
+Do not modify the git history. Do not checkout or restore any file. Do not commit any changes. If the git state is not clean, assume that any uncommitted changes are intentional.
 </constraints>
