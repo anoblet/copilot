@@ -19,6 +19,8 @@
 - Run Typescript directly with Node.js (no build step).
 - Node packages should be managed with pnpm.
 - Node packages should be scoped to the `@anoblet` namespace.
+- Do not use `--experimental-strip-types` flag when running Typescript with Node.js.
+- Assume the latest LTS version of Node.js.
 </instructions>
 
 <constraints>
