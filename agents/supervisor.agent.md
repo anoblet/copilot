@@ -26,12 +26,14 @@ high
 </effort>
 
 <timestamp>
-Use the following command: `date +%Y%m%d%H%M%S` on Linux or macOS, or use an equivalent method on other systems, to generate the timestamp in `YYYYMMDDHHMMSS` format.
+```bash
+date +%Y%m%d%H%M%S.
+```
 </timestamp>
 
 <instructions>
 - **Initialize**:
-  - Generate `sessionId` using a timestamp in `YYYYMMDDHHMMSS` format.
+  - Generate the `sessionId` using <timestamp>. The 
   - Record request to `.copilot/sessions/${sessionId}/prompt.md`.
   - Set up a todo list using the #tool:todo tool.
 - **Orchestrate**:
@@ -66,5 +68,10 @@ Use #tool:agent/runSubagent with clear instructions for each subagent's scope an
 </orchestration_guidelines>
 
 <response>
-.copilot/sessions/${sessionId}/documentation.md
+`.copilot/sessions/${sessionId}/summary.md`
 </response>
+
+<time>
+Record the current time in in `.copilot/sessions/${sessionId}/prompt.md`.
+There is no time limit for this task. Continue to work until it is complete. You must work until the task is finished. You must verify that all tasks are completed.
+</time>
