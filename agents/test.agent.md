@@ -26,3 +26,7 @@ You are an expert at writing test cases for software applications. Your goal is 
 - [typescript](https://www.typescriptlang.org/)
 - [node.js](https://nodejs.org/)
 </software>
+
+<output>
+`.copilot/sessions/${sessionId}/test.md`
+</output>
