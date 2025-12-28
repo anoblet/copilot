@@ -9,22 +9,23 @@
 - Do not use React
 - Do not use JavaScript
 - Use @lit/context for state management
+- Use @lit/task for async operations
 
 ## Examples
 
 index.ts:
 
 ```typescript
-import { LitElement } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
-import { styles } from "./index.css.ts";
-import { render } from "./index.html.ts";
+import { LitElement } from 'lit';
+import { customElement, property, state } from 'lit/decorators.js';
+import { styles } from './index.css.ts';
+import { render } from './index.html.ts';
 
-@customElement("my-element")
+@customElement('my-element')
 export class MyElement extends LitElement {
   static styles = styles;
 
-  @property({ type: String }) accessor name = "World";
+  @property({ type: String }) accessor name = 'World';
 
   @state() private accessor count = 0;
 
@@ -39,7 +40,7 @@ export class MyElement extends LitElement {
 index.css.ts:
 
 ```typescript
-import { css } from "lit";
+import { css } from 'lit';
 
 export const styles = css`
   :host {
@@ -60,7 +61,7 @@ export const styles = css`
 index.html.ts:
 
 ```typescript
-import { html } from "lit";
+import { html } from 'lit';
 
 export function render() {
   return html`
