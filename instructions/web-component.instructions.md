@@ -6,6 +6,9 @@
   - index.css.ts
     Use TypeScript decorators
 - Reference [components](https://github.com/anoblet/astronautical-apogee/tree/main/src/components)
+- Do not use React
+- Do not use JavaScript
+- Use @lit/context for state management
 
 ## Examples
 

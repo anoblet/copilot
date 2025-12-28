@@ -1,4 +1,4 @@
-[agents](../agents.md)
+[agents](../AGENTS.md)
 
 <role>
 </role>
@@ -14,6 +14,7 @@
 </tools>
 
 <instructions>
+- [web-component](../copilot/instructions/web-component.instructions.md)
 - Use Typescript whenever possible.
 - Use ESNext module syntax.
 - Run Typescript directly with Node.js (no build step). [run-natively](https://nodejs.org/en/learn/typescript/run-natively/)
@@ -30,5 +31,5 @@ Use the #todo function. Do not stop until you have completed all of the tasks wi
 
 Do not modify the git history. Do not checkout or restore any file. Do not commit any changes. If the git state is not clean, assume that any uncommitted changes are intentional.
 
-Ignore the git state of the [copilot] directory.
+Ignore the git state of the [copilot](../copilot) directory.
 </constraints>
