@@ -383,12 +383,9 @@ The framework integrates the following Model Context Protocol servers:
    ```
 
 2. **Configure VS Code:**
-
    - Add `"chat.tools.global.autoApprove": true` to your user settings
 
-
 3. **Configure API keys:**
-
    - When prompted, enter your Tavily API key for web search capabilities
    - Add Context7 API key if you have one (optional)
 
@@ -454,14 +451,12 @@ Specialized agents for multi-step workflows:
 The framework maintains three separate memory systems:
 
 1. **User Memory** (`memory/user.jsonl`)
-
    - Personal information and preferences
    - Universal development standards
    - Technology preferences
    - Persistent across all projects
 
 2. **Project Memory** (`memory/project.jsonl`)
-
    - Project-specific context and goals
    - Architecture decisions
    - Current work state
