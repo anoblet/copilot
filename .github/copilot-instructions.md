@@ -21,6 +21,7 @@
 - Node packages should be scoped to the `@anoblet` namespace.
 - Do not use `--experimental-strip-types` flag when running Typescript with Node.js.
 - Assume the latest LTS version of Node.js.
+- Do not use React. Use Lit for web components.
 </instructions>
 
 <constraints>
