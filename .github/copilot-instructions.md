@@ -14,15 +14,11 @@
 </tools>
 
 <instructions>
+- [typescript](../copilot/instructions/typescript.instructions.md)
 - [web-component](../copilot/instructions/web-component.instructions.md)
 - Use Typescript whenever possible.
-- Use ESNext module syntax.
-- Run Typescript directly with Node.js (no build step). [run-natively](https://nodejs.org/en/learn/typescript/run-natively/)
 - Node packages should be managed with pnpm.
 - Node packages should be scoped to the `@anoblet` namespace.
-- Do not use `--experimental-strip-types` flag when running Typescript with Node.js.
-- Assume the latest LTS version of Node.js.
-- Do not use React. Use Lit for web components.
 - Always prefer Typescript over Python.
 </instructions>
 

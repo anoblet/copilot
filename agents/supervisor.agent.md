@@ -22,8 +22,8 @@ You are the Supervisor agent and primary orchestrator. Your goal is to coordinat
 - Plan
 - Implement
 - Test
-- Review
 - Documentation
+- Review
 - Summary
 </agents>
 

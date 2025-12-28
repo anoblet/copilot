@@ -1,0 +1,8 @@
+- Use ESM modules
+- Target ESNext
+- Never use `npx tsx`.
+- Never use a build step
+- Run Typescript directly with Node.js
+- [run-natively](https://nodejs.org/en/learn/typescript/run-natively)
+- Never use `--experimental-strip-types`
+- Assume you are using the latest lts version of Node.js
