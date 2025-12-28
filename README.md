@@ -340,9 +340,7 @@ copilot/
 │   ├── maintenance.prompt.md
 │   ├── organize-memory.prompt.md
 │   └── ... (15+ prompts total)
-└── bootstrap/                  # Initialization utilities
-    ├── index.ts
-    └── README.md
+
 ```
 
 ---
@@ -384,25 +382,17 @@ The framework integrates the following Model Context Protocol servers:
    cd copilot
    ```
 
-2. **Run the bootstrap process:**
-
-   ```bash
-   cd copilot
-   git submodule init
-   git submodule update --remote
-   ```
-
-3. **Configure VS Code:**
+2. **Configure VS Code:**
 
    - Add `"chat.tools.global.autoApprove": true` to your user settings
-   - Create soft links to the `.github` directory as defined in `../bootstrap.json`
 
-4. **Configure API keys:**
+
+3. **Configure API keys:**
 
    - When prompted, enter your Tavily API key for web search capabilities
    - Add Context7 API key if you have one (optional)
 
-5. **Restart VS Code** to activate all MCP server configurations
+4. **Restart VS Code** to activate all MCP server configurations
 
 ### Verification
 
