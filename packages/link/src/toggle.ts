@@ -1,10 +1,10 @@
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from 'fs';
+import * as path from 'path';
 
 const args = process.argv.slice(2);
 
 if (args.length === 0) {
-  console.error("Please provide a link.json file.");
+  console.error('Please provide a link.json file.');
   process.exit(1);
 }
 
@@ -16,10 +16,10 @@ if (!fs.existsSync(configFile)) {
 }
 
 try {
-  const config = JSON.parse(fs.readFileSync(configFile, "utf8"));
+  const config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
   processConfig(config, process.cwd(), []);
 } catch (error) {
-  console.error("Error parsing or processing config file:", error);
+  console.error('Error parsing or processing config file:', error);
   process.exit(1);
 }
 
@@ -27,8 +27,8 @@ function processConfig(obj: unknown, currentDir: string, configPath: string[]) {
   if (!isPlainObject(obj)) {
     throw new Error(
       `Invalid config at ${formatConfigPath(
-        configPath
-      )} in ${configFile}: expected an object, got ${describeType(obj)}`
+        configPath,
+      )} in ${configFile}: expected an object, got ${describeType(obj)}`,
     );
   }
 
@@ -45,7 +45,7 @@ function processConfig(obj: unknown, currentDir: string, configPath: string[]) {
         const entry = value[i];
         const entryPath = [...nextPath, `[${i}]`];
 
-        if (typeof entry === "string") {
+        if (typeof entry === 'string') {
           toggleFile(entry, nextDir);
           continue;
         }
@@ -53,8 +53,8 @@ function processConfig(obj: unknown, currentDir: string, configPath: string[]) {
         if (entry === null) {
           throw new Error(
             `Invalid config at ${formatConfigPath(
-              entryPath
-            )} in ${configFile}: expected string or object, got null`
+              entryPath,
+            )} in ${configFile}: expected string or object, got null`,
           );
         }
 
@@ -66,10 +66,8 @@ function processConfig(obj: unknown, currentDir: string, configPath: string[]) {
 
         throw new Error(
           `Invalid config at ${formatConfigPath(
-            entryPath
-          )} in ${configFile}: expected string or object, got ${describeType(
-            entry
-          )}`
+            entryPath,
+          )} in ${configFile}: expected string or object, got ${describeType(entry)}`,
         );
       }
     } else if (isPlainObject(value)) {
@@ -78,16 +76,14 @@ function processConfig(obj: unknown, currentDir: string, configPath: string[]) {
     } else if (value === null) {
       throw new Error(
         `Invalid config at ${formatConfigPath(
-          nextPath
-        )} in ${configFile}: expected array or object, got null`
+          nextPath,
+        )} in ${configFile}: expected array or object, got null`,
       );
     } else {
       throw new Error(
         `Invalid config at ${formatConfigPath(
-          nextPath
-        )} in ${configFile}: expected array or object, got ${describeType(
-          value
-        )}`
+          nextPath,
+        )} in ${configFile}: expected array or object, got ${describeType(value)}`,
       );
     }
   }
@@ -109,7 +105,7 @@ function toggleFile(sourcePath: string, dirPath: string) {
     try {
       stats = fs.lstatSync(linkPath);
     } catch (error: any) {
-      if (error.code === "ENOENT") {
+      if (error.code === 'ENOENT') {
         console.warn(`File not found: ${linkPath}. Skipping toggle.`);
         return;
       }
@@ -139,21 +135,21 @@ function toggleFile(sourcePath: string, dirPath: string) {
 }
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null && !Array.isArray(value);
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
 function describeType(value: unknown): string {
-  if (value === null) return "null";
-  if (Array.isArray(value)) return "array";
+  if (value === null) return 'null';
+  if (Array.isArray(value)) return 'array';
   return typeof value;
 }
 
 function formatConfigPath(segments: string[]): string {
-  if (segments.length === 0) return "(root)";
+  if (segments.length === 0) return '(root)';
 
-  let out = "";
+  let out = '';
   for (const seg of segments) {
-    if (seg.startsWith("[")) {
+    if (seg.startsWith('[')) {
       out += seg;
     } else if (out.length === 0) {
       out = seg;
