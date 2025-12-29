@@ -1,11 +1,11 @@
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 
 import {
   USER_INPUT_TOOL_NAME,
-  userInputInputSchema,
+  UserInputInputSchema,
   userInputOutputSchema,
-} from "../shared/userInput.ts";
-import { UserInputBroker } from "./userInputBroker.ts";
+} from '../shared/userInput.ts';
+import { UserInputBroker } from './userInputBroker.ts';
 
 /**
  * Default server port for the HTTP listener.
@@ -22,26 +22,24 @@ export function createMcpServer(options: {
   timeoutMs: number;
 }): McpServer {
   const mcpServer = new McpServer({
-    name: "@copilot/mcp",
-    version: "0.0.0",
+    name: '@copilot/mcp',
+    version: '0.0.0',
   });
 
   mcpServer.registerTool(
     USER_INPUT_TOOL_NAME,
     {
-      title: "User Input",
+      title: 'User Input',
       description:
-        "Ask a human for input via a separately-run terminal client and return the response.",
-      inputSchema: userInputInputSchema,
+        'Ask a human for input via a separately-run terminal client and return the response.',
+      inputSchema: UserInputInputSchema as any,
       outputSchema: userInputOutputSchema,
-    },
-    async ({
-      prompt,
-      timeoutMs: requestTimeoutMs,
-    }: {
-      prompt: string;
-      timeoutMs?: number;
-    }) => {
+    } as any,
+    async (args: any) => {
+      const { prompt, timeoutMs: requestTimeoutMs } = args as {
+        prompt: string;
+        timeoutMs?: number;
+      };
       try {
         const effectiveTimeoutMs = requestTimeoutMs ?? options.timeoutMs;
         const { value } = await options.broker.requestUserInput({
@@ -51,17 +49,17 @@ export function createMcpServer(options: {
 
         const output = { value };
         return {
-          content: [{ type: "text", text: value }],
+          content: [{ type: 'text' as const, text: value }],
           structuredContent: output,
         };
       } catch (err: unknown) {
         const message = err instanceof Error ? err.message : String(err);
         return {
-          content: [{ type: "text", text: `Error: ${message}` }],
+          content: [{ type: 'text' as const, text: `Error: ${message}` }],
           isError: true,
         };
       }
-    }
+    },
   );
 
   return mcpServer;
@@ -80,9 +78,7 @@ export function parsePort(value: string | undefined): number | undefined {
 /**
  * Parses a strictly positive integer from an environment variable-like string.
  */
-export function parsePositiveInt(
-  value: string | undefined
-): number | undefined {
+export function parsePositiveInt(value: string | undefined): number | undefined {
   if (!value) return undefined;
   const n = Number(value);
   if (!Number.isInteger(n) || n <= 0) return undefined;
@@ -92,10 +88,8 @@ export function parsePositiveInt(
 /**
  * Parses a non-negative integer (0 or greater) from an environment variable-like string.
  */
-export function parseNonNegativeInt(
-  value: string | undefined
-): number | undefined {
-  if (value === undefined || value === "") return undefined;
+export function parseNonNegativeInt(value: string | undefined): number | undefined {
+  if (value === undefined || value === '') return undefined;
   const n = Number(value);
   if (!Number.isInteger(n) || n < 0) return undefined;
   return n;

@@ -1,9 +1,10 @@
-import type { Request, Response } from "express";
-import express from "express";
+import type { IncomingMessage } from 'http';
+import type { Request, Response } from 'express';
+import express from 'express';
 
-import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
+import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 
-import { HUMAN_ROUTES } from "../shared/humanProtocol.ts";
+import { HUMAN_ROUTES } from '../shared/humanProtocol.ts';
 import {
   DEFAULT_PORT,
   DEFAULT_TIMEOUT_MS,
@@ -11,18 +12,16 @@ import {
   log,
   parseNonNegativeInt,
   parsePort,
-} from "./shared.ts";
-import { UserInputBroker } from "./userInputBroker.ts";
+} from './shared.ts';
+import { UserInputBroker } from './userInputBroker.ts';
 
 /**
  * Starts the MCP server (Streamable HTTP) plus the terminal bridging endpoints.
  */
 export async function main(): Promise<void> {
-  const port =
-    parsePort(process.env.MCP_PORT ?? process.env.PORT) ?? DEFAULT_PORT;
+  const port = parsePort(process.env.MCP_PORT ?? process.env.PORT) ?? DEFAULT_PORT;
   const timeoutMs =
-    parseNonNegativeInt(process.env.MCP_USER_INPUT_TIMEOUT_MS) ??
-    DEFAULT_TIMEOUT_MS;
+    parseNonNegativeInt(process.env.MCP_USER_INPUT_TIMEOUT_MS) ?? DEFAULT_TIMEOUT_MS;
 
   const broker = new UserInputBroker();
 
@@ -31,22 +30,26 @@ export async function main(): Promise<void> {
   const app = express();
 
   // Only parse JSON for the MCP and response endpoints.
-  app.use(express.json({ type: ["application/json", "application/*+json"] }));
+  app.use(express.json({ type: ['application/json', 'application/*+json'] }));
 
   // MCP endpoint (Streamable HTTP).
-  app.all("/mcp", async (req: Request, res: Response) => {
+  app.all('/mcp', async (req: Request, res: Response) => {
     try {
       const transport = new StreamableHTTPServerTransport({
         sessionIdGenerator: undefined,
         enableJsonResponse: true,
       });
 
-      res.on("close", () => {
+      res.on('close', () => {
         void transport.close();
       });
 
       await mcpServer.connect(transport);
-      await transport.handleRequest(req, res, (req as any).body);
+      await transport.handleRequest(
+        req as unknown as any,
+        res as unknown as any,
+        (req as any).body,
+      );
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : String(err);
       res.status(500).json({ error: message });
@@ -57,9 +60,9 @@ export async function main(): Promise<void> {
   app.get(HUMAN_ROUTES.stream, (_req: Request, res: Response) => {
     // SSE headers.
     res.status(200);
-    res.setHeader("Content-Type", "text/event-stream");
-    res.setHeader("Cache-Control", "no-cache");
-    res.setHeader("Connection", "keep-alive");
+    res.setHeader('Content-Type', 'text/event-stream');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('Connection', 'keep-alive');
 
     // Initial comment for some proxies.
     res.write(`: connected\n\n`);
@@ -79,7 +82,7 @@ export async function main(): Promise<void> {
   });
 
   // Basic health check.
-  app.get("/health", (_req: Request, res: Response) => {
+  app.get('/health', (_req: Request, res: Response) => {
     res.status(200).json({ ok: true });
   });
 
