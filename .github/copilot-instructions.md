@@ -14,6 +14,8 @@
 </tools>
 
 <instructions>
+- [git](../copilot/instructions/git.instructions.md)
+- [node](../copilot/instructions/node.instructions.md)
 - [typescript](../copilot/instructions/typescript.instructions.md)
 - [web-component](../copilot/instructions/web-component.instructions.md)
 - Use Typescript whenever possible.
