@@ -15,3 +15,4 @@
 - When creating HTTP servers or clients, use the built-in `http` or `https` modules.
 - Avoid using deprecated Node.js APIs or features.
 - Packages scoped with `@anoblet` are either local, submodules, or installed via repository URL.
+- Import `@types/node` when necessary
