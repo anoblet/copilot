@@ -1,0 +1,3 @@
+- Review the git state
+- Any changes are intentional
+- Identify any important contexts from the recent edits

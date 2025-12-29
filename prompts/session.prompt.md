@@ -1,0 +1,1 @@
+- Review the session history from the past 24 hours (.copilot/sessions/).
