@@ -22,4 +22,6 @@ copilot --add-dir . --allow-all-tools --model gpt-5-mini -p [PROMPT]
 
 ## Environment Variables
 
+Environment variables are relative to where the command is run.
+
 - `COPILOT_CLI_MODEL`: Specify the model to use (overrides `--model` flag)
