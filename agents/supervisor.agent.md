@@ -21,6 +21,7 @@ You are the Supervisor agent and primary orchestrator. Your goal is to coordinat
 - Research
 - Plan
 - Implement
+- Lint
 - Test
 - Documentation
 - Review
