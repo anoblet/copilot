@@ -1,22 +1,22 @@
 ## Instructions
 
-#file:./astro.instructions.md
-#file:./copilot.instructions.md
-#file:./css.instructions.md
-#file:./git-flow.instructions.md
-#file:./git.instructions.md
-#file:./inspiration.instructions.md
-#file:./node.instructions.md
-#file:./principles.instructions.md
-#file:./prompt.instructions.md
-#file:./record.instructions.md
-#file:./schema.instructions.md
-#file:./terminal.instructions.md
-#file:./test.instructions.md
-#file:./time.instructions.md
-#file:./typescript.instructions.md
-#file:./web-component.instructions.md
+- [astro](./astro.instructions.md)
+- [copilot](./copilot.instructions.md)
+- [css](./css.instructions.md)
+- [git](./git.instructions.md)
+- [git-flow](./git-flow.instructions.md)
+- [inspiration](./inspiration.instructions.md)
+- [node](./node.instructions.md)
+- [principles](./principles.instructions.md)
+- [prompt](./prompt.instructions.md)
+- [record](./record.instructions.md)
+- [schema](./schema.instructions.md)
+- [terminal](./terminal.instructions.md)
+- [test](./test.instructions.md)
+- [time](./time.instructions.md)
+- [typescript](./typescript.instructions.md)
+- [web-component](./web-component.instructions.md)
 
 ## Tools
 
-#file:./tools.instructions.md
+- [tools](./tools.instructions.md)
