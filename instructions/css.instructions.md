@@ -7,3 +7,5 @@
 - Use rem units for font sizes and spacing
 - Ensure responsive design principles are followed
 - Ensure WCAG accessibility standards are met
+- `globalStyles` are injected via the `Base` component and should be included in the `static styles` array.
+- Use utility classes directly in the `render` method's HTML templates.
