@@ -17,3 +17,7 @@ node packages/copilot/cli/src/index.ts -i 5 -p prompt.md
 ```bash
 copilot --add-dir . --allow-all-tools --model gpt-5-mini -p [PROMPT]
 ```
+
+## Environment Variables
+
+- `COPILOT_CLI_MODEL`: Specify the model to use (overrides `--model` flag)
