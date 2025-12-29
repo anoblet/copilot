@@ -1,6 +1,7 @@
 {
   "name": "link",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "engines": {
     "node": ">=24"

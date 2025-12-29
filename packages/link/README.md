@@ -14,11 +14,24 @@ pnpm install
 
 ## Usage
 
-Run the script with a configuration file as an argument.
+### Link
+
+Run the script with a configuration file as an argument to create symlinks.
 
 ```bash
 node copilot/packages/link/src/index.ts link.json
 ```
+
+### Toggle
+
+Run the script with a configuration file as an argument to toggle between symlinks and hard copies.
+
+```bash
+node copilot/packages/link/src/toggle.ts link.json
+```
+
+- **Symlink -> Hard Copy**: Useful for distribution or when symlinks are not supported.
+- **Hard Copy -> Symlink**: Useful for development to keep files in sync.
 
 ## Configuration
 
