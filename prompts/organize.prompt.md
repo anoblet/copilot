@@ -1,3 +1,7 @@
+---
+name: organize
+---
+
 - Analyze the entire project thoroughly.
 - Clean, refactor, and organize the code for improved readability and maintainability.
 - Remove any redundant or obsolete code.
