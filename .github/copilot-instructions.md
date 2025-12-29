@@ -14,6 +14,7 @@
 </tools>
 
 <instructions>
+- [css](../copilot/instructions/css.instructions.md)
 - [copilot](../copilot/instructions/copilot.instructions.md)
 - [git](../copilot/instructions/git.instructions.md)
 - [node](../copilot/instructions/node.instructions.md)
