@@ -14,6 +14,8 @@
 node packages/copilot/cli/src/index.ts -i 5 -p prompt.md
 ```
 
+This runs the copilot CLI with 5 iterations using the prompt located at `prompt.md`.
+
 ```bash
 copilot --add-dir . --allow-all-tools --model gpt-5-mini -p [PROMPT]
 ```
