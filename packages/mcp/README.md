@@ -2,7 +2,22 @@
 
 MCP server (stdio or HTTP) + terminal client that exposes a single MCP tool: `user_input`.
 
-When an agent calls `user_input`, the server forwards the prompt to a separately-run terminal client (via SSE). The terminal client shows the prompt, reads the user's response, and POSTs the response back to the server.
+## Features
+
+- [x] Exposes `user_input` tool for agent-user interaction
+- [x] Supports both stdio and HTTP server modes
+- [x] Includes a terminal client for handling user input
+- [x] Configurable timeouts for user input
+
+## Usage
+
+```bash
+# Start the MCP server (HTTP)
+pnpm --filter @copilot/mcp start
+
+# Run the terminal client
+pnpm --filter @copilot/mcp client
+```
 
 ## Quickstart
 

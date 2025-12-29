@@ -1,37 +1,23 @@
 # link
 
-A utility to create relative symlinks based on a JSON configuration file. Useful for linking local packages or configuration files across a monorepo.
+A utility to create relative symlinks based on a JSON configuration file.
 
-## Installation
+## Features
 
-**Node.js requirement:** Node **>= 24** (this package runs directly from `src/index.ts`).
-
-This package is typically used within the workspace.
-
-```bash
-pnpm install
-```
+- [x] Create relative symlinks from a JSON configuration file
+- [x] Toggle between symlinks and hard copies
+- [x] Support for nested directory structures
+- [x] Overwrite existing symlinks
 
 ## Usage
 
-### Link
-
-Run the script with a configuration file as an argument to create symlinks.
-
 ```bash
+# Create symlinks
 node copilot/packages/link/src/index.ts link.json
-```
 
-### Toggle
-
-Run the script with a configuration file as an argument to toggle between symlinks and hard copies.
-
-```bash
+# Toggle between symlinks and hard copies
 node copilot/packages/link/src/toggle.ts link.json
 ```
-
-- **Symlink -> Hard Copy**: Useful for distribution or when symlinks are not supported.
-- **Hard Copy -> Symlink**: Useful for development to keep files in sync.
 
 ## Configuration
 

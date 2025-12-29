@@ -333,6 +333,8 @@ copilot/
 │   ├── project.jsonl          # Project-specific context
 │   ├── prompt.jsonl           # Conversation history
 │   └── README.md              # Memory system documentation
+├── packages/                   # Custom packages
+│   └── cli/                   # @anoblet/copilot-cli
 ├── prompts/                    # Reusable task prompts
 │   ├── align.prompt.md
 │   ├── complexity.prompt.md
