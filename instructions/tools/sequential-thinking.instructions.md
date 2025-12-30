@@ -1,4 +1,8 @@
-# Sequential Thinking MCP Server Instructions
+# Sequential Thinking
+
+## Tools
+
+- #sequential-thinking
 
 - The model MUST always use the sequential thinking MCP server for all reasoning, planning, and problem-solving steps.
 - Sequential thinking must be applied before any major action, code generation, or decision-making process.
