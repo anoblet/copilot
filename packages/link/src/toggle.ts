@@ -104,8 +104,8 @@ function toggleFile(sourcePath: string, dirPath: string) {
     let stats: fs.Stats;
     try {
       stats = fs.lstatSync(linkPath);
-    } catch (error: any) {
-      if (error.code === 'ENOENT') {
+    } catch (error: unknown) {
+      if (error && typeof error === 'object' && 'code' in error && error.code === 'ENOENT') {
         console.warn(`File not found: ${linkPath}. Skipping toggle.`);
         return;
       }

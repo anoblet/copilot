@@ -43,9 +43,11 @@ function runLink(configPath: string, cwd: string) {
 function runLinkExpectFailure(configPath: string, cwd: string, expectedSubstring: string) {
   try {
     runLink(configPath, cwd);
-  } catch (err: any) {
-    const stderr = err?.stderr?.toString?.() ?? '';
-    const stdout = err?.stdout?.toString?.() ?? '';
+  } catch (err: unknown) {
+    const stderr =
+      (err && typeof err === 'object' && 'stderr' in err ? String(err.stderr) : '') || '';
+    const stdout =
+      (err && typeof err === 'object' && 'stdout' in err ? String(err.stdout) : '') || '';
     const combined = `${stdout}\n${stderr}`;
 
     if (!combined.includes(expectedSubstring)) {

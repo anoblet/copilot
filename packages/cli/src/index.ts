@@ -34,7 +34,7 @@ async function main() {
   let promptContent: string;
   try {
     promptContent = await fs.readFile(promptFile, 'utf-8');
-  } catch (error) {
+  } catch (_error) {
     console.error(`Error reading prompt file: ${promptFile}`);
     process.exit(1);
   }
@@ -63,10 +63,10 @@ async function main() {
     try {
       // We use stdio: 'inherit' to let the user see the output in real-time
       await execa('copilot', args, { stdio: 'inherit' });
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`Error in iteration ${i + 1}:`);
-      if (error.exitCode) {
-        console.error(`Exit code: ${error.exitCode}`);
+      if (error && typeof error === 'object' && 'exitCode' in error) {
+        console.error(`Exit code: ${(error as { exitCode: number }).exitCode}`);
       } else {
         console.error(error);
       }

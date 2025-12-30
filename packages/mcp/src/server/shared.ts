@@ -32,10 +32,10 @@ export function createMcpServer(options: {
       title: 'User Input',
       description:
         'Ask a human for input via a separately-run terminal client and return the response.',
-      inputSchema: UserInputInputSchema as any,
+      inputSchema: UserInputInputSchema,
       outputSchema: userInputOutputSchema,
-    } as any,
-    async (args: any) => {
+    },
+    async (args: unknown) => {
       const { prompt, timeoutMs: requestTimeoutMs } = args as {
         prompt: string;
         timeoutMs?: number;

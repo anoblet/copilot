@@ -1,4 +1,3 @@
-import type { IncomingMessage } from 'http';
 import type { Request, Response } from 'express';
 import express from 'express';
 
@@ -46,9 +45,9 @@ export async function main(): Promise<void> {
 
       await mcpServer.connect(transport);
       await transport.handleRequest(
-        req as unknown as any,
-        res as unknown as any,
-        (req as any).body,
+        req as unknown as Record<string, unknown>,
+        res as unknown as Record<string, unknown>,
+        req.body as Record<string, unknown>,
       );
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : String(err);
@@ -72,7 +71,7 @@ export async function main(): Promise<void> {
 
   // Terminal client: submit an answer.
   app.post(HUMAN_ROUTES.respond, (req: Request, res: Response) => {
-    const result = broker.resolveFromHttpBody((req as any).body);
+    const result = broker.resolveFromHttpBody(req.body as Record<string, unknown>);
     if (!result.ok) {
       res.status(result.status).json({ error: result.message });
       return;

@@ -54,7 +54,7 @@ export async function main(): Promise<void> {
 
   // Terminal client: submit an answer.
   app.post(HUMAN_ROUTES.respond, (req: Request, res: Response) => {
-    const result = broker.resolveFromHttpBody((req as any).body);
+    const result = broker.resolveFromHttpBody(req.body as Record<string, unknown>);
     if (!result.ok) {
       res.status(result.status).json({ error: result.message });
       return;
