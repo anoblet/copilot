@@ -8,6 +8,7 @@ A utility to create relative symlinks based on a JSON configuration file.
 - [x] Toggle between symlinks and hard copies
 - [x] Support for nested directory structures
 - [x] Overwrite existing symlinks
+- [x] Force hard copy creation from config source
 
 ## Usage
 
@@ -17,6 +18,9 @@ node copilot/packages/link/src/index.ts link.json
 
 # Toggle between symlinks and hard copies
 node copilot/packages/link/src/toggle.ts link.json
+
+# Force conversion from symlink to hard copy using the config source
+node copilot/packages/link/src/toggle.ts link.json -f
 ```
 
 ## Configuration
