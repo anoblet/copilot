@@ -1,11 +1,11 @@
-import { stdin as input, stdout as output } from "node:process";
-import { createInterface } from "node:readline/promises";
+import { stdin as input, stdout as output } from 'node:process';
+import { createInterface } from 'node:readline/promises';
 
 import {
   HUMAN_EVENT_USER_INPUT,
   HUMAN_ROUTES,
   HumanPromptSchema,
-} from "../shared/humanProtocol.ts";
+} from '../shared/humanProtocol.ts';
 
 /**
  * Terminal client for `@copilot/mcp`.
@@ -29,9 +29,7 @@ export async function main(): Promise<void> {
     process.exit(0);
   }
 
-  const baseUrl = new URL(
-    args.url ?? process.env.MCP_SERVER_URL ?? "http://localhost:4300"
-  );
+  const baseUrl = new URL(args.url ?? process.env.MCP_SERVER_URL ?? 'http://localhost:4300');
   const streamUrl = new URL(HUMAN_ROUTES.stream, baseUrl);
   const respondUrl = new URL(HUMAN_ROUTES.respond, baseUrl);
 
@@ -50,20 +48,18 @@ export async function main(): Promise<void> {
         if (!item) continue;
 
         output.write(`\n(Agent): ${item.prompt}\n`);
-        const value = await rl.question("(User): ");
+        const value = await rl.question('(User): ');
 
         const res = await fetch(respondUrl, {
-          method: "POST",
-          headers: { "content-type": "application/json" },
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
           body: JSON.stringify({ requestId: item.requestId, value }),
         });
 
         if (!res.ok) {
-          const text = await res.text().catch(() => "");
+          const text = await res.text().catch(() => '');
           output.write(
-            `\nFailed to send response (HTTP ${res.status}): ${
-              text || res.statusText
-            }\n`
+            `\nFailed to send response (HTTP ${res.status}): ${text || res.statusText}\n`,
           );
         }
       }
@@ -78,22 +74,20 @@ export async function main(): Promise<void> {
       output.write(`Connecting to ${streamUrl.toString()} ...\n`);
 
       const res = await fetch(streamUrl, {
-        method: "GET",
+        method: 'GET',
         headers: {
-          Accept: "text/event-stream",
+          Accept: 'text/event-stream',
         },
       });
 
       if (!res.ok || !res.body) {
-        const text = await res.text().catch(() => "");
+        const text = await res.text().catch(() => '');
         throw new Error(
-          `Failed to connect to stream (HTTP ${res.status}): ${
-            text || res.statusText
-          }`
+          `Failed to connect to stream (HTTP ${res.status}): ${text || res.statusText}`,
         );
       }
 
-      output.write("Connected. Waiting for prompts...\n");
+      output.write('Connected. Waiting for prompts...\n');
 
       for await (const event of parseSse(res.body)) {
         if (event.event !== HUMAN_EVENT_USER_INPUT) {
@@ -109,7 +103,7 @@ export async function main(): Promise<void> {
         void processQueue();
       }
 
-      output.write("\nDisconnected from server stream. Reconnecting...\n");
+      output.write('\nDisconnected from server stream. Reconnecting...\n');
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : String(err);
       output.write(`\nConnection error: ${message}\n`);
@@ -125,18 +119,18 @@ export async function main(): Promise<void> {
 function printHelp(): void {
   output.write(
     [
-      "@copilot/mcp terminal client",
-      "",
-      "Usage:",
-      "  pnpm --filter @copilot/mcp client",
-      "",
-      "Options:",
-      "  --url <baseUrl>   MCP server base URL (default: http://localhost:4300)",
-      "  --help            Show help",
-      "",
-      "Environment:",
-      "  MCP_SERVER_URL    Same as --url",
-    ].join("\n") + "\n"
+      '@copilot/mcp terminal client',
+      '',
+      'Usage:',
+      '  pnpm --filter @copilot/mcp client',
+      '',
+      'Options:',
+      '  --url <baseUrl>   MCP server base URL (default: http://localhost:4300)',
+      '  --help            Show help',
+      '',
+      'Environment:',
+      '  MCP_SERVER_URL    Same as --url',
+    ].join('\n') + '\n',
   );
 }
 
@@ -152,24 +146,24 @@ function parseArgs(argv: string[]): { url?: string; help: boolean } {
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
 
-    if (arg === "--") {
+    if (arg === '--') {
       // pnpm may inject this argument; treat it as end-of-options.
       continue;
     }
 
-    if (arg === "--help" || arg === "-h") {
+    if (arg === '--help' || arg === '-h') {
       help = true;
       continue;
     }
 
-    if (arg === "--url") {
+    if (arg === '--url') {
       url = argv[i + 1];
       i++;
       continue;
     }
 
-    if (arg.startsWith("--url=")) {
-      url = arg.slice("--url=".length);
+    if (arg.startsWith('--url=')) {
+      url = arg.slice('--url='.length);
       continue;
     }
 
@@ -185,14 +179,14 @@ function parseArgs(argv: string[]): { url?: string; help: boolean } {
  * Only the `event:` and `data:` fields are recognized; other SSE fields are ignored.
  */
 async function* parseSse(
-  stream: ReadableStream<Uint8Array>
+  stream: ReadableStream<Uint8Array>,
 ): AsyncGenerator<{ event: string | undefined; json: unknown }> {
   const decoder = new TextDecoder();
   const reader = stream.getReader();
 
-  let buffer = "";
+  let buffer = '';
   let event: string | undefined;
-  let data = "";
+  let data = '';
 
   const flush = () => {
     if (!data) {
@@ -200,8 +194,8 @@ async function* parseSse(
       return null;
     }
 
-    const raw = data.endsWith("\n") ? data.slice(0, -1) : data;
-    data = "";
+    const raw = data.endsWith('\n') ? data.slice(0, -1) : data;
+    data = '';
 
     try {
       const json = JSON.parse(raw);
@@ -221,29 +215,29 @@ async function* parseSse(
     buffer += decoder.decode(value, { stream: true });
 
     let idx: number;
-    while ((idx = buffer.indexOf("\n")) !== -1) {
+    while ((idx = buffer.indexOf('\n')) !== -1) {
       const line = buffer.slice(0, idx);
       buffer = buffer.slice(idx + 1);
 
-      const trimmed = line.endsWith("\r") ? line.slice(0, -1) : line;
+      const trimmed = line.endsWith('\r') ? line.slice(0, -1) : line;
 
-      if (trimmed === "") {
+      if (trimmed === '') {
         const evt = flush();
         if (evt) yield evt;
         continue;
       }
 
-      if (trimmed.startsWith(":")) {
+      if (trimmed.startsWith(':')) {
         continue; // comment
       }
 
-      if (trimmed.startsWith("event:")) {
-        event = trimmed.slice("event:".length).trim();
+      if (trimmed.startsWith('event:')) {
+        event = trimmed.slice('event:'.length).trim();
         continue;
       }
 
-      if (trimmed.startsWith("data:")) {
-        data += trimmed.slice("data:".length).trimStart() + "\n";
+      if (trimmed.startsWith('data:')) {
+        data += trimmed.slice('data:'.length).trimStart() + '\n';
         continue;
       }
 

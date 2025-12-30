@@ -1,16 +1,16 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 /**
  * Server-Sent Events (SSE) event name for a queued `user_input` request.
  */
-export const HUMAN_EVENT_USER_INPUT = "user_input" as const;
+export const HUMAN_EVENT_USER_INPUT = 'user_input' as const;
 
 /**
  * HTTP routes used by the terminal client.
  */
 export const HUMAN_ROUTES = {
-  stream: "/human/stream",
-  respond: "/human/respond",
+  stream: '/human/stream',
+  respond: '/human/respond',
 } as const;
 
 /**

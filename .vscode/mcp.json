@@ -22,10 +22,7 @@
   "servers": {
     "alphavantage": {
       "command": "uvx",
-      "args": [
-        "av-mcp",
-        "${input:alpha_vantage_api_key}"
-      ]
+      "args": ["av-mcp", "${input:alpha_vantage_api_key}"]
     },
     "chroma": {
       "command": "uvx",
@@ -39,16 +36,11 @@
     },
     "chrome-devtools": {
       "command": "npx",
-      "args": [
-        "-y",
-        "chrome-devtools-mcp@latest"
-      ]
+      "args": ["-y", "chrome-devtools-mcp@latest"]
     },
     "copilot-mcp": {
       "command": "node",
-      "args": [
-        "${workspaceFolder}/copilot/packages/mcp/src/server/stdio.ts"
-      ],
+      "args": ["${workspaceFolder}/copilot/packages/mcp/src/server/stdio.ts"],
       "env": {
         "MCP_PORT": "4300",
         "MCP_USER_INPUT_TIMEOUT_MS": "0"
@@ -70,38 +62,26 @@
     },
     "markitdown": {
       "command": "uvx",
-      "args": [
-        "markitdown-mcp"
-      ]
+      "args": ["markitdown-mcp"]
     },
     "playwright": {
       "command": "npx",
-      "args": [
-        "@playwright/mcp@latest"
-      ]
+      "args": ["@playwright/mcp@latest"]
     },
     "sequential-thinking": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-sequential-thinking"
-      ]
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
     },
     "tavily": {
       "command": "npx",
-      "args": [
-        "-y",
-        "tavily-mcp@latest"
-      ],
+      "args": ["-y", "tavily-mcp@latest"],
       "env": {
         "TAVILY_API_KEY": "${input:tavily_api_key}"
       }
     },
     "time": {
       "command": "uvx",
-      "args": [
-        "mcp-server-time"
-      ]
+      "args": ["mcp-server-time"]
     }
   }
 }

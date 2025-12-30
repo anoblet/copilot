@@ -1,9 +1,9 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 /**
  * MCP tool name exposed by this package.
  */
-export const USER_INPUT_TOOL_NAME = "user_input" as const;
+export const USER_INPUT_TOOL_NAME = 'user_input' as const;
 
 /**
  * Zod schema shape for the `user_input` tool input.

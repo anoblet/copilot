@@ -1,12 +1,12 @@
-import type { Response } from "express";
-import { randomUUID } from "node:crypto";
+import type { Response } from 'express';
+import { randomUUID } from 'node:crypto';
 
 import {
   HUMAN_EVENT_USER_INPUT,
   HumanPromptSchema,
   HumanResponseSchema,
   type HumanPrompt,
-} from "../shared/humanProtocol.ts";
+} from '../shared/humanProtocol.ts';
 
 /**
  * Tracks in-flight `user_input` requests and connected terminal clients.
@@ -46,7 +46,7 @@ export class UserInputBroker {
       });
     }
 
-    res.on("close", () => {
+    res.on('close', () => {
       this.sseClients.delete(res);
     });
   }
@@ -66,9 +66,7 @@ export class UserInputBroker {
           ? setTimeout(() => {
               this.pending.delete(requestId);
               reject(
-                new Error(
-                  `Timed out waiting for terminal input after ${options.timeoutMs}ms`
-                )
+                new Error(`Timed out waiting for terminal input after ${options.timeoutMs}ms`),
               );
             }, options.timeoutMs)
           : undefined;
@@ -91,16 +89,14 @@ export class UserInputBroker {
    * Attempts to resolve a pending prompt.
    */
   resolveFromHttpBody(
-    body: unknown
-  ):
-    | { ok: true; requestId: string }
-    | { ok: false; status: number; message: string } {
+    body: unknown,
+  ): { ok: true; requestId: string } | { ok: false; status: number; message: string } {
     const parsed = HumanResponseSchema.safeParse(body);
     if (!parsed.success) {
       return {
         ok: false,
         status: 400,
-        message: "Invalid body; expected { requestId: string, value: string }",
+        message: 'Invalid body; expected { requestId: string, value: string }',
       };
     }
 
@@ -110,7 +106,7 @@ export class UserInputBroker {
       return {
         ok: false,
         status: 404,
-        message: "No pending request with that requestId",
+        message: 'No pending request with that requestId',
       };
     }
 
