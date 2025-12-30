@@ -25,12 +25,7 @@ try {
   process.exit(1);
 }
 
-function processConfig(
-  obj: unknown,
-  currentDir: string,
-  configPath: string[],
-  force: boolean,
-) {
+function processConfig(obj: unknown, currentDir: string, configPath: string[], force: boolean) {
   if (!isPlainObject(obj)) {
     throw new Error(
       `Invalid config at ${formatConfigPath(
@@ -112,12 +107,7 @@ function toggleFile(sourcePath: string, dirPath: string, force: boolean) {
     try {
       stats = fs.lstatSync(linkPath);
     } catch (error: unknown) {
-      if (
-        error &&
-        typeof error === 'object' &&
-        'code' in error &&
-        error.code === 'ENOENT'
-      ) {
+      if (error && typeof error === 'object' && 'code' in error && error.code === 'ENOENT') {
         console.warn(`File not found: ${linkPath}. Skipping toggle.`);
         return;
       }
@@ -130,9 +120,7 @@ function toggleFile(sourcePath: string, dirPath: string, force: boolean) {
         const absoluteSource = path.resolve(dirPath, sourcePath);
         fs.unlinkSync(linkPath);
         fs.copyFileSync(absoluteSource, linkPath);
-        console.log(
-          `Converted symlink to hard copy (forced from config): ${linkPath}`,
-        );
+        console.log(`Converted symlink to hard copy (forced from config): ${linkPath}`);
       } else {
         const target = fs.readlinkSync(linkPath);
         // The target might be relative. We need to resolve it relative to the link's directory.
