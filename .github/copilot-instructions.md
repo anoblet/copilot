@@ -5,11 +5,9 @@
 
 <tools>
 - [agent](../copilot/instructions/tools/agent.instructions.md)
-- [chroma](../copilot/instructions/tools/chroma.instructions.md)
 - [markitdown](../copilot/instructions/tools/markitdown.instructions.md)
 - [memory](../copilot/instructions/tools/memory.instructions.md)
 - [principles](../copilot/instructions/principles.instructions.md)
-- [sequential-thinking](../copilot/instructions/tools/sequential-thinking.instructions.md)
 - [time](../copilot/instructions/time.instructions.md)
 </tools>
 
