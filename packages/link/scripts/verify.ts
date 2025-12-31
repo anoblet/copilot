@@ -32,8 +32,8 @@ function assertSymlink(filePath: string, expectedTarget: string) {
 }
 
 function runLink(configPath: string, cwd: string) {
-  // Use tsx to run the CLI
-  execFileSync('npx', ['tsx', cliPath, configPath], {
+  // Use node to run the CLI
+  execFileSync('node', [cliPath, configPath], {
     cwd,
     stdio: 'pipe',
     env: process.env,

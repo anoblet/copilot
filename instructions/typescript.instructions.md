@@ -9,3 +9,4 @@
 - Use template literals for string concatenation instead of the `+` operator
 - Use optional chaining and nullish coalescing operators for safer property access and default values
 - Adhere to SOLID principles in class and module design
+- Do not use `npx tsx`. Use `node src/index.ts`.
