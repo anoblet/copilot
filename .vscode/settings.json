@@ -15,5 +15,6 @@
   "chat.viewWelcome.enabled": false,
   "chat.viewSessions.enabled": false,
   "chat.tools.terminal.autoReplyToPrompts": true,
-  "git.postCommitCommand": "sync"
+  "git.postCommitCommand": "sync",
+  "github.copilot.chat.cli.customAgents.enabled": true
 }
