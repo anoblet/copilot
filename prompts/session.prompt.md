@@ -1,1 +1,3 @@
-- Review the session history from the past 24 hours (.copilot/sessions/).
+- Review the session history (.copilot/sessions/).
+- Identify specifications for each session.
+- Generate (.copilot/sessions/sessions.md)
