@@ -45,4 +45,5 @@ node packages/package-name/index.ts
 <specifications>
 - Explains what the package does or doesn't do.
 - Is a list of features and constraints.
+- Comprehensively describes the logical decisions made in the code.
 </specifications>
