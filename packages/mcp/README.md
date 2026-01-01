@@ -110,18 +110,18 @@ Note: this `type: "http"` entry tells VS Code how to connect; it does not start 
 
 ### API Endpoints
 
-| Method | Path | Description |
-|--------|------|-------------|
-| GET/POST | `/mcp` | MCP endpoint (Streamable HTTP). |
-| GET | `/human/stream` | Terminal bridge stream (SSE). Event name: `user_input`. |
-| POST | `/human/respond` | Terminal bridge response. |
-| GET | `/health` | Health check. |
+| Method   | Path             | Description                                             |
+| -------- | ---------------- | ------------------------------------------------------- |
+| GET/POST | `/mcp`           | MCP endpoint (Streamable HTTP).                         |
+| GET      | `/human/stream`  | Terminal bridge stream (SSE). Event name: `user_input`. |
+| POST     | `/human/respond` | Terminal bridge response.                               |
+| GET      | `/health`        | Health check.                                           |
 
 ### Environment Variables
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `MCP_PORT` / `PORT` | HTTP listen port | `4300` |
+| Variable                    | Description                            | Default               |
+| --------------------------- | -------------------------------------- | --------------------- |
+| `MCP_PORT` / `PORT`         | HTTP listen port                       | `4300`                |
 | `MCP_USER_INPUT_TIMEOUT_MS` | Default timeout for `user_input` calls | `600000` (10 minutes) |
 
 ### Timeouts
