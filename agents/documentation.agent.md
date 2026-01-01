@@ -25,16 +25,24 @@ You are a senior software engineer with a focus on documentation. Your role is t
 
 A brief description of the package.
 
-## Features
-
-- [x] Feature 1
-- [x] Feature 2
-- [ ] Feature 3
-
 ## Usage
 
 ```
 node packages/package-name/index.ts
 ```
 
+## Specifications
+
+- [x] Specification 1
+  - [x] Specification 1-1
+  - [x] Specification 1-2
+- [x] Specification 2
+  - [x] Specification 2-1
+  - [x] Specification 2-2
+
 </format>
+
+<specifications>
+- Explains what the package does or doesn't do.
+- Is a list of features and constraints.
+</specifications>

@@ -12,14 +12,14 @@ A wrapper around copilot-cli to run multiple iterations.
 ## Usage
 
 ```bash
-# Run with default settings (3 iterations)
-copilot-wrapper -p path/to/prompt.md
+# Run with default settings (1 iteration)
+copilot-cli -p path/to/prompt.md
 
 # Run with specific agent and model
-copilot-wrapper -p path/to/prompt.md -a @agent -m gpt-4
+copilot-cli -p path/to/prompt.md -a my-agent -m gpt-4
 
 # Run with custom number of iterations
-copilot-wrapper -p path/to/prompt.md -i 5
+copilot-cli -p path/to/prompt.md -i 5
 ```
 
 ### Options
