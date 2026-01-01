@@ -22,6 +22,12 @@ copilot-cli -p path/to/prompt.md -a my-agent -m gpt-4
 copilot-cli -p path/to/prompt.md -i 5
 ```
 
+## Specifications
+
+### Commands
+
+- `copilot`: Main command.
+
 ### Options
 
 - `-i, --iterations <number>`: Number of iterations to run (default: 3)

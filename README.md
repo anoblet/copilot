@@ -154,6 +154,19 @@ graph TB
     style MCP fill:#f39c12,stroke:#c87f0a,color:#fff
 ```
 
+## Specifications
+
+### Architecture
+Agent-based system with Memory and MCP.
+
+### Directory Structure
+- `agents/`: Custom chat agents.
+- `instructions/`: Comprehensive development instructions.
+- `packages/`: Custom packages.
+
+### Scripts
+- `test`: Runs tests.
+
 ### Request Flow Sequence
 
 ```mermaid

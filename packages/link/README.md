@@ -23,7 +23,14 @@ node copilot/packages/link/src/toggle.ts link.json
 node copilot/packages/link/src/toggle.ts link.json -f
 ```
 
-## Configuration
+## Specifications
+
+### Commands
+
+- `node src/index.ts`: Create symlinks.
+- `node src/toggle.ts`: Toggle between symlinks and hard copies.
+
+### Configuration
 
 The configuration file (e.g., `link.json`) defines the directory structure and the files to link.
 

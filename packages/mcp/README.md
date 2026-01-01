@@ -106,12 +106,23 @@ Add this server entry to your VS Code MCP config (in this repo, `.vscode/mcp.jso
 
 Note: this `type: "http"` entry tells VS Code how to connect; it does not start the server process for you. Run the server (`pnpm --filter @copilot/mcp start`) and terminal client (`pnpm --filter @copilot/mcp client`) as shown in the Quickstart.
 
-## Configuration
+## Specifications
 
-### Server environment variables
+### API Endpoints
 
-- `MCP_PORT` / `PORT`: HTTP listen port (default: `4300`)
-- `MCP_USER_INPUT_TIMEOUT_MS`: default timeout for `user_input` calls (default: `600000` / 10 minutes). Set to `0` for no server-side timeout.
+| Method | Path | Description |
+|--------|------|-------------|
+| GET/POST | `/mcp` | MCP endpoint (Streamable HTTP). |
+| GET | `/human/stream` | Terminal bridge stream (SSE). Event name: `user_input`. |
+| POST | `/human/respond` | Terminal bridge response. |
+| GET | `/health` | Health check. |
+
+### Environment Variables
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `MCP_PORT` / `PORT` | HTTP listen port | `4300` |
+| `MCP_USER_INPUT_TIMEOUT_MS` | Default timeout for `user_input` calls | `600000` (10 minutes) |
 
 ### Timeouts
 
@@ -131,14 +142,6 @@ Note: This only controls the server-side wait for a human response; some clients
 - `MCP_SERVER_URL`: same as `--url`
 
 Note: VS Code points at the MCP endpoint `http://localhost:4300/mcp`, while the terminal client uses the base URL `http://localhost:4300`.
-
-## Endpoints / protocol
-
-- MCP endpoint (Streamable HTTP): `GET|POST http://localhost:<port>/mcp`
-- Terminal bridge stream (SSE): `GET http://localhost:<port>/human/stream`
-  - SSE event name: `user_input`
-- Terminal bridge response: `POST http://localhost:<port>/human/respond`
-- Health check: `GET http://localhost:<port>/health`
 
 ## Troubleshooting
 
