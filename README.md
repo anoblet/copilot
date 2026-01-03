@@ -328,21 +328,24 @@ copilot/
 │   ├── mcp.json               # MCP server configurations
 │   └── settings.json          # Chat mode and prompt locations
 ├── agents/                     # Custom chat agents
-│   └── plan.agent.md          # Planning agent with implementation handoff
-├── chatmodes/                  # AI model-specific configurations
-│   ├── claude-sonnet-4.chatmode.md
-│   ├── gpt-5-mini.chatmode.md
-│   └── gpt-5.chatmode.md
+│   ├── alpha-vantage.agent.md
+│   ├── documentation.agent.md
+│   ├── implement.agent.md
+│   ├── lint.agent.md
+│   ├── mermaid.agent.md
+│   ├── next.agent.md
+│   ├── plan.agent.md
+│   ├── research.agent.md
+│   ├── review.agent.md
+│   ├── summary.agent.md
+│   ├── supervisor.agent.md
+│   └── test.agent.md
 ├── genaisrc/                   # GenAI source code (empty, reserved)
 ├── instructions/               # Comprehensive development instructions
 │   ├── index.instructions.md   # Main instruction index
 │   ├── git-flow.instructions.md
 │   ├── principles.instructions.md
 │   ├── tools/                  # Tool-specific instructions
-│   │   ├── chroma.instructions.md
-│   │   ├── memory.instructions.md
-│   │   ├── sequential-thinking.instructions.md
-│   │   └── serena.instructions.md
 │   └── memory/                 # Memory-specific instructions
 ├── memory/                     # Persistent memory storage
 │   ├── user.jsonl             # User preferences and personal info
@@ -350,7 +353,9 @@ copilot/
 │   ├── prompt.jsonl           # Conversation history
 │   └── README.md              # Memory system documentation
 ├── packages/                   # Custom packages
-│   └── cli/                   # @anoblet/copilot-cli
+│   ├── cli/                   # @anoblet/copilot-cli
+│   ├── link/                  # Link utility
+│   └── mcp/                   # MCP server implementation
 ├── prompts/                    # Reusable task prompts
 │   ├── align.prompt.md
 │   ├── complexity.prompt.md
