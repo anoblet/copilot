@@ -537,6 +537,10 @@ This framework enforces the following principles through instructions:
 
 ---
 
+## Development
+
+See the [Contributing](#-contributing) section for details on how to develop and extend this framework.
+
 ## 🌿 Git Flow Workflow
 
 The project follows the [Git Flow](instructions/git-flow.instructions.md) branching model:

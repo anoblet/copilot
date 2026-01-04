@@ -1,12 +1,12 @@
 {
   "name": "@anoblet/copilot",
   "version": "1.0.0",
-  "description": "",
+  "description": "A comprehensive GitHub Copilot enhancement framework.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Andrew Noblet",
   "license": "ISC",
   "packageManager": "pnpm@10.22.0"
 }
