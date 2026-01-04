@@ -1,3 +1,5 @@
+# Web Component Instructions
+
 - Use Lit
 - [decorators](https://lit.dev/docs/components/decorators/)
 - Each component should be a single file: `index.ts`.
@@ -10,11 +12,32 @@
 - Do not use JavaScript
 - Use @lit/context for state management
 - Use @lit/task for async operations
-- Each component should have it's own folder with three files:
+- Each component should have its own folder with three files:
   - `index.ts`: The main component file.
   - `index.html.ts`: The HTML template.
   - `index.css.ts`: The CSS styles.
 - Import the HTML and CSS files into the main component file.
+
+## Routing
+
+- Use `@vaadin/router` for client-side routing.
+- Define routes centrally or within a shell component.
+- See [Vaadin Instructions](vaadin.instructions.md) for detailed routing patterns.
+
+## Architecture & State Management
+
+### Model Pattern
+
+For complex business logic and data handling, use the **Model Pattern**.
+
+- Create dedicated `Model` classes (e.g., `CustomerModel`, `OrderModel`) to encapsulate API interactions, data parsing, and business rules.
+- Models should be framework-agnostic where possible, or loosely coupled to the UI.
+- This pattern complements `@lit/task` and `@lit/context`. Use Models for shared/complex data entities, and Tasks for component-specific async operations.
+
+### Base Classes
+
+- Use specialized Base Classes (e.g., `ViewElement` extending `BaseElement`) for shared functionality across similar components.
+- Common use cases include handling loading states, error boundaries, or standard layout wrappers for views.
 
 ## Examples
 

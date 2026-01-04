@@ -1,4 +1,4 @@
-## Instructions
+# Instructions
 
 - [astro](./astro.instructions.md)
 - [copilot](./copilot.instructions.md)
@@ -15,6 +15,7 @@
 - [test](./test.instructions.md)
 - [time](./time.instructions.md)
 - [typescript](./typescript.instructions.md)
+- [vaadin](./vaadin.instructions.md)
 - [web-component](./web-component.instructions.md)
 
 ## Tools
