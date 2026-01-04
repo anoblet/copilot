@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import readline from 'readline';
 
 const SESSION_DATA_PATH =
   process.env.COPILOT_SESSION_DATA || path.join(process.cwd(), '.copilot/sessions');
@@ -14,12 +15,26 @@ function getSessionDirectories(): string[] {
     .filter((fullPath) => fs.statSync(fullPath).isDirectory());
 }
 
-function purge(iterations?: number) {
+async function confirm(message: string): Promise<boolean> {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  return new Promise((resolve) => {
+    rl.question(message, (answer) => {
+      rl.close();
+      resolve(answer.toLowerCase() === 'y' || answer.toLowerCase() === 'yes');
+    });
+  });
+}
+
+async function purge(iterations?: number, autoConfirm: boolean = false) {
   const sessions = getSessionDirectories();
 
-  // Sort by modification time, most recent first
+  // Sort by modification time, oldest first (cleanup old sessions)
   sessions.sort((a, b) => {
-    return fs.statSync(b).mtime.getTime() - fs.statSync(a).mtime.getTime();
+    return fs.statSync(a).mtime.getTime() - fs.statSync(b).mtime.getTime();
   });
 
   const toDelete = iterations === undefined ? sessions : sessions.slice(0, iterations);
@@ -27,6 +42,16 @@ function purge(iterations?: number) {
   if (toDelete.length === 0) {
     console.log('No sessions to purge.');
     return;
+  }
+
+  if (!autoConfirm) {
+    const confirmed = await confirm(
+      `Are you sure you want to delete ${toDelete.length} sessions? (y/N) `,
+    );
+    if (!confirmed) {
+      console.log('Aborted.');
+      return;
+    }
   }
 
   console.log(`Purging ${toDelete.length} sessions...`);
@@ -37,7 +62,7 @@ function purge(iterations?: number) {
   console.log('Done.');
 }
 
-function main() {
+async function main() {
   const args = process.argv.slice(2);
   const command = args[0];
 
@@ -52,9 +77,13 @@ function main() {
       iterations = parseInt(args[iterIndex + 1], 10);
     }
 
-    purge(iterations);
+    const autoConfirm = args.includes('-y') || args.includes('--yes');
+
+    await purge(iterations, autoConfirm);
   } else {
-    console.log('Usage: node copilot/packages/session/src/index.ts purge [-i <iterations>]');
+    console.log(
+      'Usage: node copilot/packages/session/src/index.ts purge [-i <iterations>] [-y|--yes]',
+    );
   }
 }
 
