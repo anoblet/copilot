@@ -1,0 +1,1 @@
+- Use #chrome-devtools for every instruction that requires debugging in the browser
