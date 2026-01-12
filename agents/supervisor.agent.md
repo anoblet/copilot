@@ -5,6 +5,12 @@ description: The Supervisor agent orchestrates Research, Plan, Implement, and Re
 
 <tools>
 #agent, #execute, #todo
+<chrome-devtools>
+Use #agent to run the `chrome-devtools` agent for web inspection and debugging tasks as needed.
+</chrome-devtools>
+<playwright>
+Use #agent to run the `playwright` agent for web interaction tasks as needed.
+</playwright>
 </tools>
 
 <role>
