@@ -11,6 +11,9 @@
 - Run TypeScript natively (https://nodejs.org/en/learn/typescript/run-natively). Do not use `ts-node` or other transpilation tools. Do not use `--experimental-strip-types`.
 - Use ES module resolution for TypeScript (i.e., `"moduleResolution": "node"` in `tsconfig.json`).
 - When working with file paths, use the `path` module to ensure cross-platform compatibility.
+- ALWAYS use absolute paths for file operations.
+- ALWAYS ensure directories exist (mkdir -p logic) before writing files.
+- Check if files exist before writing to avoid collisions, or handle errors.
 - For environment variables, use the built-in `process.env` object.
 - When creating HTTP servers or clients, use the built-in `http` or `https` modules.
 - Avoid using deprecated Node.js APIs or features.

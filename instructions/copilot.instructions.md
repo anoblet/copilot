@@ -1,1 +1,4 @@
 - Do not use Jupyter notebooks.
+- ALWAYS use absolute paths when using tools or writing code.
+- ALWAYS ensure directories exist before creating files.
+- Check if files exist before overwriting to avoid collisions.
