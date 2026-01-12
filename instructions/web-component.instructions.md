@@ -2,7 +2,6 @@
 
 - Use Lit
 - [decorators](https://lit.dev/docs/components/decorators/)
-- Each component should be a single file: `index.ts`.
 - Extend the `Base` class from `@components/base`.
 - Use TypeScript decorators.
 - Use the `accessor` keyword for `@property` and `@state`.
