@@ -12,3 +12,5 @@ description: Use Chrome DevTools to thoroughly test and diagnose any issues with
 - Implement fixes and improvements based on feedback
 - Ensure the application works as expected
 - Diagnose any errors or warnings from the browser console
+- Take screenshots and identify areas for visual improvement
+- Focus on user experience and accessibility
