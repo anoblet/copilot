@@ -164,10 +164,12 @@ function createSymlink(sourcePath: string, linkPath: string, force: boolean) {
         fs.unlinkSync(linkPath);
       } else if (stats.isFile()) {
         if (force) {
-            fs.unlinkSync(linkPath);
+          fs.unlinkSync(linkPath);
         } else {
-            console.warn(`Skipping ${linkPath}: File exists and is not a symlink. Use -f to overwrite.`);
-            return;
+          console.warn(
+            `Skipping ${linkPath}: File exists and is not a symlink. Use -f to overwrite.`,
+          );
+          return;
         }
       } else {
         // Directory or other?
@@ -184,46 +186,46 @@ function createSymlink(sourcePath: string, linkPath: string, force: boolean) {
 }
 
 function createHardCopy(sourcePath: string, linkPath: string, dirPath: string, force: boolean) {
+  try {
+    let stats: fs.Stats | undefined;
     try {
-        let stats: fs.Stats | undefined;
-        try {
-            stats = fs.lstatSync(linkPath);
-        } catch (error: any) {
-            if (error.code !== 'ENOENT') throw error;
-        }
-
-        if (stats) {
-            if (stats.isSymbolicLink()) {
-                // Convert symlink to hard copy
-                const target = fs.readlinkSync(linkPath);
-                // Resolve target relative to dirPath (location of symlink)
-                const absoluteTarget = path.resolve(dirPath, target);
-                
-                fs.unlinkSync(linkPath);
-                fs.copyFileSync(absoluteTarget, linkPath);
-                console.log(`Converted symlink to hard copy: ${linkPath}`);
-            } else if (stats.isFile()) {
-               if (force) {
-                   // Re-copy from source?
-                   const absoluteSource = path.resolve(dirPath, sourcePath);
-                    fs.copyFileSync(absoluteSource, linkPath);
-                    console.log(`Refreshed hard copy: ${linkPath}`);
-               }
-               // Else already a file, do nothing
-            }
-        } else {
-             // Does not exist, create hard copy from source
-             const absoluteSource = path.resolve(dirPath, sourcePath);
-             try {
-                fs.copyFileSync(absoluteSource, linkPath);
-                console.log(`Created hard copy: ${linkPath}`);
-             } catch(e) {
-                 console.error(`Failed to copy source ${absoluteSource} to ${linkPath}:`, e);
-             }
-        }
-    } catch(err) {
-        console.error(`Failed to disable link ${linkPath}:`, err);
+      stats = fs.lstatSync(linkPath);
+    } catch (error: any) {
+      if (error.code !== 'ENOENT') throw error;
     }
+
+    if (stats) {
+      if (stats.isSymbolicLink()) {
+        // Convert symlink to hard copy
+        const target = fs.readlinkSync(linkPath);
+        // Resolve target relative to dirPath (location of symlink)
+        const absoluteTarget = path.resolve(dirPath, target);
+
+        fs.unlinkSync(linkPath);
+        fs.copyFileSync(absoluteTarget, linkPath);
+        console.log(`Converted symlink to hard copy: ${linkPath}`);
+      } else if (stats.isFile()) {
+        if (force) {
+          // Re-copy from source?
+          const absoluteSource = path.resolve(dirPath, sourcePath);
+          fs.copyFileSync(absoluteSource, linkPath);
+          console.log(`Refreshed hard copy: ${linkPath}`);
+        }
+        // Else already a file, do nothing
+      }
+    } else {
+      // Does not exist, create hard copy from source
+      const absoluteSource = path.resolve(dirPath, sourcePath);
+      try {
+        fs.copyFileSync(absoluteSource, linkPath);
+        console.log(`Created hard copy: ${linkPath}`);
+      } catch (e) {
+        console.error(`Failed to copy source ${absoluteSource} to ${linkPath}:`, e);
+      }
+    }
+  } catch (err) {
+    console.error(`Failed to disable link ${linkPath}:`, err);
+  }
 }
 
 function toggleFile(sourcePath: string, linkPath: string, dirPath: string, force: boolean) {
@@ -232,7 +234,12 @@ function toggleFile(sourcePath: string, linkPath: string, dirPath: string, force
     try {
       stats = fs.lstatSync(linkPath);
     } catch (error: unknown) {
-      if (error && typeof error === 'object' && 'code' in error && (error as any).code === 'ENOENT') {
+      if (
+        error &&
+        typeof error === 'object' &&
+        'code' in error &&
+        (error as any).code === 'ENOENT'
+      ) {
         console.warn(`File not found: ${linkPath}. Skipping toggle.`);
         return;
       }
