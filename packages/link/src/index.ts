@@ -1,14 +1,41 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
+// Parse arguments
 const args = process.argv.slice(2);
+const help = args.includes('--help') || args.includes('-h');
 
-if (args.length === 0) {
+if (help) {
+  console.log(`Usage: link [options] <config-file>
+
+Options:
+  --enable    Create symlinks (default)
+  --disable   Convert symlinks to hard copies (detach)
+  --toggle    Swap between symlinks and hard copies
+  -f, --force Force operation
+  -h, --help  Show this help message
+`);
+  process.exit(0);
+}
+
+const force = args.includes('-f') || args.includes('--force');
+const enable = args.includes('--enable');
+const disable = args.includes('--disable');
+const toggle = args.includes('--toggle');
+const configArg = args.find((arg) => !arg.startsWith('-'));
+
+// Determine mode. Priority: disable > toggle > enable
+let mode: 'enable' | 'disable' | 'toggle' = 'enable';
+if (disable) mode = 'disable';
+else if (toggle) mode = 'toggle';
+else if (enable) mode = 'enable';
+
+if (!configArg) {
   console.error('Please provide a link.json file.');
   process.exit(1);
 }
 
-const configFile = path.resolve(process.cwd(), args[0]);
+const configFile = path.resolve(process.cwd(), configArg);
 
 if (!fs.existsSync(configFile)) {
   console.error(`Config file not found: ${configFile}`);
@@ -17,13 +44,19 @@ if (!fs.existsSync(configFile)) {
 
 try {
   const config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
-  processConfig(config, process.cwd(), []);
+  processConfig(config, process.cwd(), [], mode, force);
 } catch (error) {
   console.error('Error parsing or processing config file:', error);
   process.exit(1);
 }
 
-function processConfig(obj: unknown, currentDir: string, configPath: string[]) {
+function processConfig(
+  obj: unknown,
+  currentDir: string,
+  configPath: string[],
+  mode: 'enable' | 'disable' | 'toggle',
+  force: boolean,
+) {
   if (!isPlainObject(obj)) {
     throw new Error(
       `Invalid config at ${formatConfigPath(
@@ -38,7 +71,6 @@ function processConfig(obj: unknown, currentDir: string, configPath: string[]) {
     const nextPath = [...configPath, key];
 
     if (Array.isArray(value)) {
-      // It's a directory containing entries: strings (links) and/or objects (nested directories).
       ensureDirExists(nextDir);
 
       for (let i = 0; i < value.length; i++) {
@@ -46,7 +78,7 @@ function processConfig(obj: unknown, currentDir: string, configPath: string[]) {
         const entryPath = [...nextPath, `[${i}]`];
 
         if (typeof entry === 'string') {
-          linkIntoDir(entry, nextDir);
+          handleFile(entry, nextDir, mode, force);
           continue;
         }
 
@@ -59,8 +91,7 @@ function processConfig(obj: unknown, currentDir: string, configPath: string[]) {
         }
 
         if (isPlainObject(entry)) {
-          // Nested directory map(s) inside this directory.
-          processConfig(entry, nextDir, entryPath);
+          processConfig(entry, nextDir, entryPath, mode, force);
           continue;
         }
 
@@ -71,8 +102,7 @@ function processConfig(obj: unknown, currentDir: string, configPath: string[]) {
         );
       }
     } else if (isPlainObject(value)) {
-      // Legacy nested directory structure.
-      processConfig(value, nextDir, nextPath);
+      processConfig(value, nextDir, nextPath, mode, force);
     } else if (value === null) {
       throw new Error(
         `Invalid config at ${formatConfigPath(
@@ -96,22 +126,144 @@ function ensureDirExists(dirPath: string) {
   }
 }
 
-function linkIntoDir(sourcePath: string, dirPath: string) {
+function handleFile(
+  sourcePath: string,
+  dirPath: string,
+  mode: 'enable' | 'disable' | 'toggle',
+  force: boolean,
+) {
   const linkName = path.basename(sourcePath);
   const linkPath = path.join(dirPath, linkName);
 
-  // sourcePath is the target of the symlink (relative path)
-  // We want the symlink to contain exactly this string.
+  if (mode === 'enable') {
+    createSymlink(sourcePath, linkPath, force);
+  } else if (mode === 'disable') {
+    createHardCopy(sourcePath, linkPath, dirPath, force);
+  } else if (mode === 'toggle') {
+    toggleFile(sourcePath, linkPath, dirPath, force);
+  }
+}
 
+function createSymlink(sourcePath: string, linkPath: string, force: boolean) {
   try {
-    // Check if it exists (dangling symlinks return false for existsSync, so check lstat)
-    if (fs.existsSync(linkPath) || fs.lstatSync(linkPath, { throwIfNoEntry: false })) {
-      fs.unlinkSync(linkPath);
+    let stats: fs.Stats | undefined;
+    try {
+      stats = fs.lstatSync(linkPath);
+    } catch (error: any) {
+      if (error.code !== 'ENOENT') throw error;
     }
+
+    if (stats) {
+      if (stats.isSymbolicLink()) {
+        const currentTarget = fs.readlinkSync(linkPath);
+        if (currentTarget === sourcePath && !force) {
+          // Already correct
+          return;
+        }
+        // Incorrect target or force update
+        fs.unlinkSync(linkPath);
+      } else if (stats.isFile()) {
+        if (force) {
+            fs.unlinkSync(linkPath);
+        } else {
+            console.warn(`Skipping ${linkPath}: File exists and is not a symlink. Use -f to overwrite.`);
+            return;
+        }
+      } else {
+        // Directory or other?
+        console.warn(`Skipping ${linkPath}: Is not a file or symlink.`);
+        return;
+      }
+    }
+
     fs.symlinkSync(sourcePath, linkPath);
     console.log(`Linked: ${linkPath} -> ${sourcePath}`);
   } catch (err) {
     console.error(`Failed to link ${linkPath} -> ${sourcePath}:`, err);
+  }
+}
+
+function createHardCopy(sourcePath: string, linkPath: string, dirPath: string, force: boolean) {
+    try {
+        let stats: fs.Stats | undefined;
+        try {
+            stats = fs.lstatSync(linkPath);
+        } catch (error: any) {
+            if (error.code !== 'ENOENT') throw error;
+        }
+
+        if (stats) {
+            if (stats.isSymbolicLink()) {
+                // Convert symlink to hard copy
+                const target = fs.readlinkSync(linkPath);
+                // Resolve target relative to dirPath (location of symlink)
+                const absoluteTarget = path.resolve(dirPath, target);
+                
+                fs.unlinkSync(linkPath);
+                fs.copyFileSync(absoluteTarget, linkPath);
+                console.log(`Converted symlink to hard copy: ${linkPath}`);
+            } else if (stats.isFile()) {
+               if (force) {
+                   // Re-copy from source?
+                   const absoluteSource = path.resolve(dirPath, sourcePath);
+                    fs.copyFileSync(absoluteSource, linkPath);
+                    console.log(`Refreshed hard copy: ${linkPath}`);
+               }
+               // Else already a file, do nothing
+            }
+        } else {
+             // Does not exist, create hard copy from source
+             const absoluteSource = path.resolve(dirPath, sourcePath);
+             try {
+                fs.copyFileSync(absoluteSource, linkPath);
+                console.log(`Created hard copy: ${linkPath}`);
+             } catch(e) {
+                 console.error(`Failed to copy source ${absoluteSource} to ${linkPath}:`, e);
+             }
+        }
+    } catch(err) {
+        console.error(`Failed to disable link ${linkPath}:`, err);
+    }
+}
+
+function toggleFile(sourcePath: string, linkPath: string, dirPath: string, force: boolean) {
+  try {
+    let stats: fs.Stats;
+    try {
+      stats = fs.lstatSync(linkPath);
+    } catch (error: unknown) {
+      if (error && typeof error === 'object' && 'code' in error && (error as any).code === 'ENOENT') {
+        console.warn(`File not found: ${linkPath}. Skipping toggle.`);
+        return;
+      }
+      throw error;
+    }
+
+    if (stats.isSymbolicLink()) {
+      // It's a symlink. Convert to hard copy.
+      if (force) {
+        const absoluteSource = path.resolve(dirPath, sourcePath);
+        fs.unlinkSync(linkPath);
+        fs.copyFileSync(absoluteSource, linkPath);
+        console.log(`Converted symlink to hard copy (forced from config): ${linkPath}`);
+      } else {
+        const target = fs.readlinkSync(linkPath);
+        const absoluteTarget = path.resolve(dirPath, target);
+
+        fs.unlinkSync(linkPath);
+        fs.copyFileSync(absoluteTarget, linkPath);
+        console.log(`Converted symlink to hard copy: ${linkPath}`);
+      }
+    } else if (stats.isFile()) {
+      // It's a regular file. Convert to symlink.
+      fs.unlinkSync(linkPath);
+      fs.symlinkSync(sourcePath, linkPath);
+      console.log(`Converted hard copy to symlink: ${linkPath}`);
+    } else {
+      console.warn(`Skipping ${linkPath}: Not a file or symlink.`);
+    }
+  } catch (err) {
+    console.error(`Failed to toggle ${linkPath}:`, err);
   }
 }
 

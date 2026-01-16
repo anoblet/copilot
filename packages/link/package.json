@@ -1,8 +1,9 @@
 {
-  "name": "link",
+  "name": "@anoblet/copilot-link",
   "version": "1.0.0",
   "type": "module",
   "description": "",
+  "main": "src/index.ts",
   "engines": {
     "node": ">=24"
   },
