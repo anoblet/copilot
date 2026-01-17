@@ -12,7 +12,6 @@
   "github.copilot.chat.useResponsesApi": true,
   "github.copilot.chat.agent.temperature": 0,
   "github.copilot.chat.tools.memory.enabled": true,
-  "chat.viewWelcome.enabled": false,
   "chat.viewSessions.enabled": false,
   "chat.tools.terminal.autoReplyToPrompts": true,
   "git.postCommitCommand": "sync",
