@@ -43,3 +43,13 @@ Use standard Vaadin components to ensure UI consistency across applications.
 
 All Vaadin-related code must be written in **TypeScript**.
 While legacy examples or existing codebases might use JavaScript, new implementations must strictly adhere to the workspace's TypeScript standards.
+
+## Troubleshooting
+
+### CSS Property Registration Error
+
+**Error**: `Uncaught InvalidModificationError: Failed to execute 'registerProperty' on 'CSS': The name provided has already been registered.`
+
+**Cause**: This error typically occurs when there is a mismatch in Vaadin web component versions (e.g., mixing v24 and v25 components), causing conflicting property registrations.
+
+**Resolution**: Ensure all `@vaadin/*` dependencies in `package.json` are aligned to the same major/minor version (e.g., all `^24.6.2`). Run `pnpm install` to deduplicate.
