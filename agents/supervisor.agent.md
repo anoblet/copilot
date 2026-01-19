@@ -4,7 +4,7 @@ description: The Supervisor agent orchestrates Research, Plan, Implement, and Re
 ---
 
 <tools>
-#agent, #execute, #todo
+#agent, #execute, #memory, #todo
 </tools>
 
 <role>
