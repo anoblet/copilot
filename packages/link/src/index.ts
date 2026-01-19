@@ -149,8 +149,8 @@ function createSymlink(sourcePath: string, linkPath: string, force: boolean) {
     let stats: fs.Stats | undefined;
     try {
       stats = fs.lstatSync(linkPath);
-    } catch (error: any) {
-      if (error.code !== 'ENOENT') throw error;
+    } catch (error: unknown) {
+      if (!isEnoent(error)) throw error;
     }
 
     if (stats) {
@@ -190,8 +190,8 @@ function createHardCopy(sourcePath: string, linkPath: string, dirPath: string, f
     let stats: fs.Stats | undefined;
     try {
       stats = fs.lstatSync(linkPath);
-    } catch (error: any) {
-      if (error.code !== 'ENOENT') throw error;
+    } catch (error: unknown) {
+      if (!isEnoent(error)) throw error;
     }
 
     if (stats) {
@@ -234,12 +234,7 @@ function toggleFile(sourcePath: string, linkPath: string, dirPath: string, force
     try {
       stats = fs.lstatSync(linkPath);
     } catch (error: unknown) {
-      if (
-        error &&
-        typeof error === 'object' &&
-        'code' in error &&
-        (error as any).code === 'ENOENT'
-      ) {
+      if (isEnoent(error)) {
         console.warn(`File not found: ${linkPath}. Skipping toggle.`);
         return;
       }
@@ -298,4 +293,13 @@ function formatConfigPath(segments: string[]): string {
     }
   }
   return out;
+}
+
+function isEnoent(error: unknown): boolean {
+  return (
+    typeof error === 'object' &&
+    error !== null &&
+    'code' in error &&
+    (error as { code: unknown }).code === 'ENOENT'
+  );
 }
