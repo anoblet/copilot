@@ -31,3 +31,5 @@ Do not modify the git history. Do not checkout or restore any file. Do not commi
 
 Ignore the git state of the [copilot](../copilot) directory.
 </constraints>
+
+- Do not modify or delete any existing file or folder which is not tracked by git.
