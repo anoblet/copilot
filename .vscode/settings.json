@@ -18,5 +18,6 @@
   "github.copilot.chat.cli.customAgents.enabled": true,
   "github.copilot.chat.searchSubagent.enabled": true,
   "chat.useNestedAgentsMdFiles": true,
-  "chat.includeReferencedInstructions": true
+  "chat.includeReferencedInstructions": true,
+  "chat.commandCenter.enabled": true
 }
