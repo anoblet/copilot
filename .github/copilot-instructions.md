@@ -35,5 +35,6 @@ Ignore the git state of the #file:../copilot/ directory.
 
 </constraints>
 
-- Do not modify or delete any existing file or folder which is not tracked by git.
+- Create new sessions in the #file:../.copilot/sessions/ directory as needed
+- Do not update or delete previous sessions in the #file:../.copilot/sessions/ directory.
 - Do not modify the #file:../copilot/ directory unless explicitly instructed.
