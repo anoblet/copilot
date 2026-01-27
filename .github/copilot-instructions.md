@@ -37,5 +37,4 @@ Ignore the git state of the #file:../copilot/ directory.
 
 - Create new sessions in the #file:../.copilot/sessions/ directory as needed
 - Do not update or delete previous sessions in the #file:../.copilot/sessions/ directory.
-- Do not modify the #file:../copilot/ directory unless explicitly instructed.
-- Do not use #tool:askQuestions unless explicitly instructed.
+- Do not use #tool:vscode/askQuestions unless explicitly instructed.
