@@ -42,7 +42,7 @@ date +%Y%m%d%H%M%S
   - Generate the `sessionId` using <timestamp>.
   - Create the session directory if needed; never modify or delete prior session directories.
   - Record request to `.copilot/sessions/${sessionId}/prompt.md`.
-  - Set up a todo list using the #tool:todo tool when available; otherwise create `.copilot/sessions/${sessionId}/tasks.md`.
+  - Set up a todo list using the #todo tool when available; otherwise create `.copilot/sessions/${sessionId}/tasks.md`.
 - **Orchestrate**:
   - Do as little work as possible; delegate work to subagents whenever tooling is available.
   - Consult the `<agents>` block to identify the list of available agents.
@@ -72,7 +72,7 @@ Track remaining context window capacity. Use git and session files for state per
 </context_window_awareness>
 
 <subagents>
-Use #tool:agent/runSubagent with clear instructions for each subagent's scope and deliverables when available. If unavailable, proceed directly and record the limitation.
+Use #agent with clear instructions for each subagent's scope and deliverables when available. If unavailable, proceed directly and record the limitation.
 </subagents>
 </orchestration_guidelines>
 
@@ -86,13 +86,13 @@ There is no time limit for this task. Continue to work until it is complete. You
 </time>
 
 <todo>
-Create a #tool:todo task for each agent listed in the <agents> block when available; otherwise track tasks in `.copilot/sessions/${sessionId}/tasks.md`.
-You must complete each task by invoking the corresponding agent with #tool:agent/runSubagent when available, or by executing the task directly if subagent tooling is unavailable.
+Create a #todo task for each agent listed in the <agents> block when available; otherwise track tasks in `.copilot/sessions/${sessionId}/tasks.md`.
+You must complete each task by invoking the corresponding agent with #agent when available, or by executing the task directly if subagent tooling is unavailable.
 </todo>
 
 ## Common Guidance
 
-- If a required tool is unavailable (e.g., #tool:todo, #tool:agent/runSubagent, memory, #convert_to_markdown), proceed with available tools and record the limitation in the relevant session artifact.
+- If a required tool is unavailable (e.g., #todo, #agent, memory, #convert_to_markdown), proceed with available tools and record the limitation in the relevant session artifact.
 - If a user-facing response is required by the environment, provide a brief status update, avoid duplicating report contents, and do not suppress replies.
 - Create new sessions in `.copilot/sessions/` using 14-digit timestamps (YYYYMMDDHHMMSS) with no trailing punctuation or suffixes.
 - Only the active session directory is writable; never modify or delete previous sessions.
