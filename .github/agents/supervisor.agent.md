@@ -91,6 +91,7 @@ You must complete each task by invoking the corresponding agent with #tool:agent
 </todo>
 
 ## Common Guidance
+
 - If a required tool is unavailable (e.g., #tool:todo, #tool:agent/runSubagent, memory, #convert_to_markdown), proceed with available tools and record the limitation in the relevant session artifact.
 - If a user-facing response is required by the environment, provide a brief status update, avoid duplicating report contents, and do not suppress replies.
 - Create new sessions in `.copilot/sessions/` using 14-digit timestamps (YYYYMMDDHHMMSS) with no trailing punctuation or suffixes.
