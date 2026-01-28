@@ -17,10 +17,10 @@ A utility to create relative symlinks based on a JSON configuration file.
 node copilot/packages/link/src/index.ts link.json
 
 # Toggle between symlinks and hard copies
-node copilot/packages/link/src/toggle.ts link.json
+node copilot/packages/link/src/index.ts link.json --toggle
 
 # Force conversion from symlink to hard copy using the config source
-node copilot/packages/link/src/toggle.ts link.json -f
+node copilot/packages/link/src/index.ts link.json --toggle -f
 ```
 
 ## Specifications
@@ -28,7 +28,7 @@ node copilot/packages/link/src/toggle.ts link.json -f
 ### Commands
 
 - `node src/index.ts`: Create symlinks.
-- `node src/toggle.ts`: Toggle between symlinks and hard copies.
+- `node src/index.ts --toggle`: Toggle between symlinks and hard copies.
 
 ### Configuration
 

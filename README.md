@@ -17,7 +17,7 @@ This project provides a sophisticated customization layer for GitHub Copilot, tr
 - 🤖 **Custom Agents** - Specialized agents for planning and implementation
 - 🎨 **Chat Modes** - Optimized configurations for Claude Sonnet 4, GPT-5, and GPT-5 Mini
 - 📝 **Reusable Prompts** - Pre-built prompts for common development tasks
-- 🔧 **MCP Integration** - Seamless integration with 9+ Model Context Protocol servers
+- 🔧 **MCP Integration** - Seamless integration with 11 Model Context Protocol servers (Alpha Vantage, Chroma, Chrome DevTools, Context7, GitHub, Markitdown, Playwright, Sequential Thinking, Tavily, Time, and local @copilot/mcp)
 - 📐 **Development Principles** - Built on SOLID, DRY, YAGNI, and MVC principles
 - 🌿 **Git Flow Workflow** - Structured branching model for professional development
 
@@ -63,20 +63,23 @@ graph TB
     end
 
     subgraph "Memory Architecture"
-        MEM_USER[User Memory<br/>user.jsonl]
-        MEM_PROJ[Project Memory<br/>project.jsonl]
-        MEM_PROMPT[Prompt Memory<br/>prompt.jsonl]
+        MEM_USER[User Memory<br/>Copilot-managed]
+        MEM_PROJ[Project Memory<br/>Copilot-managed]
+        MEM_SESS[Session Artifacts<br/>.copilot/sessions]
     end
 
     subgraph "MCP Server Ecosystem"
+        MCP_ALPHA[Alpha Vantage<br/>Market Data]
         MCP_CHROMA[Chroma<br/>Vector DB]
+        MCP_CHROME_DEVTOOLS[Chrome DevTools<br/>Browser Automation]
+        MCP_COPILOT[MCP Local<br/>@copilot/mcp]
+        MCP_CONTEXT7[Context7<br/>Enhanced Context]
         MCP_GITHUB[GitHub<br/>Repository Mgmt]
+        MCP_MARKITDOWN[Markitdown<br/>Document Conversion]
         MCP_PLAYWRIGHT[Playwright<br/>Browser Automation]
         MCP_SEQ[Sequential Thinking<br/>Complex Reasoning]
-        MCP_SERENA[Serena<br/>Semantic Code Analysis]
         MCP_TAVILY[Tavily<br/>Web Search]
         MCP_TIME[Time<br/>Timezone Utils]
-        MCP_CONTEXT7[Context7<br/>Enhanced Context]
     end
 
     subgraph "Agent System"
@@ -122,16 +125,19 @@ graph TB
 
     MEM --> MEM_USER
     MEM --> MEM_PROJ
-    MEM --> MEM_PROMPT
+    MEM --> MEM_SESS
 
+    MCP --> MCP_ALPHA
     MCP --> MCP_CHROMA
+    MCP --> MCP_CHROME_DEVTOOLS
+    MCP --> MCP_COPILOT
+    MCP --> MCP_CONTEXT7
     MCP --> MCP_GITHUB
+    MCP --> MCP_MARKITDOWN
     MCP --> MCP_PLAYWRIGHT
     MCP --> MCP_SEQ
-    MCP --> MCP_SERENA
     MCP --> MCP_TAVILY
     MCP --> MCP_TIME
-    MCP --> MCP_CONTEXT7
 
     AGENTS --> AGENT_PLAN
     AGENTS --> AGENT_MERMAID
@@ -163,8 +169,10 @@ Agent-based system with Memory and MCP.
 ### Directory Structure
 
 - `agents/`: Custom chat agents.
+- `awesome-copilot/`: Upstream community agents, prompts, and instructions.
 - `instructions/`: Comprehensive development instructions.
-- `packages/`: Custom packages.
+- `packages/`: Custom packages (`cli`, `link`, `mcp`, `session`).
+- `specification.md`: Framework specification.
 
 ### Scripts
 
@@ -186,14 +194,11 @@ sequenceDiagram
     Inst->>Inst: Apply principles (SOLID, DRY, YAGNI)
     Inst->>Inst: Load tool-specific instructions
 
-    Chat->>Mem: Read prompt.jsonl (conversation history)
-    Mem-->>Chat: Previous context
+    Chat->>Mem: Load Copilot-managed memory (user/project)
+    Mem-->>Chat: Memory context
 
-    Chat->>Mem: Read user.jsonl (preferences)
-    Mem-->>Chat: Universal preferences
-
-    Chat->>Mem: Read project.jsonl (project context)
-    Mem-->>Chat: Project-specific context
+    Chat->>Mem: Load session artifacts (.copilot/sessions)
+    Mem-->>Chat: Session context
 
     Chat->>MCP: Query MCP servers as needed
 
@@ -222,8 +227,8 @@ sequenceDiagram
     Chat->>Chat: Process with selected agent (if any)
     Chat->>Chat: Generate response
 
-    Chat->>Mem: Update prompt.jsonl
-    Chat->>Mem: Update project.jsonl (if needed)
+    Chat->>Mem: Update Copilot-managed memory (as needed)
+    Chat->>Mem: Update session artifacts (.copilot/sessions)
 
     Chat-->>Dev: Return response with actions
 
@@ -340,6 +345,7 @@ copilot/
 │   ├── summary.agent.md
 │   ├── supervisor.agent.md
 │   └── test.agent.md
+├── awesome-copilot/            # Upstream community resources
 ├── genaisrc/                   # GenAI source code (empty, reserved)
 ├── instructions/               # Comprehensive development instructions
 │   ├── index.instructions.md   # Main instruction index
@@ -347,15 +353,11 @@ copilot/
 │   ├── principles.instructions.md
 │   ├── tools/                  # Tool-specific instructions
 │   └── memory/                 # Memory-specific instructions
-├── memory/                     # Persistent memory storage
-│   ├── user.jsonl             # User preferences and personal info
-│   ├── project.jsonl          # Project-specific context
-│   ├── prompt.jsonl           # Conversation history
-│   └── README.md              # Memory system documentation
 ├── packages/                   # Custom packages
 │   ├── cli/                   # @anoblet/copilot-cli
 │   ├── link/                  # Link utility
-│   └── mcp/                   # MCP server implementation
+│   ├── mcp/                   # MCP server implementation
+│   └── session/               # Session utilities
 ├── prompts/                    # Reusable task prompts
 │   ├── align.prompt.md
 │   ├── complexity.prompt.md
@@ -363,6 +365,7 @@ copilot/
 │   ├── maintenance.prompt.md
 │   ├── organize-memory.prompt.md
 │   └── ... (15+ prompts total)
+├── specification.md            # Framework specification
 
 ```
 
