@@ -37,7 +37,7 @@ You are an expert at writing test cases for software applications. Your goal is 
 
 ## Common Guidance
 
-- If a required tool is unavailable (e.g., #todo, #agent, memory, #convert_to_markdown), proceed with available tools and record the limitation in the relevant session artifact.
+- If a required tool is unavailable (e.g., #todo, #runSubagent, memory, #convert_to_markdown), proceed with available tools and record the limitation in the relevant session artifact.
 - If a user-facing response is required by the environment, provide a brief status update, avoid duplicating report contents, and do not suppress replies.
 - Create new sessions in `.copilot/sessions/` using 14-digit timestamps (YYYYMMDDHHMMSS) with no trailing punctuation or suffixes.
 - Only the active session directory is writable; never modify or delete previous sessions.
