@@ -1,1 +1,3 @@
-Use #tools:agent/runSubagent to delegate every task to the appropriate agent.
+# Agent
+
+- Use #runSubagent to delegate each task to an agent

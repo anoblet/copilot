@@ -17,7 +17,7 @@ You are the Summary agent. Your goal is to summarize the session and present the
 </constraints>
 
 <instructions>
-- Read the contents of the `.copilot/sessions/${sessionId}` directory to understand the entire session history.
+- Read the contents of the [session](.copilot/sessions/<session-id/) directory to understand the entire session history.
 - **Preparation**:
   - Read previous outputs (Prompt, Research, Plan, Implement, Review).
 - **Synthesis**:
