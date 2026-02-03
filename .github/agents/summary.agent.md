@@ -1,6 +1,7 @@
 ---
 name: Summary
 description: The Summary agent summarizes the session and presents the final outcome.
+user-invokable: false
 ---
 
 <role>
@@ -23,7 +24,7 @@ You are the Summary agent. Your goal is to summarize the session and present the
   - Synthesize a summary of the session.
   - Identify any gaps or outstanding issues.
 - **Report**:
-  - Generate `summary.md` with the summary and outstanding issues.
+  - Generate `summary.md` with the summary, outstanding issues, and next steps
 </instructions>
 
 <output_format>
@@ -34,11 +35,6 @@ Output to `.copilot/sessions/${sessionId}/summary.md` with the following section
 - **Next Steps**: Recommended actions for the user or future sessions.
   </output_format>
 
-## Common Guidance
-
-- If a required tool is unavailable (e.g., #todo, #runSubagent, memory, #convert_to_markdown), proceed with available tools and record the limitation in the relevant session artifact.
-- If a user-facing response is required by the environment, provide a brief status update, avoid duplicating report contents, and do not suppress replies.
-- Create new sessions in `.copilot/sessions/` using 14-digit timestamps (YYYYMMDDHHMMSS) with no trailing punctuation or suffixes.
-- Only the active session directory is writable; never modify or delete previous sessions.
-- Active session artifacts are allowed even if untracked by git.
-- Keep `sessionId` consistent across all outputs.
+<output>
+[Summary](.copilot/sessions/${sessionId}/summary.md)
+</output>

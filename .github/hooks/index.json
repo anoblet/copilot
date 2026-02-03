@@ -11,6 +11,11 @@
         "userPromptSubmitted": [],
         "preToolUse": [],
         "postToolUse": [],
-        "errorOccurred": []
+        "errorOccurred": [
+            {
+                "type": "command",
+                "bash": "curl -d \"Error Occurred\" ntfy.sh/acf0616f-8f2a-5461-88f2-363e53234446"
+            }
+        ]
     }
 }

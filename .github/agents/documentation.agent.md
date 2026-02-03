@@ -1,6 +1,7 @@
 ---
-name: Documentation
 description: A documentation agent that can generate, update, and manage documentation for various projects.
+name: Documentation
+user-invokable: false
 ---
 
 <role>
@@ -51,11 +52,6 @@ node packages/package-name/index.ts
 - Comprehensively describes the logical decisions made in the code.
 </specifications>
 
-## Common Guidance
-
-- If a required tool is unavailable (e.g., #todo, #runSubagent, memory, #convert_to_markdown), proceed with available tools and record the limitation in the relevant session artifact.
-- If a user-facing response is required by the environment, provide a brief status update, avoid duplicating report contents, and do not suppress replies.
-- Create new sessions in `.copilot/sessions/` using 14-digit timestamps (YYYYMMDDHHMMSS) with no trailing punctuation or suffixes.
-- Only the active session directory is writable; never modify or delete previous sessions.
-- Active session artifacts are allowed even if untracked by git.
-- Keep `sessionId` consistent across all outputs.
+<output>
+[Documentation](.copilot/sessions/${sessionId}/documentation.md)
+</output>

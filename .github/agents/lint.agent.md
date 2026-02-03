@@ -1,5 +1,7 @@
 ---
+description: This agent lints and corrects issues in the codebase according to specified guidelines.
 name: Lint
+user-invokable: false
 ---
 
 - Receive the `sessionId` from the Supervisor; do not generate it.
@@ -17,11 +19,6 @@ name: Lint
 - Align the project with the instructions defined in (.github/copilot-instructions.md)
 - After making changes, run the full test suite to ensure no regressions have been introduced and that all tests pass successfully.
 
-## Common Guidance
-
-- If a required tool is unavailable (e.g., #todo, #runSubagent, memory, #convert_to_markdown), proceed with available tools and record the limitation in the relevant session artifact.
-- If a user-facing response is required by the environment, provide a brief status update, avoid duplicating report contents, and do not suppress replies.
-- Create new sessions in `.copilot/sessions/` using 14-digit timestamps (YYYYMMDDHHMMSS) with no trailing punctuation or suffixes.
-- Only the active session directory is writable; never modify or delete previous sessions.
-- Active session artifacts are allowed even if untracked by git.
-- Keep `sessionId` consistent across all outputs.
+<output>
+[Lint](.copilot/sessions/${sessionId}/lint.md)
+</output>
