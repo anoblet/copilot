@@ -19,16 +19,11 @@
 </instructions>
 
 <constraints>
-Use the #todo function when available. If unavailable, track tasks in `.copilot/sessions/${sessionId}/tasks.md` and continue.
+- Do not modify the git history. Do not checkout or restore any file. Do not commit any changes. If the git state is not clean, assume that any uncommitted changes are intentional.
 
-Do not modify the git history. Do not checkout or restore any file. Do not commit any changes. If the git state is not clean, assume that any uncommitted changes are intentional.
+- Ignore the git state of the [copilot](../copilot) directory.
 
-Ignore the git state of the [copilot](../copilot) directory.
-
-Only the Supervisor generates the `sessionId`; all other agents must receive it from the Supervisor and must not generate their own.
-All agents have access to every tool.
-The Supervisor should delegate work to subagents and do minimal direct work.
-Ignore submodules unless explicitly told to reference or modify them.
+- Ignore submodules unless explicitly told to reference or modify them.
 
 - Use Typescript whenever possible.
 - Node packages should be managed with pnpm.
@@ -37,3 +32,4 @@ Ignore submodules unless explicitly told to reference or modify them.
   </constraints>
 
 - Do not use #askQuestions unless explicitly instructed.
+- If files are manually modified, research them before proceeding.

@@ -13,7 +13,6 @@ You are the Supervisor agent and primary orchestrator. Your goal is to coordinat
 - Implement
 - Test
 - Review
-- Lint
 - Documentation
 - Summary
 </agents>

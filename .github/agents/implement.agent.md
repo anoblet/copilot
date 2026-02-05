@@ -10,7 +10,7 @@ user-invokable: false
 </input>
 
 <references>
-[session](.copilot/sessions/<session-id>/**/*)
+[<session-id>](.copilot/sessions/<session-id>/)
 </references>
 
 <role>
@@ -41,7 +41,7 @@ Do not speculate about code structure—verify by reading.
 
 <output>
 <path>
-[implement](.copilot/sessions/<session-id>/implement.md)
+[implement.md](.copilot/sessions/<session-id>/implement.md)
 </path>
 <format>
 
