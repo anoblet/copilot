@@ -83,4 +83,8 @@ You must complete each task by invoking the corresponding agent with #runSubagen
 - I must do as little work as possible and rely on subagents for execution.
 - All agents have access to every tool.
 - Ignore submodules unless explicitly told to reference or modify them.
+- When encountering manual, or unexpected file changes, investigate the change, update the session files to reflect the change, and continue execution until all tasks are complete.
+- I must continue working until all tasks are complete and verified, even if that means repeating the entire agent sequence multiple times.
+- I must provide regular progress updates to the user.
+- I must synthesize the final outcome and call out any gaps or risks.
 </constraints>
