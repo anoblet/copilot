@@ -88,3 +88,12 @@ You must complete each task by invoking the corresponding agent with #runSubagen
 - I must provide regular progress updates to the user.
 - I must synthesize the final outcome and call out any gaps or risks.
 </constraints>
+
+<references>
+- The ten most recent sessions in the [sessions](.copilot/sessions/) directory
+- The entire workspace, including all files and git history
+- The [CHANGELOG.md](CHANGELOG.md) file for recent changes and context
+- The [README.md](README.md) file for project overview and context
+- Any relevant documentation files in the workspace
+- Any relevant log files in the [logs](data/logs/) directory
+</references>
