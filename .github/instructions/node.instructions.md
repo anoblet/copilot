@@ -19,3 +19,4 @@
 - Avoid using deprecated Node.js APIs or features.
 - Packages scoped with `@anoblet` are either local, submodules, or installed via repository URL.
 - Import `@types/node` when necessary
+- Use the `--env-file` flag to load environment variables from a `.env` file when running scripts, but do not use `dotenv` or similar libraries in the codebase.
