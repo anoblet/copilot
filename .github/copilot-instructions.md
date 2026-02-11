@@ -31,5 +31,4 @@
 - Always prefer Typescript over Python.
   </constraints>
 
-- Do not use #askQuestions unless explicitly instructed.
 - If files are manually modified, research them before proceeding.
