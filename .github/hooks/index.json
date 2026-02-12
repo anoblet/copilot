@@ -1,10 +1,10 @@
 {
     "version": 1,
     "hooks": {
-        "Stop": [
+        "sessionEnd": [
             {
                 "type": "command",
-                "bash": "./copilot/scripts/stop.sh"
+                "bash": "./copilot/scripts/session-end.sh"
             }
         ]
     }
