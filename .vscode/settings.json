@@ -19,5 +19,6 @@
   "github.copilot.chat.searchSubagent.enabled": true,
   "chat.useNestedAgentsMdFiles": true,
   "chat.includeReferencedInstructions": true,
-  "chat.commandCenter.enabled": false
+  "chat.commandCenter.enabled": false,
+  "github.copilot.chat.responsesApiContextManagement.enabled": false, // @TODO: enable when the feature is ready
 }
