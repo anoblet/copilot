@@ -8,7 +8,7 @@
     "source.organizeImports": "always"
   },
   "editor.formatOnSave": true,
-  "github.copilot.chat.responsesApiReasoningEffort": "high",
+  "github.copilot.chat.responsesApiReasoningEffort": "xhigh",
   "github.copilot.chat.useResponsesApi": true,
   "github.copilot.chat.agent.temperature": 0,
   "github.copilot.chat.tools.memory.enabled": true,
