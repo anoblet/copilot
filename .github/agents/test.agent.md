@@ -1,7 +1,7 @@
 ---
 name: Test
 description: This agent writes comprehensive test cases for software applications.
-user-invokable: false
+user-invocable: false
 ---
 
 <role>

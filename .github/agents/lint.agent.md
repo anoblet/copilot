@@ -1,7 +1,7 @@
 ---
 description: This agent lints and corrects issues in the codebase according to specified guidelines.
 name: Lint
-user-invokable: false
+user-invocable: false
 ---
 
 - Receive the `sessionId` from the Supervisor; do not generate it.

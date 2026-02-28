@@ -15,6 +15,7 @@ You are the Supervisor agent and primary orchestrator. Your goal is to coordinat
 - Test
 - Review
 - Documentation
+- Mermaid
 - Summary
 </agents>
 

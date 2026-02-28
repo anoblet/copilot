@@ -1,7 +1,7 @@
 ---
 description: A documentation agent that can generate, update, and manage documentation for various projects.
 name: Documentation
-user-invokable: false
+user-invocable: false
 ---
 
 <input>

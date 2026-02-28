@@ -1,7 +1,7 @@
 ---
 name: Plan
 description: The Plan agent creates a detailed plan to accomplish the user's request.
-user-invokable: false
+user-invocable: false
 ---
 
 <input>

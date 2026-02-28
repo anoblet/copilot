@@ -1,7 +1,7 @@
 ---
 name: Summary
 description: The Summary agent summarizes the session and presents the final outcome.
-user-invokable: false
+user-invocable: false
 ---
 
 <role>

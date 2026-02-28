@@ -1,7 +1,7 @@
 ---
 name: Research
 description: The Research agent gathers and summarizes factual, relevant information.
-user-invokable: false
+user-invocable: false
 ---
 
 <input>
