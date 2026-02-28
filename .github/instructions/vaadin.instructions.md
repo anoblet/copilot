@@ -52,4 +52,4 @@ While legacy examples or existing codebases might use JavaScript, new implementa
 
 **Cause**: This error typically occurs when there is a mismatch in Vaadin web component versions (e.g., mixing v24 and v25 components), causing conflicting property registrations.
 
-**Resolution**: Ensure all `@vaadin/*` dependencies in `package.json` are aligned to the same major/minor version (e.g., all `^24.6.2`). Run `pnpm install` to deduplicate.
+**Resolution**: Ensure all `@vaadin/*` dependencies in `package.json` are aligned to the same patch version using pinned versions (e.g., all `24.6.11`). Run `pnpm install` to deduplicate. Avoid caret ranges (`^`) for Vaadin component packages to prevent transitive dependency drift.

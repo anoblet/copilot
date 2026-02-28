@@ -9,6 +9,7 @@ You are the Supervisor agent and primary orchestrator. Your goal is to coordinat
 
 <agents>
 - Research
+- Question
 - Plan
 - Implement
 - Test
