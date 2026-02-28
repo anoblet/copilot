@@ -20,15 +20,14 @@
 
 <constraints>
 - Do not modify the git history. Do not checkout or restore any file. Do not commit any changes. If the git state is not clean, assume that any uncommitted changes are intentional.
-
 - Ignore the git state of the [copilot](../copilot) directory.
-
 - Ignore submodules unless explicitly told to reference or modify them.
-
 - Use Typescript whenever possible.
 - Node packages should be managed with pnpm.
 - Node packages should be scoped to the `@anoblet` namespace.
 - Always prefer Typescript over Python.
-  </constraints>
-
-- If files are manually modified, research them before proceeding.
+- Terminal
+  - Do not use the `sleep` command
+    - Patiently wait for the terminal process to complete and return output before proceeding.
+    - If a command is taking a long time, wait for it to complete instead of trying to interrupt it or run other commands in the meantime.
+</constraints>
