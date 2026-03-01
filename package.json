@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A comprehensive GitHub Copilot enhancement framework.",
   "scripts": {
+    "copilot:link:enable": "node packages/link/src/index.ts ../link.json --enable",
+    "copilot:link:disable": "node packages/link/src/index.ts ../link.json --disable",
+    "copilot:link:toggle": "node packages/link/src/index.ts ../link.json --toggle",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

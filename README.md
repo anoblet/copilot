@@ -177,6 +177,9 @@ Agent-based system with Memory and MCP.
 ### Scripts
 
 - `test`: Runs tests.
+- `copilot:link:enable`: Enables links using the root `../link.json` mapping.
+- `copilot:link:disable`: Disables links by converting symlinks to hard copies.
+- `copilot:link:toggle`: Toggles links between symlink and hard-copy modes.
 
 ### Request Flow Sequence
 
