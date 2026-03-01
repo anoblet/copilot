@@ -32,3 +32,11 @@ BASE_DIRECTORY = [schemas](.copilot/schemas)
 
 - Document all controller actions and their interactions with the model and view.
 
+## User
+
+- Research [prompt.md](.copilot/sessions/prompt.md)
+- Create a Mermaid diagram based on the user's input and the defined model, view, and controller structures.
+
+### File
+
+[user.md](.copilot/schemas/user.md)
