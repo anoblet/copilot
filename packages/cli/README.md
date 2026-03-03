@@ -1,41 +1,37 @@
 # @anoblet/copilot-cli
 
-A wrapper around copilot-cli to run multiple iterations.
+Wrapper around the `copilot` command that repeats the same prompt for multiple iterations.
 
 ## Features
 
-- [x] Runs `copilot` command multiple times (iterations)
-- [x] Accepts a prompt file path
-- [x] Allows specifying an agent and model via CLI options or environment variables
-- [x] Passes `--add-dir .` and `--allow-all-tools` to the underlying `copilot` command
+- Runs `copilot` for a configurable number of iterations
+- Reads prompt text from a file
+- Supports agent/model overrides via flags or environment variables
+- Always passes `--add-dir .` and `--allow-all-tools`
 
 ## Usage
 
 ```bash
-# Run with default settings (1 iteration)
-copilot-cli -p path/to/prompt.md
-
-# Run with specific agent and model
-copilot-cli -p path/to/prompt.md -a my-agent -m gpt-4
-
-# Run with custom number of iterations
-copilot-cli -p path/to/prompt.md -i 5
+copilot-cli -p /absolute/path/to/prompt.md
+copilot-cli -p /absolute/path/to/prompt.md -i 5
+copilot-cli -p /absolute/path/to/prompt.md -a implement -m gpt-5.3-codex
 ```
 
-## Specifications
+## Options
 
-### Commands
+- `-p, --prompt <string>`: Prompt file path (required)
+- `-i, --iterations <number>`: Number of runs (default: `3`)
+- `-a, --agent <string>`: Agent name (overrides `COPILOT_CLI_AGENT`)
+- `-m, --model <string>`: Model name (overrides `COPILOT_CLI_MODEL`)
 
-- `copilot`: Main command.
+## Environment Variables
 
-### Options
+- `COPILOT_CLI_AGENT`
+- `COPILOT_CLI_MODEL`
 
-- `-i, --iterations <number>`: Number of iterations to run (default: 3)
-- `-p, --prompt <string>`: Path to the prompt file (required)
-- `-a, --agent <string>`: Agent to use
-- `-m, --model <string>`: Model to use
+## Behavior Notes
 
-### Environment Variables
-
-- `COPILOT_CLI_AGENT`: Default agent to use
-- `COPILOT_CLI_MODEL`: Default model to use
+- The executable is `copilot-cli` (`bin` entry), while help output currently uses program name `copilot-wrapper`.
+- Prompt file content is passed to `copilot` as `-p <prompt-content>` on each iteration.
+- Iterations must be a positive integer.
+- Execution stops on first failing iteration.

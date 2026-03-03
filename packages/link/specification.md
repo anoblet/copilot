@@ -1,41 +1,40 @@
-# link
+# @anoblet/copilot-link specification
 
-## Overview
+## Purpose
 
-A utility package to manage symlinks within the workspace, allowing for flexible project structures and the ability to toggle between symlinks and hard copies for deployment or isolation purposes.
+Create and manage linked configuration files/directories from a JSON mapping.
 
-## Status
+## Command
 
-Stable (v1.0.0)
-
-## Features
-
-- [x] Utility to create relative symlinks from JSON config
-- [x] Toggle between symlinks and hard copies
-- [x] Support for nested directory structures
-- [x] Overwrite capability for existing links
-- [x] Force hard copy creation option
-
-## Architecture
-
-The tool reads a configuration file (typically `link.json`) which maps source files to destination paths. It then iterates through these mappings to create the appropriate filesystem links or copies.
-
-## API / CLI
-
-### Usage
-
-The tool is typically invoked via a script or directly using `ts-node` or similar on `src/index.ts`.
-
-### Configuration (`link.json`)
-
-A JSON file mapping destinations to sources:
-
-```json
-{
-  "path/to/dest": "path/to/source"
-}
+```bash
+node src/index.ts <config-file> [--enable|--disable|--toggle] [-f|--force]
 ```
 
-## Dependencies
+## Mode Resolution
 
-- Node.js fs module (standard library).
+Default mode is `enable`.
+
+Priority when multiple mode flags are present:
+
+1. `--disable`
+2. `--toggle`
+3. `--enable`
+
+## Config Contract
+
+- Root value must be an object.
+- Each key is a destination directory under current working directory.
+- Value types allowed:
+  - array of strings and/or nested objects
+  - nested object
+- Strings represent source paths used as symlink targets.
+
+## Operational Rules
+
+- Missing destination directories are created.
+- `enable` mode creates symlinks and can overwrite existing files when forced.
+- `disable` mode converts symlinks to copied files.
+- `toggle` swaps file type:
+  - symlink -> copied file
+  - copied file -> symlink
+- `--force` enables overwrite/refresh behavior where applicable.

@@ -1,39 +1,29 @@
-# @anoblet/copilot-session
+# session utility
 
-Manages Copilot sessions.
+Utility script for purging Copilot session directories.
 
-## Commands
+## Location
 
-### Purge
+- Script: `copilot/packages/session/src/index.ts`
 
-The `purge` command is used to delete session directories.
-
-#### Usage
+## Usage
 
 ```bash
-node copilot/packages/session/src/index.ts purge [-i <iterations>]
+node /homeassistant/copilot/packages/session/src/index.ts purge
+node /homeassistant/copilot/packages/session/src/index.ts purge -i 5
+node /homeassistant/copilot/packages/session/src/index.ts purge -i 5 --yes
 ```
 
-#### Options
+## Options
 
-- `-i, --iterations <number>`: The number of sessions to delete, starting from the most recent. If not specified, **ALL** sessions will be deleted.
+- `-i, --iterations <number>`: Number of directories to purge from the oldest forward
+- `-y, --yes`: Skip interactive confirmation
 
-#### Examples
+## Behavior
 
-Delete all sessions:
-
-```bash
-node copilot/packages/session/src/index.ts purge
-```
-
-Delete the most recent session:
-
-```bash
-node copilot/packages/session/src/index.ts purge -i 1
-```
-
-Delete the 5 most recent sessions:
-
-```bash
-node copilot/packages/session/src/index.ts purge --iterations 5
-```
+- Session root is resolved from:
+  - `COPILOT_SESSION_DATA`, or
+  - `<cwd>/.copilot/sessions`
+- Session directories are sorted by modification time (oldest first).
+- If `--iterations` is omitted, all discovered directories are purged.
+- If `--iterations 0` is passed, no directories are purged.

@@ -1,77 +1,55 @@
-# link
+# @anoblet/copilot-link
 
-A utility to create relative symlinks based on a JSON configuration file.
+Filesystem linking utility for applying JSON mappings as symlinks or hard copies.
 
 ## Features
 
-- [x] Create relative symlinks from a JSON configuration file
-- [x] Toggle between symlinks and hard copies
-- [x] Support for nested directory structures
-- [x] Overwrite existing symlinks
-- [x] Force hard copy creation from config source
+- Enable symlinks from config (`--enable`, default mode)
+- Disable symlinks by materializing hard copies (`--disable`)
+- Toggle between symlink and hard-copy states (`--toggle`)
+- Force overwrite/refresh behavior (`-f`, `--force`)
+- Support nested directory mapping structures
 
 ## Usage
 
 ```bash
-# Create symlinks
-node copilot/packages/link/src/index.ts link.json
-
-# Toggle between symlinks and hard copies
-node copilot/packages/link/src/index.ts link.json --toggle
-
-# Force conversion from symlink to hard copy using the config source
-node copilot/packages/link/src/index.ts link.json --toggle -f
+node /homeassistant/copilot/packages/link/src/index.ts /homeassistant/link.json --enable
+node /homeassistant/copilot/packages/link/src/index.ts /homeassistant/link.json --disable
+node /homeassistant/copilot/packages/link/src/index.ts /homeassistant/link.json --toggle
+node /homeassistant/copilot/packages/link/src/index.ts /homeassistant/link.json --toggle --force
 ```
 
-## Specifications
+## Flags
 
-### Commands
+- `--enable`: create/refresh symlinks (default if no mode flag is given)
+- `--disable`: replace symlinks with hard copies
+- `--toggle`: convert symlinks to files and files to symlinks
+- `-f, --force`: force overwrite/refresh behavior
+- `-h, --help`: show CLI help
 
-- `node src/index.ts`: Create symlinks.
-- `node src/index.ts --toggle`: Toggle between symlinks and hard copies.
+Mode priority in argument parsing is: `--disable` > `--toggle` > `--enable`.
 
-### Configuration
+## Configuration Shape
 
-The configuration file (e.g., `link.json`) defines the directory structure and the files to link.
+Top-level object keys are destination directories relative to current working directory. Values may be:
 
-**Example `link.json`:**
+- array entries with source-path strings
+- nested objects for subdirectories
+- arrays that mix strings and nested objects
+
+Example (`/homeassistant/link.json` excerpt):
 
 ```json
 {
   ".github": [
     {
       "agents": [
-        "../../copilot/agents/documentation.agent.md",
-        "../../copilot/agents/feedback.agent.md",
-        "../../copilot/agents/implement.agent.md",
-        "../../copilot/agents/plan.agent.md",
-        "../../copilot/agents/research.agent.md",
-        "../../copilot/agents/review.agent.md",
-        "../../copilot/agents/supervisor.agent.md"
+        "../../copilot/.github/agents/documentation.agent.md",
+        "../../copilot/.github/agents/implement.agent.md"
       ]
     },
-    "../../copilot/.github/copilot-instructions.md"
+    "../copilot/.github/copilot-instructions.md"
   ],
   ".vscode": ["../copilot/.vscode/mcp.json", "../copilot/.vscode/settings.json"]
 }
 ```
-
-**Structure:**
-
-- Keys represent directories.
-- Values can be:
-  - An object (legacy): Nested directory structure.
-  - An array of entries: Items can be either:
-    - a string (a relative path to the source file to symlink into this directory), or
-    - an object mapping one or more subdirectory names to nested values (arrays and/or objects).
-
-**Behavior:**
-
-- Creates directories if they don't exist.
-- Overwrites existing symlinks.
-- Paths in the array are used as the symlink target (relative to the link location).
-
-## Dependencies
-
-- `fs`: Node.js file system module.
-- `path`: Node.js path module.

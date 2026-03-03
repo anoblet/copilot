@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is the workspace root for the Copilot-related tools and agents used in the project. It houses the CLI wrapper, linking utilities, and MCP server integration.
+Workspace-level tooling for Copilot customization in this repository.
 
 ## Status
 
@@ -10,40 +10,41 @@ Active
 
 ## Components
 
-### @anoblet/copilot-cli
+### @anoblet/copilot-cli (`packages/cli`)
 
-Located in `packages/cli`.
+- Wrapper around the `copilot` CLI
+- Re-runs the same prompt for N iterations (default `3`)
+- Supports `--agent` and `--model` via flags or environment variables
+- Always passes `--add-dir .` and `--allow-all-tools`
 
-- [x] Wrapper around `copilot-cli`
-- [x] Support for running multiple iterations
-- [x] Input via prompt file path
-- [x] Configuration of agent and model via CLI or env vars
-- [x] Passes default arguments (`--add-dir .`, `--allow-all-tools`)
+### @anoblet/copilot-link (`packages/link`)
 
-### link
+- Applies JSON link mappings into the current working directory
+- Supports `--enable`, `--disable`, and `--toggle` modes
+- Handles nested mapping structures (arrays and nested objects)
+- Supports overwrite/refresh behavior with `--force`
 
-Located in `packages/link`.
+### @copilot/mcp (`packages/mcp`)
 
-- [x] Utility to create relative symlinks from JSON config
-- [x] Toggle between symlinks and hard copies
-- [x] Support for nested directory structures
-- [x] Overwrite capability for existing links
-- [x] Force hard copy creation option
+- Local MCP server and terminal bridge client
+- Supports stdio and HTTP server workflows
 
-### @copilot/mcp
+### session utility (`packages/session`)
 
-Located in `packages/mcp`.
-
-- [x] MCP server and terminal client
-- [x] Exposes `user_input` tool for agent interaction
-- [x] Support for both stdio and HTTP server modes
-- [x] Terminal client for handling user input
-- [x] Configurable timeouts for input requests
+- Purges session directories from `COPILOT_SESSION_DATA` or `.copilot/sessions`
+- Purges oldest-first by modification time
+- Supports confirmation bypass with `-y` or `--yes`
 
 ## Architecture
 
-This directory operates as a nested workspace (or separate project structure) containing tools that assist the development and operation of the main resume project.
+`copilot/` is a dedicated tooling workspace that supports the parent repository. It contains:
+
+- instruction hierarchy under `.github/instructions/`
+- custom agents under `.github/agents/`
+- reusable prompts under `prompts/`
+- package-level utilities under `packages/`
 
 ## Dependencies
 
-- See individual packages for specific dependencies.
+- Use `pnpm` workspace management
+- Node.js `>= 24` for packages that define runtime engines

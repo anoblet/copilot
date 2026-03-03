@@ -1,41 +1,44 @@
-# @anoblet/copilot-cli
+# @anoblet/copilot-cli Specification
 
-## Overview
+## Purpose
 
-A wrapper around the GitHub Copilot CLI to facilitate running multiple iterations of a prompt, with support for configuring agents and models via CLI arguments or environment variables.
+Provide a thin automation wrapper around `copilot` for repeated prompt execution.
 
-## Status
+## Runtime
 
-Stable (v1.0.0)
+- Node.js ESM
+- Invoked via `copilot-cli` (bin) or `node src/index.ts`
 
-## Features
-
-- [x] Wrapper around `copilot-cli`
-- [x] Support for running multiple iterations
-- [x] Input via prompt file path
-- [x] Configuration of agent and model via CLI or env vars
-- [x] Passes default arguments (`--add-dir .`, `--allow-all-tools`)
-
-## Architecture
-
-The tool uses `commander` for CLI argument parsing and `execa` to spawn the `copilot` process. It reads a prompt file and passes its content to the `copilot` CLI, repeating the process for the specified number of iterations.
-
-## CLI Commands
-
-### Usage
+## Command Contract
 
 ```bash
-copilot-wrapper -p <path-to-prompt-file> [options]
+copilot-cli -p <prompt-file> [options]
 ```
 
-### Options
+Options:
 
-- `-i, --iterations <number>`: Number of iterations to run (default: 3).
-- `-p, --prompt <string>`: Path to the prompt file (required).
-- `-a, --agent <string>`: Agent to use (overrides `COPILOT_CLI_AGENT`).
-- `-m, --model <string>`: Model to use (overrides `COPILOT_CLI_MODEL`).
+- `-p, --prompt <string>`: Required path to prompt file
+- `-i, --iterations <number>`: Positive integer, default `3`
+- `-a, --agent <string>`: Agent override
+- `-m, --model <string>`: Model override
 
-## Dependencies
+Environment fallback:
 
-- `commander`
-- `execa`
+- Agent: `COPILOT_CLI_AGENT`
+- Model: `COPILOT_CLI_MODEL`
+
+Priority:
+
+1. CLI option
+2. Environment variable
+
+## Execution Behavior
+
+- Reads prompt file once.
+- Runs `copilot` in a loop with:
+  - `--add-dir .`
+  - `--allow-all-tools`
+  - optional `--agent`
+  - optional `--model`
+  - `-p <prompt-content>`
+- Stops immediately when an iteration fails.

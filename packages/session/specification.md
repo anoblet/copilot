@@ -1,23 +1,26 @@
-- Implement a script(TypeScript) that purges the sessions from `.copilot/sessions/`
+# session utility specification
 
-## Usage
+## Purpose
 
-`/home/andrew/software/resume`
+Purge old Copilot session directories from disk.
 
-```bash
-node copilot/packages/session/src/index.ts purge
-```
+## Input/Command
 
 ```bash
-node copilot/packages/session/src/index.ts purge -i 1
+node src/index.ts purge [-i <iterations>] [-y|--yes]
 ```
 
-```bash
-node copilot/packages/session/src/index.ts purge --iterations 3
-```
+## Resolution Rules
 
-## Requirements
+- Session directory root:
+  - `process.env.COPILOT_SESSION_DATA`, else
+  - `path.join(process.cwd(), '.copilot/sessions')`
 
-- Use the `-i` flag for `--iterations`
-- `0` should mean all and should be the default
-- Sessions should be read from the `COPILOT_SESSION_DATA` environment variable directory if it exists, otherwise default to `.copilot/sessions/`
+## Purge Rules
+
+- Collect only directories in the session root.
+- Sort by `mtime` ascending (oldest first).
+- Deletion target:
+  - no `iterations`: all directories
+  - `iterations = n`: first `n` directories via `slice(0, n)`
+- Confirmation prompt is required unless `-y` or `--yes` is supplied.
