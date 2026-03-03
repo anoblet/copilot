@@ -1,24 +1,22 @@
 {
   "chat.agent.maxRequests": 100000,
   "chat.customAgentInSubagent.enabled": true,
+  "chat.includeReferencedInstructions": true,
   "chat.promptFilesLocations": {
     "copilot/prompts": true
   },
+  "chat.tools.terminal.autoReplyToPrompts": true,
+  "chat.useNestedAgentsMdFiles": true,
+  "chat.viewSessions.enabled": false,
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always"
   },
   "editor.formatOnSave": true,
-  "github.copilot.chat.responsesApiReasoningEffort": "xhigh",
-  "github.copilot.chat.useResponsesApi": true,
-  "github.copilot.chat.agent.temperature": 0,
-  "github.copilot.chat.tools.memory.enabled": true,
-  "chat.viewSessions.enabled": false,
-  "chat.tools.terminal.autoReplyToPrompts": true,
   "git.postCommitCommand": "sync",
+  "github.copilot.chat.agent.temperature": 0,
   "github.copilot.chat.cli.customAgents.enabled": true,
-  "github.copilot.chat.searchSubagent.enabled": true,
-  "chat.useNestedAgentsMdFiles": true,
-  "chat.includeReferencedInstructions": true,
-  "chat.commandCenter.enabled": false,
   "github.copilot.chat.responsesApiContextManagement.enabled": false, // @TODO: enable when the feature is ready
+  "github.copilot.chat.responsesApiReasoningEffort": "xhigh",
+  "github.copilot.chat.searchSubagent.enabled": true,
+  "github.copilot.chat.tools.memory.enabled": true,
 }
