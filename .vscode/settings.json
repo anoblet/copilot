@@ -15,7 +15,7 @@
   "git.postCommitCommand": "sync",
   "github.copilot.chat.agent.temperature": 0,
   "github.copilot.chat.cli.customAgents.enabled": true,
-  "github.copilot.chat.responsesApiContextManagement.enabled": false, // @TODO: enable when the feature is ready
+  "github.copilot.chat.exploreAgent.model": "gpt-5.4",
   "github.copilot.chat.responsesApiReasoningEffort": "xhigh",
   "github.copilot.chat.searchSubagent.enabled": true,
   "github.copilot.chat.tools.memory.enabled": true,
