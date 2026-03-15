@@ -27,6 +27,8 @@ Note: Skills should be project agnostic and not contain references to this proje
   - https://agentskills.io/home
   - https://agentskills.io/specification
 
+Create the following skills:
+
 - Skills
   - DebugMCP
     - Place the skill in 'copilot/.github/skills/debugmcp'
