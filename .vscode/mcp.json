@@ -66,6 +66,10 @@
         "CONTEXT7_API_KEY": "${input:context7_api_key}"
       }
     },
+    "debugmcp": {
+      "type": "http",
+      "url": "http://localhost:3001/mcp",
+    },
     "github": {
       "type": "http",
       "url": "https://api.githubcopilot.com/mcp/",

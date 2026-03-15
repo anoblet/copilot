@@ -28,11 +28,7 @@ Note: Skills should be project agnostic and not contain references to this proje
   - https://agentskills.io/specification
 
 - Skills
-  - Chrome DevTools
-    - Place the skill in 'copilot/.github/skills/chrome-devtools'
+  - DebugMCP
+    - Place the skill in 'copilot/.github/skills/debugmcp'
     - Resources
-      - https://github.com/ChromeDevTools/chrome-devtools-mcp
-
-After you are finished:
-
-- Thoroughly test the application to identify any other issues or areas for improvement, and use #chrome-devtools to capture and annotate any findings
+      - https://github.com/microsoft/DebugMCP
