@@ -65,3 +65,8 @@ node packages/package-name/index.ts
 <output>
 [documentation.md](.copilot/sessions/<session-id>/documentation.md)
 </output>
+
+## AGENTS.md
+
+- Update and improve the [AGENTS.md](AGENTS.md) file with any new observations or insights gained during the session.
+- Ensure that the AGENTS.md file accurately reflects the current state of the project and provides clear guidance for future development.
