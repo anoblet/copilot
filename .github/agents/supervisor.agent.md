@@ -92,8 +92,8 @@ You must complete each task by invoking the corresponding agent with #runSubagen
 </constraints>
 
 <references>
-- The ten most recent sessions in the [sessions](.copilot/sessions/) directory
 - The entire workspace, including all files and git history
+- [sessions](.copilot/sessions/)
 - The [CHANGELOG.md](CHANGELOG.md) file for recent changes and context
 - The [README.md](README.md) file for project overview and context
 - Any relevant documentation files in the workspace
