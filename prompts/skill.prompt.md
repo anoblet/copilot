@@ -16,8 +16,6 @@
 Before you begin:
 
 - Research [.copilot/sessions/](.copilot/sessions/)
-- Research [CHANGELOG.md](CHANGELOG.md)
-- Research [logs](data/logs/)
 
 Then, follow these steps:
 
@@ -30,7 +28,11 @@ Note: Skills should be project agnostic and not contain references to this proje
 Create the following skills:
 
 - Skills
-  - DebugMCP
-    - Place the skill in 'copilot/.github/skills/debugmcp'
+  - Home Assistant
+    - Path: 'copilot/.github/skills/home-assistant/'
     - Resources
-      - https://github.com/microsoft/DebugMCP
+      - https://www.home-assistant.io/
+      - https://www.home-assistant.io/docs/
+      - https://github.com/home-assistant/core
+      - https://github.com/home-assistant/frontend
+      - https://www.home-assistant.io/integrations/system_log/#action-write
