@@ -19,4 +19,5 @@
   "github.copilot.chat.responsesApiReasoningEffort": "xhigh",
   "github.copilot.chat.searchSubagent.enabled": true,
   "github.copilot.chat.tools.memory.enabled": true,
+  "inlineChat.defaultModel": "GPT-5 mini (copilot)"
 }
