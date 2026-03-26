@@ -16,8 +16,10 @@
   "github.copilot.chat.agent.temperature": 0,
   "github.copilot.chat.cli.customAgents.enabled": true,
   "github.copilot.chat.exploreAgent.model": "gpt-5.4",
-  "github.copilot.chat.responsesApiReasoningEffort": "xhigh",
   "github.copilot.chat.searchSubagent.enabled": true,
   "github.copilot.chat.tools.memory.enabled": true,
-  "inlineChat.defaultModel": "GPT-5 mini (copilot)"
+  "inlineChat.defaultModel": "GPT-5 mini (copilot)",
+  "chat.checkpoints.showFileChanges": true,
+  "chat.planAgent.defaultModel": "GPT-5.4 (copilot)",
+  "chat.experimental.useSkillAdherencePrompt": true,
 }
