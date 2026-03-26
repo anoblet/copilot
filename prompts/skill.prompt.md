@@ -3,10 +3,9 @@
 ## Tools
 
 - #askQuestions
-- #chrome-devtools
+- #context7
 - #runSubagent
 - #serena
-- #take_screenshot
 - #todo
 
 ## Instructions
@@ -28,11 +27,8 @@ Note: Skills should be project agnostic and not contain references to this proje
 Create the following skills:
 
 - Skills
-  - Home Assistant
-    - Path: 'copilot/.github/skills/home-assistant/'
+  - Context7
+    - Path: 'copilot/.github/skills/context7/'
     - Resources
-      - https://www.home-assistant.io/
-      - https://www.home-assistant.io/docs/
-      - https://github.com/home-assistant/core
-      - https://github.com/home-assistant/frontend
-      - https://www.home-assistant.io/integrations/system_log/#action-write
+      - https://github.com/upstash/context7
+      - https://context7.com/docs/overview
