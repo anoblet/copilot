@@ -1,6 +1,11 @@
 {
   "chat.agent.maxRequests": 100000,
+  "chat.agentSkillsLocations": {
+    "copilot/.github/skills": true
+  },
+  "chat.checkpoints.showFileChanges": true,
   "chat.customAgentInSubagent.enabled": true,
+  "chat.experimental.useSkillAdherencePrompt": true,
   "chat.includeReferencedInstructions": true,
   "chat.promptFilesLocations": {
     "copilot/prompts": true
@@ -18,8 +23,5 @@
   "github.copilot.chat.exploreAgent.model": "gpt-5.4",
   "github.copilot.chat.searchSubagent.enabled": true,
   "github.copilot.chat.tools.memory.enabled": true,
-  "inlineChat.defaultModel": "GPT-5 mini (copilot)",
-  "chat.checkpoints.showFileChanges": true,
-  "chat.planAgent.defaultModel": "GPT-5.4 (copilot)",
-  "chat.experimental.useSkillAdherencePrompt": true,
+  "inlineChat.defaultModel": "GPT-5 mini (copilot)"
 }
