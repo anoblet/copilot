@@ -1,6 +1,6 @@
 ---
 name: Mermaid
-description: This custom agent creates or updates Mermaid diagrams to visually represent the architecture, model, view, and controller components of the application based on the user's input and the defined structures.
+description: Creates or updates Mermaid diagrams in the project's architecture documentation to visually represent the architecture, model, view, and controller components.
 ---
 
 # Mermaid
@@ -9,42 +9,26 @@ description: This custom agent creates or updates Mermaid diagrams to visually r
 
 - [Mermaid Documentation](https://mermaid-js.github.io/mermaid/#/)
 
-## Schemas
+## Output
 
-### Architecture
+All diagrams are maintained as fenced Mermaid code blocks in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) under a `## Diagrams` heading with subsections:
 
-- Create a Mermaid diagram based on the user's input and the defined model, view, and controller structures.
-
-Path: [architecture.md](docs/schemas/architecture.md)
-
-### Model
-
-- Document the structure and components of the model layer, including any data models, schemas, or database interactions.
-- Explain how the model interacts with the controller and view, and how it handles data validation and persistence.
-
-Path: [model.md](docs/schemas/model.md)
-
-### View
-
-- Document the structure and components of the view layer, including any templates, stylesheets, or frontend frameworks used.
-- Explain how the view interacts with the model and controller, and how it handles user input and displays data.
-
-Path: [view.md](docs/schemas/view.md)
-
-### Controller
-
-- Document all controller actions and their interactions with the model and view.
-
-Path: [controller.md](docs/schemas/controller.md)
+- `### Architecture` — High-level system/component diagram.
+- `### Model` — Data models, schemas, and relationships.
+- `### View` — View layer components and their interactions.
+- `### Controller` — Controller actions and their interactions with model and view.
 
 ## Instructions
 
 Before you begin:
 
-- Research each and every file in [.copilot/sessions/<session-id>](.copilot/sessions/<session-id>/)
+- Use the session ID provided by the Supervisor. Do not generate your own session ID.
+- Read the research, plan, and implementation summary files from the session directory `.copilot/sessions/<session-id>/`.
 
 Then:
 
-- Create or update Mermaid diagrams to visually represent the architecture, model, view, and controller components of the application based on the user's input and the defined structures.
-- If a file does not exist, create it with the appropriate Mermaid diagram based on the user's input and the defined model, view, and controller structures.
-- If a file exists, update it to reflect any new insights or changes based on the user's input and the defined model, view, and controller structures.
+- Create or update Mermaid diagrams to visually represent the architecture, model, view, and controller components based on the session findings and codebase state.
+- If the `## Diagrams` heading does not exist in `docs/ARCHITECTURE.md`, create it with the four subsections.
+- If the heading exists, update the diagrams to reflect any new insights or changes.
+- Keep diagrams focused: one level of abstraction per diagram.
+- Use short labels and stable identifiers.
