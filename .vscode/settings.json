@@ -1,5 +1,6 @@
 {
   "chat.agent.maxRequests": 100000,
+  "chat.agentHost.enabled": true,
   "chat.agentSkillsLocations": {
     "copilot/.github/skills": true
   },
@@ -10,6 +11,7 @@
   "chat.promptFilesLocations": {
     "copilot/prompts": true
   },
+  "chat.subagents.allowInvocationsFromSubagents": true,
   "chat.tools.terminal.autoReplyToPrompts": true,
   "chat.useNestedAgentsMdFiles": true,
   "chat.viewSessions.enabled": false,
@@ -20,6 +22,8 @@
   "git.postCommitCommand": "sync",
   "github.copilot.chat.agent.temperature": 0,
   "github.copilot.chat.cli.customAgents.enabled": true,
+  "github.copilot.chat.copilotMemory.enabled": true,
+  "github.copilot.chat.executionSubagent.enabled": true,
   "github.copilot.chat.exploreAgent.model": "gpt-5.4",
   "github.copilot.chat.searchSubagent.enabled": true,
   "github.copilot.chat.tools.memory.enabled": true,
