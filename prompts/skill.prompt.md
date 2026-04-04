@@ -27,8 +27,15 @@ Note: Skills should be project agnostic and not contain references to this proje
 Create the following skills:
 
 - Skills
-  - Context7
-    - Path: 'copilot/.github/skills/context7/'
+  - OpenScad
+    - Path: 'copilot/.github/skills/openscad/'
     - Resources
-      - https://github.com/upstash/context7
-      - https://context7.com/docs/overview
+      - https://github.com/openscad/openscad
+      - https://en.wikibooks.org/wiki/OpenSCAD_User_Manual
+      - https://github.com/BelfrySCAD/BOSL2/
+      - https://github.com/BelfrySCAD/BOSL2/wiki
+    - Features
+      - Accept a reference image as input and generate OpenSCAD code to create a 3D model that resembles the image.
+      - Use the executable in the `bin` directory to validate the generated OpenSCAD code and ensure it produces the expected 3D model.
+      - Implement a feedback loop where the skill can iteratively refine the generated OpenSCAD code based on the validation results and user feedback to improve the accuracy of the 3D model.
+      - The `tmp` directory should be used when itterating on the generated OpenSCAD code
