@@ -11,6 +11,7 @@
 - Do not add erronenous keys where the value is the same as the default value
 - Comments should be at the beginning of a code block, and not at the end.
 - All package names, ids, unique_ids, entity_ids, etc. should use snake_case.
+- For area automations that share a trigger across multiple concerns, prefer nested trigger directories with one automation per concern, for example `tv/on/lights.yaml` and `tv/on/blinds.yaml`, instead of a single mixed `on.yaml` or `off.yaml` package.
 - Use the `notify.mobile_app_pixel_6_pro` service for all mobile notifications.
 
 Use the `flex-card` and `grid-card` to create a responsive layout.
