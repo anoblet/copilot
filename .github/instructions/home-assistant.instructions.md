@@ -13,7 +13,7 @@
 - Comments should be at the beginning of a code block, and not at the end.
 - All package names, ids, unique_ids, entity_ids, etc. should use snake_case.
 - For area automations that share a trigger across multiple concerns, prefer nested trigger directories with one automation per concern, for example `tv/on/lights.yaml` and `tv/on/blinds.yaml`, instead of a single mixed `on.yaml` or `off.yaml` package.
-- For room-specific configuration surfaces in the Rooms dashboard, use `includes/lovelace/views/<area>/configuration.yaml` with `subview: true`, include that view from `includes/lovelace/dashboards/dashboard_room.yaml`, and navigate to it from the room controls with `navigation_path: /dashboard-room/<area>-configuration`.
+- Room-specific Configuration views in the Rooms dashboard should live at `includes/lovelace/views/<area>/configuration.yaml` with `subview: true`, use `type: sections` or omit `type` when relying on the default, use built-in card types, omit the area name from labels, include only entities created or configured by YAML packages under `packages/`, be included from `includes/lovelace/dashboards/dashboard_room.yaml`, and be opened from a dedicated Configuration tile in the area view with `navigation_path: /dashboard-room/<area>-configuration`. Keep that Configuration tile as the last item on its row in the area view.
 - Use the `notify.mobile_app_pixel_6_pro` service for all mobile notifications.
 
 Use the `flex-card` and `grid-card` to create a responsive layout.
