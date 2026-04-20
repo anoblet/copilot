@@ -5,14 +5,12 @@
     "copilot/.github/skills": true
   },
   "chat.checkpoints.showFileChanges": true,
-  "chat.customAgentInSubagent.enabled": true,
   "chat.experimental.useSkillAdherencePrompt": true,
   "chat.includeReferencedInstructions": true,
   "chat.promptFilesLocations": {
     "copilot/prompts": true
   },
   "chat.subagents.allowInvocationsFromSubagents": true,
-  "chat.tools.terminal.autoReplyToPrompts": true,
   "chat.useNestedAgentsMdFiles": true,
   "chat.viewSessions.enabled": false,
   "editor.codeActionsOnSave": {
@@ -21,7 +19,6 @@
   "editor.formatOnSave": true,
   "git.postCommitCommand": "sync",
   "github.copilot.chat.agent.temperature": 0,
-  "github.copilot.chat.cli.customAgents.enabled": true,
   "github.copilot.chat.copilotMemory.enabled": true,
   "github.copilot.chat.executionSubagent.enabled": true,
   "github.copilot.chat.exploreAgent.model": "gpt-5.4",
