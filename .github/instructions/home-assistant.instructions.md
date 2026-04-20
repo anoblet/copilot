@@ -5,6 +5,7 @@
 - After each meaningful change to the configuration, run `pnpm reload`, then check runtime logs via `pnpm home-assistant raw request GET /api/hassio/core/logs --text` (Supervisor) to confirm there are no warnings or errors related to the changes.
 - If `/api/hassio/core/logs` is unavailable or returns an upstream error, fall back to `pnpm home-assistant error-log` and continue the runtime validation there.
 - When changing helper `initial` values, do not assume `pnpm reload` will update existing live helper states. Verify the runtime state explicitly, and use a service call or one-time migration if existing installs must adopt the new values immediately.
+- For user-editable helper migrations, prefer explicit one-time post-reload seeding plus state verification over startup or `automation_reloaded` reseeding; recurring reseed automations will overwrite later user changes.
 - For runtime-only settings that cannot be templated in static package config, use a helper-backed script or automation and trigger it on `automation_reloaded` in addition to startup so `pnpm reload` reapplies the live settings without a full restart.
 - `pnpm home-assistant` requires Node.js `>= 22.6.0` (see `bin/cli/README.md`).
 - Do not use `mode: single` in automations since it is the default
