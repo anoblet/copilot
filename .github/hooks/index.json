@@ -1,10 +1,10 @@
 {
     "version": 1,
     "hooks": {
-        "agentStop": [
+        "sessionEnd": [
             {
                 "type": "command",
-                "bash": "./copilot/scripts/agent-stop.sh"
+                "bash": "./copilot/scripts/session-end.sh"
             }
         ]
     }
