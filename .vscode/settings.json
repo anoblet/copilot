@@ -18,6 +18,7 @@
   },
   "editor.formatOnSave": true,
   "git.postCommitCommand": "sync",
+  "git.repositoryScanMaxDepth": -1,
   "github.copilot.chat.agent.temperature": 0,
   "github.copilot.chat.executionSubagent.enabled": true,
   "github.copilot.chat.exploreAgent.model": "gpt-5.4",
