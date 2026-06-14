@@ -12,19 +12,37 @@ This directory is a dedicated tooling workspace. It supports development in the 
 - `.github/instructions/`: instruction hierarchy consumed by Copilot
 - `.github/hooks/`: hook metadata
 - `.github/skills/`: repository skills
-- `packages/`: workspace utilities (`cli`, `link`, `mcp`, `session`)
+- `packages/`: workspace utilities (`cli`, `link`, `mcp`, `plaid`, `session`)
+- `scripts/`: utility scripts (e.g., `sync-skills.ts`)
+- `skills/`: authoritative source for OpenClaw skill definitions
 - `prompts/`: reusable prompt templates
 - `awesome-copilot/`: upstream resources
 - `specification.md`: workspace-level specification
 
 ## Packages
 
-| Package                 | Path               | Purpose                                                  |
-| ----------------------- | ------------------ | -------------------------------------------------------- |
-| `@anoblet/copilot-cli`  | `packages/cli`     | Runs the `copilot` command repeatedly from a prompt file |
-| `@anoblet/copilot-link` | `packages/link`    | Applies link.json mappings as symlinks or hard copies    |
-| `@copilot/mcp`          | `packages/mcp`     | Local MCP server and terminal client                     |
-| session utility         | `packages/session` | Purges old session directories                           |
+| Package                  | Path               | Purpose                                                  |
+| ------------------------ | ------------------ | -------------------------------------------------------- |
+| `@anoblet/copilot-cli`   | `packages/cli`     | Runs the `copilot` command repeatedly from a prompt file |
+| `@anoblet/copilot-link`  | `packages/link`    | Applies link.json mappings as symlinks or hard copies    |
+| `@copilot/mcp`           | `packages/mcp`     | Local MCP server and terminal client                     |
+| `@anoblet/copilot-plaid` | `packages/plaid`   | Plaid API CLI for financial transactions                 |
+| session utility          | `packages/session` | Purges old session directories                           |
+
+## Skills
+
+Skills in `skills/<name>/SKILL.md` are the authoritative source for OpenClaw
+skill definitions. They are deployed to the global managed skills directory with:
+
+```bash
+pnpm copilot:skills:sync         # Sync all skills
+pnpm copilot:skills:sync plaid    # Sync a single skill
+pnpm copilot:skills:sync --dry-run  # Preview
+```
+
+This calls `openclaw skills install --global --force` for each skill, placing it
+in `~/.openclaw/skills/<name>/` under the `openclaw-managed` source — visible to
+all agents without per-workspace copies.
 
 ## Requirements
 

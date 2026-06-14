@@ -2,7 +2,9 @@
   "name": "@anoblet/copilot",
   "version": "1.0.0",
   "description": "A comprehensive GitHub Copilot enhancement framework.",
+  "type": "module",
   "scripts": {
+    "copilot:skills:sync": "node scripts/sync-skills.ts",
     "copilot:link:enable": "node packages/link/src/index.ts ../link.json --enable",
     "copilot:link:disable": "node packages/link/src/index.ts ../link.json --disable",
     "copilot:link:toggle": "node packages/link/src/index.ts ../link.json --toggle",
