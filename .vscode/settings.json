@@ -12,6 +12,7 @@
   },
   "chat.subagents.allowInvocationsFromSubagents": true,
   "chat.useNestedAgentsMdFiles": true,
+  "chat.utilitySmallModel": "customendpoint/deepseek-v4-flash",
   "chat.viewSessions.enabled": false,
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always"
@@ -24,6 +25,6 @@
   "github.copilot.chat.exploreAgent.model": "gpt-5.4",
   "github.copilot.chat.searchSubagent.enabled": true,
   "github.copilot.chat.skillTool.enabled": true,
-  "inlineChat.defaultModel": "GPT-5 mini (copilot)",
+  "inlineChat.defaultModel": "DeepSeek V4 Flash (customendpoint)",
   "jsts-chat-features.skills.enabled": true
 }
