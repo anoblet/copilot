@@ -13,10 +13,10 @@ Filesystem linking utility for applying JSON mappings as symlinks or hard copies
 ## Usage
 
 ```bash
-node /homeassistant/copilot/packages/link/src/index.ts /homeassistant/link.json --enable
-node /homeassistant/copilot/packages/link/src/index.ts /homeassistant/link.json --disable
-node /homeassistant/copilot/packages/link/src/index.ts /homeassistant/link.json --toggle
-node /homeassistant/copilot/packages/link/src/index.ts /homeassistant/link.json --toggle --force
+node copilot/packages/link/src/index.ts link.json --enable
+node copilot/packages/link/src/index.ts link.json --disable
+node copilot/packages/link/src/index.ts link.json --toggle
+node copilot/packages/link/src/index.ts link.json --toggle --force
 ```
 
 ## Flags

@@ -22,18 +22,11 @@
   "servers": {
     "alphavantage": {
       "command": "uvx",
-      "args": [
-        "av-mcp",
-        "${input:alpha_vantage_api_key}"
-      ]
+      "args": ["av-mcp", "${input:alpha_vantage_api_key}"]
     },
     "angular-cli": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@angular/cli",
-        "mcp"
-      ]
+      "args": ["-y", "@angular/cli", "mcp"]
     },
     "chroma": {
       "command": "uvx",
@@ -59,9 +52,7 @@
     },
     "copilot-mcp": {
       "command": "node",
-      "args": [
-        "${workspaceFolder}/copilot/packages/mcp/src/server/stdio.ts"
-      ],
+      "args": ["${workspaceFolder}/copilot/packages/mcp/src/server/stdio.ts"],
       "env": {
         "MCP_PORT": "4300",
         "MCP_USER_INPUT_TIMEOUT_MS": "0"
@@ -81,34 +72,25 @@
         "X-MCP-Toolsets": "default,copilot_spaces"
       }
     },
+    "google-search": {
+      "command": "npx",
+      "args": ["-y", "@mcp-server/google-search-mcp@latest"]
+    },
     "markitdown": {
       "command": "uvx",
-      "args": [
-        "markitdown-mcp"
-      ]
+      "args": ["markitdown-mcp"]
     },
     "mempalace": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "mempalace",
-        "python",
-        "-m",
-        "mempalace.mcp_server"
-      ]
+      "args": ["--from", "mempalace", "python", "-m", "mempalace.mcp_server"]
     },
     "playwright": {
       "command": "npx",
-      "args": [
-        "@playwright/mcp@latest"
-      ]
+      "args": ["@playwright/mcp@latest"]
     },
     "sequential-thinking": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-sequential-thinking"
-      ]
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
     },
     "serena": {
       "type": "stdio",
@@ -126,19 +108,14 @@
     },
     "tavily": {
       "command": "npx",
-      "args": [
-        "-y",
-        "tavily-mcp@latest"
-      ],
+      "args": ["-y", "tavily-mcp@latest"],
       "env": {
         "TAVILY_API_KEY": "${input:tavily_api_key}"
       }
     },
     "time": {
       "command": "uvx",
-      "args": [
-        "mcp-server-time"
-      ]
+      "args": ["mcp-server-time"]
     }
   }
 }
