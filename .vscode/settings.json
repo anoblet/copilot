@@ -25,5 +25,7 @@
   "github.copilot.chat.searchSubagent.enabled": true,
   "github.copilot.chat.skillTool.enabled": true,
   "inlineChat.defaultModel": "DeepSeek V4 Flash (customendpoint)",
-  "jsts-chat-features.skills.enabled": true
+  "jsts-chat-features.skills.enabled": true,
+  "chat.autopilot.advanced.enabled": true,
+  "chat.permissions.default": "autopilot"
 }
