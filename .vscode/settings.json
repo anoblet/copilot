@@ -22,7 +22,6 @@
   "git.repositoryScanMaxDepth": -1,
   "github.copilot.chat.agent.temperature": 0,
   "github.copilot.chat.executionSubagent.enabled": true,
-  "github.copilot.chat.exploreAgent.model": "gpt-5.4",
   "github.copilot.chat.searchSubagent.enabled": true,
   "github.copilot.chat.skillTool.enabled": true,
   "inlineChat.defaultModel": "DeepSeek V4 Flash (customendpoint)",
