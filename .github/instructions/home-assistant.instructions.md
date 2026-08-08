@@ -28,6 +28,9 @@ Avoid using `grep` in the root directory. Instead, use it within specific subdir
 
 Use the `pnpm home-assistant` command to run Home Assistant CLI commands. The documentation is located in the `bin/cli` directory.
 
+- Bedroom AC presence-off: `packages/areas/bedroom/presence/off/thermostat.yaml` now turns both thermostats fully off (`climate.turn_off`) after a 15 s presence-off hold — the old `for: {minutes: 1}` hold plus setpoint-only actions was the defect (it never fired); the `script.bedroom_air_conditioner_off` debounce is bounded to 30 s via `timeout: '00:00:30'`.
+- Expose the combined `climate.bedroom_thermostat` climate group to Google Assistant, not its separate heat and cool implementation entities, so whole-home thermostat commands use the group's `off` mode and propagate to both members.
+
 ## Commands
 
 - Use `ha core logs` to view Home Assistant core logs.
