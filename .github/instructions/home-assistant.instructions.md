@@ -30,6 +30,10 @@ Use the `pnpm home-assistant` command to run Home Assistant CLI commands. The do
 
 - Bedroom AC presence-off: `packages/areas/bedroom/presence/off/thermostat.yaml` now turns both thermostats fully off (`climate.turn_off`) after a 15 s presence-off hold — the old `for: {minutes: 1}` hold plus setpoint-only actions was the defect (it never fired); the `script.bedroom_air_conditioner_off` debounce is bounded to 30 s via `timeout: '00:00:30'`.
 - Expose the combined `climate.bedroom_thermostat` climate group to Google Assistant, not its separate heat and cool implementation entities, so whole-home thermostat commands use the group's `off` mode and propagate to both members.
+- Keep helper-only packages separate even when the related behavior package contains only integration metadata such as `google_assistant.entity_config`; preserve the helper entity ID and move its definition into a sibling `_input` package.
+- For local runtime validation from the Home Assistant host, pass `-H http://localhost:8123` to `pnpm home-assistant` when the configured external URL is slow or unavailable.
+- The bedroom sunset and TV-idle blind position intentionally share `input_number.bedroom_blinds_sunset_position`; the live migration default was seeded once to 75 after the helper was registered.
+- Background music uses Music Assistant library URIs such as `library://radio/2`; opaque numeric media IDs can become unresolvable. Keep the play and stop target helpers pointed at the Music Assistant player entity, trim text-helper values when consuming them, and gate scheduled play/stop actions with the per-day enable helpers.
 
 ## Commands
 
