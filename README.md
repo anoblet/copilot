@@ -1,4 +1,4 @@
-# @anoblet/copilot
+# Copilot (@anoblet/copilot)
 
 Copilot workspace for this repository. It contains instruction sets, chat agents, reusable prompts, and small Node/TypeScript utilities used by local workflows.
 

@@ -1,4 +1,4 @@
-# @anoblet/copilot-link
+# Copilot link (@anoblet/copilot-link)
 
 Filesystem linking utility for applying JSON mappings as symlinks or hard copies.
 

@@ -1,4 +1,4 @@
-# @anoblet/copilot-cli
+# Copilot cli (@anoblet/copilot-cli)
 
 Wrapper around the `copilot` command that repeats the same prompt for multiple iterations.
 

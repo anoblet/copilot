@@ -1,4 +1,4 @@
-# session utility
+# Session utility
 
 Utility script for purging Copilot session directories.
 
