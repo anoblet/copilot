@@ -1,4 +1,4 @@
-# @copilot/mcp
+# Mcp (@copilot/mcp)
 
 MCP server (stdio or HTTP) + terminal client that exposes a single MCP tool: `user_input`.
 
