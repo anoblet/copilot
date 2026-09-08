@@ -1,0 +1,11 @@
+# Immediate entries only; child directories own their allowlists.
+/*
+
+!/.gitignore
+!/README.md
+!/link.json
+!/package.json
+!/readme.md
+!/scripts
+!/specification.md
+!/src

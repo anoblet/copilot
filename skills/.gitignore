@@ -1,0 +1,8 @@
+# Immediate entries only; child directories own their allowlists.
+/*
+
+!/.gitignore
+!/google-search
+!/openclaw
+!/plaid
+!/readme.md

@@ -1,0 +1,7 @@
+# Immediate entries only; child directories own their allowlists.
+/*
+
+!/.gitignore
+!/github-dark-default.jsonc
+!/readme.md
+!/unicorn-vampire.jsonc

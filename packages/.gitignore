@@ -1,0 +1,10 @@
+# Immediate entries only; child directories own their allowlists.
+/*
+
+!/.gitignore
+!/cli
+!/link
+!/mcp
+!/plaid
+!/readme.md
+!/session

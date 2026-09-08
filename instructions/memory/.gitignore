@@ -1,0 +1,6 @@
+# Immediate entries only; child directories own their allowlists.
+/*
+
+!/.gitignore
+!/prompt.instructions.md
+!/readme.md

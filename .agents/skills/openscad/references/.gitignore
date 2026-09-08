@@ -1,0 +1,9 @@
+# Immediate entries only; child directories own their allowlists.
+/*
+
+!/.gitignore
+!/bosl2-reference-map.md
+!/modeling-from-images.md
+!/readme.md
+!/validation-and-iteration.md
+!/workflows.md

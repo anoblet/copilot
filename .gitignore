@@ -1,4 +1,22 @@
-.chroma
-.env
-.genaiscript
-node_modules
+# Immediate entries only; child directories own their allowlists.
+/*
+
+!/.agents
+!/.github
+!/.gitignore
+!/.gitmodules
+!/.vscode
+!/README.md
+!/awesome-copilot
+!/genaisrc
+!/instructions
+!/package.json
+!/packages
+!/pnpm-lock.yaml
+!/pnpm-workspace.yaml
+!/prompts
+!/readme.md
+!/scripts
+!/skills
+!/specification.md
+!/themes

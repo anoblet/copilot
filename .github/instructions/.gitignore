@@ -1,0 +1,27 @@
+# Immediate entries only; child directories own their allowlists.
+/*
+
+!/.gitignore
+!/chrome-devtools.instructions.md
+!/copilot.instructions.md
+!/css.instructions.md
+!/git-flow.instructions.md
+!/git.instructions.md
+!/home-assistant.instructions.md
+!/index.instructions.md
+!/inspiration.instructions.md
+!/memory
+!/node.instructions.md
+!/principles.instructions.md
+!/prompt.instructions.md
+!/readme.md
+!/record.instructions.md
+!/schema.instructions.md
+!/sequential-thinking.instructions.md
+!/terminal.instructions.md
+!/time.instructions.md
+!/tools
+!/tools.instructions.md
+!/typescript.instructions.md
+!/vaadin.instructions.md
+!/web-component.instructions.md
