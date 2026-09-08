@@ -1,18 +1,13 @@
 {
   "chat.agent.maxRequests": 100000,
   "chat.agentHost.enabled": true,
-  "chat.agentSkillsLocations": {
-    "copilot/.github/skills": true
-  },
+  "chat.autopilot.advanced.enabled": true,
   "chat.checkpoints.showFileChanges": true,
   "chat.experimental.useSkillAdherencePrompt": true,
   "chat.includeReferencedInstructions": true,
-  "chat.promptFilesLocations": {
-    "copilot/prompts": true
-  },
+  "chat.permissions.default": "autopilot",
   "chat.subagents.allowInvocationsFromSubagents": true,
   "chat.useNestedAgentsMdFiles": true,
-  "chat.utilitySmallModel": "customendpoint/deepseek-v4-flash",
   "chat.viewSessions.enabled": false,
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always"
@@ -24,8 +19,5 @@
   "github.copilot.chat.executionSubagent.enabled": true,
   "github.copilot.chat.searchSubagent.enabled": true,
   "github.copilot.chat.skillTool.enabled": true,
-  "inlineChat.defaultModel": "DeepSeek V4 Flash (deepseek)",
-  "jsts-chat-features.skills.enabled": true,
-  "chat.autopilot.advanced.enabled": true,
-  "chat.permissions.default": "autopilot"
+  "jsts-chat-features.skills.enabled": true
 }
