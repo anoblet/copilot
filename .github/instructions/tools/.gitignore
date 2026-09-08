@@ -1,0 +1,14 @@
+# Immediate entries only; child directories own their allowlists.
+/*
+
+!/.gitignore
+!/agent.instructions.md
+!/chroma.instructions.md
+!/context7.instructions.md
+!/github.instructions.md
+!/markitdown.instructions.md
+!/memory.instructions.md
+!/playwright.instructions.md
+!/readme.md
+!/sequential-thinking.instructions.md
+!/serena.instructions.md

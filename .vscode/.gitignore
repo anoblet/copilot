@@ -1,0 +1,8 @@
+# Immediate entries only; child directories own their allowlists.
+/*
+
+!/.gitignore
+!/extensions.json
+!/mcp.json
+!/readme.md
+!/settings.json

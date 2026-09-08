@@ -1,0 +1,21 @@
+# Immediate entries only; child directories own their allowlists.
+/*
+
+!/.gitignore
+!/agents-md.agent.md
+!/alpha-vantage.agent.md
+!/chrome-devtools.agent.md
+!/documentation.agent.md
+!/implement.agent.md
+!/lint.agent.md
+!/mermaid.agent.md
+!/next.agent.md
+!/plan.agent.md
+!/playwright.agent.md
+!/question.agent.md
+!/readme.md
+!/research.agent.md
+!/review.agent.md
+!/summary.agent.md
+!/supervisor.agent.md
+!/test.agent.md

@@ -1,0 +1,10 @@
+# Immediate entries only; child directories own their allowlists.
+/*
+
+!/.gitignore
+!/agents
+!/copilot-instructions.md
+!/hooks
+!/instructions
+!/readme.md
+!/skills

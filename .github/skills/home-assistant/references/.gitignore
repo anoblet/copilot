@@ -1,0 +1,8 @@
+# Immediate entries only; child directories own their allowlists.
+/*
+
+!/.gitignore
+!/configuration-and-automations.md
+!/development-paths.md
+!/readme.md
+!/templates-and-debugging.md

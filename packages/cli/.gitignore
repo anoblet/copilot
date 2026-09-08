@@ -1,0 +1,10 @@
+# Immediate entries only; child directories own their allowlists.
+/*
+
+!/.gitignore
+!/README.md
+!/package.json
+!/readme.md
+!/specification.md
+!/src
+!/tsconfig.json

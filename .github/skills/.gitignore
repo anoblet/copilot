@@ -1,0 +1,16 @@
+# Immediate entries only; child directories own their allowlists.
+/*
+
+!/.gitignore
+!/adaptive-lighting
+!/browserless
+!/chrome-devtools
+!/cloudflare-crawl
+!/context7
+!/debugmcp
+!/grill-me
+!/home-assistant
+!/mermaid
+!/openscad
+!/readme.md
+!/serena
