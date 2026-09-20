@@ -4,6 +4,7 @@
 !/.gitignore
 !/adaptive-lighting
 !/anoblet-models-update
+!/anoblet-commit
 !/browserless
 !/chrome-devtools
 !/cloudflare-crawl

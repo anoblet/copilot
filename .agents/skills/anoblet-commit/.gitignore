@@ -1,0 +1,6 @@
+# Immediate entries only; new content requires an explicit allowlist entry.
+/*
+
+!/.gitignore
+!/SKILL.md
+!/readme.md
