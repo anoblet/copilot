@@ -3,8 +3,10 @@
 
 !/.gitignore
 !/adaptive-lighting
+!/anoblet-incident-record
 !/anoblet-models-update
 !/anoblet-commit
+!/anoblet-skill-workshop
 !/browserless
 !/chrome-devtools
 !/cloudflare-crawl
