@@ -1,6 +1,7 @@
 # Copilot
 
 <!-- directory-responsibility -->
+
 Supplies shared Copilot instructions, agents, prompts, skills, and supporting command-line utilities.
 
 Detailed usage and existing reference material: [README.md](README.md).
