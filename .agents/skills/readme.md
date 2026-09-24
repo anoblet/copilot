@@ -9,7 +9,7 @@ flowchart LR
     A["Task requirements"] --> B["Select a matching skill"]
     B --> C["Task-specific operating instructions"]
     C --> D["Repository commit workflow"]
-    D --> E["Review, commit, push, and verify"]
+    D --> E["Identify submodules, stage, generate message, commit, push"]
     C --> F["Model catalog workflow"]
     F --> G["Sync OpenAI and OpenCode entries"]
     C --> H["Runtime incident record"]
