@@ -1,11 +1,12 @@
 # Repository commits
 
-Owns the workflow for reviewing and publishing changes across a repository and its initialized submodules. [SKILL.md](SKILL.md) defines review, authorization, child-before-parent publication, and final verification. Initialized submodules stay on `main`, preserving and integrating their existing commits. Repository remotes supply publication destinations; repository instructions supply applicable checks.
+Owns the workflow for reviewing and publishing changes across a repository and its initialized submodules. [SKILL.md](SKILL.md) defines review and child-before-parent execution. [commit.ts](commit.ts) deterministically stages nonignored changes, validates, commits with the AI-generated Conventional Commit message, pushes, and verifies the configured upstream. Test the helper only in a disposable repository.
 
 ```mermaid
 flowchart LR
-    A[Repository changes and submodule tree] --> B[Review changes and destinations]
-    B --> C[Commit and push deepest children]
-    C --> D[Commit and push parents and root]
-    D --> E[Verify remote commits and clean working trees]
+    A[Review repository changes] --> B[AI generates Conventional Commit message]
+    B --> T[Test helper in disposable repository]
+    B --> C[TypeScript stages and validates nonignored changes]
+    C --> D[Commit, push, and verify configured upstream]
+    D --> E[Run children before parents; verify gitlinks and clean trees]
 ```

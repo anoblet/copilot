@@ -2,5 +2,6 @@
 /*
 
 !/.gitignore
+!/commit.ts
 !/SKILL.md
 !/readme.md
