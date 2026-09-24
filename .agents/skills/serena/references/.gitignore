@@ -1,6 +1,0 @@
-# Immediate entries only; child directories own their allowlists.
-/*
-
-!/.gitignore
-!/readme.md
-!/workflow.md

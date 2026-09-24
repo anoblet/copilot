@@ -1,7 +1,0 @@
-# Immediate entries only; new content requires an explicit allowlist entry.
-/*
-
-!/.gitignore
-!/commit.ts
-!/SKILL.md
-!/readme.md
