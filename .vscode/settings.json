@@ -8,7 +8,7 @@
   "chat.permissions.default": "autopilot",
   "chat.subagents.allowInvocationsFromSubagents": true,
   "chat.useNestedAgentsMdFiles": true,
-  "chat.viewSessions.enabled": false,
+  "chat.viewSessions.enabled": true,
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always"
   },
