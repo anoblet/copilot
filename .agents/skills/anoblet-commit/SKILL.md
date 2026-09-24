@@ -41,7 +41,11 @@ because it commits and pushes.
 ## 5. Push
 
 Push to the configured upstream and verify publication, then recheck each repository's
-branch/upstream, parent gitlink, published `HEAD`, and full status.
+branch/upstream, parent gitlink, published `HEAD`, and full status. Publish a submodule that
+is ahead of its upstream in this same pass, even when another session made those commits:
+publish the child before touching its parent, advance a parent gitlink only to a revision
+already published on the child's `main`, and commit that advance separately in the parent. A
+nested checkout that is merely behind its upstream is left alone.
 
 Run the TypeScript helper for each repository, deepest submodule first and root last:
 
