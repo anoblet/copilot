@@ -33,3 +33,4 @@ Use this reference for YAML-first Home Assistant work.
 - Triggers that never fire because the event, entity, or state transition is too narrow.
 - Conditions that block execution because a template, time window, or state check never matches.
 - Actions that call the wrong service or assume an entity attribute exists when it does not.
+- Splitting or replacing a helper entity: a newly added `input_number` without `initial` registers at its minimum (commonly `0`) rather than `unknown`, so a numeric guard such as `is_number` passes and a template can push an unintended `0`. Re-seed new helpers with the prior live value immediately after the reload that registers them.
