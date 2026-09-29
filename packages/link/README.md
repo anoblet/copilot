@@ -9,6 +9,7 @@ Filesystem linking utility for applying JSON mappings as symlinks or hard copies
 - Toggle between symlink and hard-copy states (`--toggle`)
 - Force overwrite/refresh behavior (`-f`, `--force`)
 - Support nested directory mapping structures
+- Link entire directories (files or directory trees) in every mode
 
 ## Usage
 
@@ -36,6 +37,11 @@ Top-level object keys are destination directories relative to current working di
 - array entries with source-path strings
 - nested objects for subdirectories
 - arrays that mix strings and nested objects
+
+Each source-path string names a file **or a directory**. The symlink or copy is named after the
+source's basename and is created inside the destination directory. With `-f`, an existing real
+directory at the link path is replaced when creating a symlink, and a materialized directory is
+refreshed when creating a copy.
 
 Example (`/homeassistant/link.json` excerpt):
 

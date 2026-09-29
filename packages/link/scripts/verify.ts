@@ -31,9 +31,25 @@ function assertSymlink(filePath: string, expectedTarget: string) {
   }
 }
 
-function runLink(configPath: string, cwd: string) {
+function assertRealDirectory(dirPath: string) {
+  const stat = fs.lstatSync(dirPath);
+  if (stat.isSymbolicLink() || !stat.isDirectory()) {
+    throw new Error(`Expected a real directory at ${dirPath}`);
+  }
+}
+
+function assertFileContents(filePath: string, contents: string) {
+  const actual = fs.readFileSync(filePath, 'utf8');
+  if (actual !== contents) {
+    throw new Error(
+      `File contents mismatch at ${filePath}: expected '${contents}', got '${actual}'`,
+    );
+  }
+}
+
+function runLink(configPath: string, cwd: string, args: string[] = []) {
   // Use node to run the CLI
-  execFileSync('node', [cliPath, configPath], {
+  execFileSync('node', [cliPath, configPath, ...args], {
     cwd,
     stdio: 'pipe',
     env: process.env,
@@ -173,10 +189,92 @@ function testInvalidTypesFailFast() {
   }
 }
 
+function testDirectoryLink() {
+  const { root, srcDir, destDir } = createTempWorkspace();
+
+  try {
+    writeFile(path.join(srcDir, 'skills', 'one', 'SKILL.md'), 'one');
+    writeFile(path.join(srcDir, 'skills', 'two', 'SKILL.md'), 'two');
+
+    const config = {
+      '.agents': ['../../src/skills'],
+    };
+
+    const configPath = path.join(root, 'link.json');
+    writeFile(configPath, JSON.stringify(config, null, 2));
+
+    runLink(configPath, destDir);
+
+    const linkPath = path.join(destDir, '.agents', 'skills');
+    assertSymlink(linkPath, '../../src/skills');
+    assertFileContents(path.join(linkPath, 'one', 'SKILL.md'), 'one');
+    assertFileContents(path.join(linkPath, 'two', 'SKILL.md'), 'two');
+  } finally {
+    cleanupTempWorkspace(root);
+  }
+}
+
+function testDirectoryDisableAndToggle() {
+  const { root, srcDir, destDir } = createTempWorkspace();
+
+  try {
+    writeFile(path.join(srcDir, 'skills', 'one', 'SKILL.md'), 'one');
+
+    const config = {
+      '.agents': ['../../src/skills'],
+    };
+
+    const configPath = path.join(root, 'link.json');
+    writeFile(configPath, JSON.stringify(config, null, 2));
+
+    const linkPath = path.join(destDir, '.agents', 'skills');
+
+    runLink(configPath, destDir);
+    assertSymlink(linkPath, '../../src/skills');
+
+    runLink(configPath, destDir, ['--disable']);
+    assertRealDirectory(linkPath);
+    assertFileContents(path.join(linkPath, 'one', 'SKILL.md'), 'one');
+
+    runLink(configPath, destDir, ['--toggle']);
+    assertSymlink(linkPath, '../../src/skills');
+    assertFileContents(path.join(linkPath, 'one', 'SKILL.md'), 'one');
+  } finally {
+    cleanupTempWorkspace(root);
+  }
+}
+
+function testForceReplacesRealDirectory() {
+  const { root, srcDir, destDir } = createTempWorkspace();
+
+  try {
+    writeFile(path.join(srcDir, 'skills', 'one', 'SKILL.md'), 'one');
+    writeFile(path.join(destDir, '.agents', 'skills', 'stale.txt'), 'stale');
+
+    const config = {
+      '.agents': ['../../src/skills'],
+    };
+
+    const configPath = path.join(root, 'link.json');
+    writeFile(configPath, JSON.stringify(config, null, 2));
+
+    const linkPath = path.join(destDir, '.agents', 'skills');
+
+    runLink(configPath, destDir, ['--force']);
+    assertSymlink(linkPath, '../../src/skills');
+    assertFileContents(path.join(linkPath, 'one', 'SKILL.md'), 'one');
+  } finally {
+    cleanupTempWorkspace(root);
+  }
+}
+
 function main() {
   testMixedArraySchema();
   testLegacyObjectSchema();
   testInvalidTypesFailFast();
+  testDirectoryLink();
+  testDirectoryDisableAndToggle();
+  testForceReplacesRealDirectory();
   console.log('link: verification OK');
 }
 

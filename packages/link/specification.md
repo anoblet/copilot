@@ -28,13 +28,14 @@ Priority when multiple mode flags are present:
   - array of strings and/or nested objects
   - nested object
 - Strings represent source paths used as symlink targets.
+- Source paths may reference files or directories; directories are linked or copied as a whole.
 
 ## Operational Rules
 
 - Missing destination directories are created.
-- `enable` mode creates symlinks and can overwrite existing files when forced.
-- `disable` mode converts symlinks to copied files.
-- `toggle` swaps file type:
-  - symlink -> copied file
-  - copied file -> symlink
+- `enable` mode creates symlinks and can overwrite existing files or directories when forced.
+- `disable` mode converts symlinks to copied files or directory trees.
+- `toggle` swaps entry type:
+  - symlink -> copied file or directory tree
+  - copied file or directory tree -> symlink
 - `--force` enables overwrite/refresh behavior where applicable.
