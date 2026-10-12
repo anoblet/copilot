@@ -3,10 +3,8 @@
 
 !/.github
 !/.gitignore
-!/.gitmodules
 !/.vscode
 !/README.md
-!/awesome-copilot
 !/instructions
 !/package.json
 !/packages
