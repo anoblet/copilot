@@ -1,6 +1,6 @@
 # Instructions
 
-- [astro](./astro.instructions.md)
+- Astro: no maintained guide is supplied in this catalog.
 - [copilot](./copilot.instructions.md)
 - [css](./css.instructions.md)
 - [git](./git.instructions.md)
@@ -12,7 +12,7 @@
 - [record](./record.instructions.md)
 - [schema](./schema.instructions.md)
 - [terminal](./terminal.instructions.md)
-- [test](./test.instructions.md)
+- [test](../../instructions/test.instructions.md)
 - [time](./time.instructions.md)
 - [typescript](./typescript.instructions.md)
 - [vaadin](./vaadin.instructions.md)

@@ -1,26 +1,28 @@
-[AGENTS.md](../AGENTS.md)
+Read the consuming workspace’s `AGENTS.md` when present; this shared catalog does not supply that file.
+
+Catalog hyperlinks below resolve from this file’s real directory (`copilot/.github/` in a consuming workspace). Resolve symlinks before reading those guides. Workspace-owned paths remain relative to the consuming workspace root.
 
 <role>
 </role>
 
 <tools>
-- [agent.instructions.md](../copilot/.github/instructions/tools/agent.instructions.md)
+- [agent.instructions.md](instructions/tools/agent.instructions.md)
 </tools>
 
 <instructions>
-- [css.instructions.md](../copilot/.github/instructions/css.instructions.md)
-- [copilot.instructions.md](../copilot/.github/instructions/copilot.instructions.md)
-- [git.instructions.md](../copilot/.github/instructions/git.instructions.md)
-- [node.instructions.md](../copilot/.github/instructions/node.instructions.md)
-- [principles.instructions.md](../copilot/.github/instructions/principles.instructions.md)
-- [time.instructions.md](../copilot/.github/instructions/time.instructions.md)
-- [typescript.instructions.md](../copilot/.github/instructions/typescript.instructions.md)
-- [web-component.instructions.md](../copilot/.github/instructions/web-component.instructions.md)
+- [css.instructions.md](instructions/css.instructions.md)
+- [copilot.instructions.md](instructions/copilot.instructions.md)
+- [git.instructions.md](instructions/git.instructions.md)
+- [node.instructions.md](instructions/node.instructions.md)
+- [principles.instructions.md](instructions/principles.instructions.md)
+- [time.instructions.md](instructions/time.instructions.md)
+- [typescript.instructions.md](instructions/typescript.instructions.md)
+- [web-component.instructions.md](instructions/web-component.instructions.md)
 </instructions>
 
 <constraints>
 - Do not modify the git history. Do not checkout or restore any file. Do not commit any changes. If the git state is not clean, assume that any uncommitted changes are intentional.
-- Ignore the git state of the [copilot](../copilot) directory.
+- Ignore the git state of the `copilot/` directory.
 - Ignore submodules unless explicitly told to reference or modify them.
 - Use Typescript whenever possible.
 - Node packages should be managed with pnpm.

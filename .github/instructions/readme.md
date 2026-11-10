@@ -1,5 +1,7 @@
 # Instructions
 
+The instruction index identifies the absent Astro guide explicitly. GitHub instruction navigation uses the maintained test guide under `instructions/` instead of promising a missing copy.
+
 <!-- directory-responsibility -->
 Stores development conventions and tool-specific assistant instructions.
 
@@ -7,6 +9,7 @@ Key files: `chrome-devtools.instructions.md`, `copilot.instructions.md`, `css.in
 
 ```mermaid
 flowchart LR
+    NAV10["Maintained test guide and explicit absent Astro guide"] --> NAV10OUT["Verified navigation and explicit source availability"]
     A["Development activity"] --> B["Apply matching instruction file"]
     B --> C["Consistent implementation workflow"]
 ```

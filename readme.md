@@ -1,5 +1,7 @@
 # Copilot
 
+Catalog navigation uses existing instruction destinations and labels optional consumer paths. The OpenClaw correction-reference destination is tracked with an explicit empty evidence state.
+
 `npm run verify:safe` is a bounded, isolated contract (30-second test deadline). It tests MCP schema rejection/response handling and previews skill sync with no installer available. `npm test` delegates to this contract.
 
 <!-- directory-responsibility -->
@@ -14,6 +16,7 @@ Andrew requested complete removal of `awesome-copilot` and `genaisrc` on October
 
 ```mermaid
 flowchart LR
+    NAV10["Catalog instruction links and correction evidence"] --> NAV10OUT["Verified navigation and explicit source availability"]
     SAFE10["Explicit safe verification contract without external actions"] --> SAFE10OUT["Documented owner and bounded verification result"]
     A["Workspace or package task"] --> B["Reusable Copilot capabilities"]
     B --> C["instructions/ and prompts/"]
