@@ -8,7 +8,8 @@
     "copilot:link:enable": "node packages/link/src/index.ts ../link.json --enable",
     "copilot:link:disable": "node packages/link/src/index.ts ../link.json --disable",
     "copilot:link:toggle": "node packages/link/src/index.ts ../link.json --toggle",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run verify:safe",
+    "verify:safe": "node --test --test-timeout=30000 scripts/verify-safe.test.ts"
   },
   "keywords": [],
   "author": "Andrew Noblet",

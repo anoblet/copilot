@@ -5,3 +5,5 @@
 !/readme.md
 !/session-end.sh
 !/sync-skills.ts
+
+!/verify-safe.test.ts

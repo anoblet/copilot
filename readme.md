@@ -1,5 +1,7 @@
 # Copilot
 
+`npm run verify:safe` is a bounded, isolated contract (30-second test deadline). It tests MCP schema rejection/response handling and previews skill sync with no installer available. `npm test` delegates to this contract.
+
 <!-- directory-responsibility -->
 
 Supplies shared Copilot instructions, prompts, skills, shared agents, and supporting command-line utilities. The workspace reaches this repository's `.github/` and `.vscode/` wiring through the root symlinks declared in `link.json`.
@@ -12,6 +14,7 @@ Andrew requested complete removal of `awesome-copilot` and `genaisrc` on October
 
 ```mermaid
 flowchart LR
+    SAFE10["Explicit safe verification contract without external actions"] --> SAFE10OUT["Documented owner and bounded verification result"]
     A["Workspace or package task"] --> B["Reusable Copilot capabilities"]
     B --> C["instructions/ and prompts/"]
     B --> D["skills/, themes/, and packages/"]

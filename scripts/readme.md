@@ -1,5 +1,7 @@
 # Scripts
 
+[verify-safe.test.ts](verify-safe.test.ts) defines the repository’s explicit safe contract, invoked by `npm run verify:safe`; it does not dispatch startup, cleanup, browser or model work.
+
 <!-- directory-responsibility -->
 Provides session lifecycle and skill-synchronization utilities.
 
@@ -7,6 +9,7 @@ Key files: `session-end.sh`, `sync-skills.ts`.
 
 ```mermaid
 flowchart LR
+    SAFE10["Read-only safe contract, separate from operational scripts"] --> SAFE10OUT["Documented owner and bounded verification result"]
     A["Maintenance or development request"] --> B["Run selected utility"]
     B --> C["Updated development environment"]
 ```
